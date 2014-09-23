@@ -1,0 +1,194 @@
+\hypertarget{classWordList}{\section{Word\-List Class Reference}
+\label{classWordList}\index{Word\-List@{Word\-List}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classWordList_ad08a442d735959fa34bdcbdf83a03039}{{\bfseries Word\-List} (list$<$ shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$$>$ $\ast$word\-List)}\label{classWordList_ad08a442d735959fa34bdcbdf83a03039}
+
+\item 
+\hyperlink{classWordList_a51ee5b595a3812e94ea691120eb3df4e}{$\sim$\-Word\-List} ()
+\item 
+void \hyperlink{classWordList_a73e587d2f0c94919303c3873cecae43b}{insert} (shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ w)
+\item 
+void \hyperlink{classWordList_a1526b6133bf3f55a802e431fe2e60c70}{set\-Occs\-Vec} (vector$<$ pair$<$ shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$, int $>$ $>$ v)
+\item 
+shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ \hyperlink{classWordList_a9f2ec2dfb5f8670f9fc5420d2c9d3cfb}{find} (const shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$w) const 
+\item 
+list$<$ std\-::pair$<$ shared\-\_\-ptr\\*
+$<$ \hyperlink{classWord}{Word} $>$, shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ $>$ $>$ \hyperlink{classWordList_aee1a575e29d33758d632a601316fb803}{cross\-All\-Words} ()
+\item 
+int \hyperlink{classWordList_acba58ad886cc0029592df6c942b4dd2b}{sum\-Words\-Length\-With\-Repeats} () const 
+\item 
+int \hyperlink{classWordList_aedf495a6048450a25ac3754a0081f834}{sum\-Words\-Length\-Without\-Repeats} () const 
+\item 
+void \hyperlink{classWordList_aaab2e68dcf66a71ad5441c93266a1746}{clear} ()
+\item 
+list$<$ shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ $>$ $\ast$ \hyperlink{classWordList_a2762e9ee93989472cf787b0cbda73cea}{get\-Word\-List} () const 
+\item 
+set$<$ shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ $>$ $\ast$ \hyperlink{classWordList_afb3441c905e2b67dbc9b4e565e530c66}{get\-Word\-Set} () const 
+\item 
+\hypertarget{classWordList_a13390f6a405e412b79cab3586f5a7a48}{vector$<$ pair$<$ shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$\\*
+, int $>$ $>$ {\bfseries get\-Word\-Vec} () const }\label{classWordList_a13390f6a405e412b79cab3586f5a7a48}
+
+\item 
+int \hyperlink{classWordList_a867573338edd050d6c121b4debe5276c}{word\-Pos} (shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ w) const 
+\item 
+int \hyperlink{classWordList_a69eded9ac3a5f004f18413b68c3b5fd4}{get\-Size} () const 
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{classWordList_a70775d63dafa9f9c753f622bb6d945bf}{operator$<$$<$} (ostream \&cout, const \hyperlink{classWordList}{Word\-List} \&w\-S)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classWordList_a51ee5b595a3812e94ea691120eb3df4e}{\index{Word\-List@{Word\-List}!$\sim$\-Word\-List@{$\sim$\-Word\-List}}
+\index{$\sim$\-Word\-List@{$\sim$\-Word\-List}!WordList@{Word\-List}}
+\subsubsection[{$\sim$\-Word\-List}]{\setlength{\rightskip}{0pt plus 5cm}Word\-List\-::$\sim$\-Word\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classWordList_a51ee5b595a3812e94ea691120eb3df4e}
+Delete word\-List\-\_\- list 
+
+\subsection{Member Function Documentation}
+\hypertarget{classWordList_aaab2e68dcf66a71ad5441c93266a1746}{\index{Word\-List@{Word\-List}!clear@{clear}}
+\index{clear@{clear}!WordList@{Word\-List}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void Word\-List\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classWordList_aaab2e68dcf66a71ad5441c93266a1746}
+clear the Wordlist \hypertarget{classWordList_aee1a575e29d33758d632a601316fb803}{\index{Word\-List@{Word\-List}!cross\-All\-Words@{cross\-All\-Words}}
+\index{cross\-All\-Words@{cross\-All\-Words}!WordList@{Word\-List}}
+\subsubsection[{cross\-All\-Words}]{\setlength{\rightskip}{0pt plus 5cm}list$<$ std\-::pair$<$ shared\-\_\-ptr$<$ {\bf Word} $>$, shared\-\_\-ptr$<$ {\bf Word} $>$ $>$ $>$ Word\-List\-::cross\-All\-Words (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classWordList_aee1a575e29d33758d632a601316fb803}
+Cross all elements of \hyperlink{classWordList}{Word\-List} \begin{DoxyReturn}{Returns}
+list of words pairs representing cartesian product of elements 
+\end{DoxyReturn}
+\hypertarget{classWordList_a9f2ec2dfb5f8670f9fc5420d2c9d3cfb}{\index{Word\-List@{Word\-List}!find@{find}}
+\index{find@{find}!WordList@{Word\-List}}
+\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-ptr$<$ {\bf Word} $>$ Word\-List\-::find (
+\begin{DoxyParamCaption}
+\item[{const shared\-\_\-ptr$<$ {\bf Word} $>$}]{w}
+\end{DoxyParamCaption}
+) const}}\label{classWordList_a9f2ec2dfb5f8670f9fc5420d2c9d3cfb}
+find if there is another ptr pointing to same object, if exists return it 
+\begin{DoxyParams}{Parameters}
+{\em w} & ptr to searching w \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ptr to existing one or N\-U\-L\-L if it doesnt exist. 
+\end{DoxyReturn}
+\hypertarget{classWordList_a69eded9ac3a5f004f18413b68c3b5fd4}{\index{Word\-List@{Word\-List}!get\-Size@{get\-Size}}
+\index{get\-Size@{get\-Size}!WordList@{Word\-List}}
+\subsubsection[{get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Word\-List\-::get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classWordList_a69eded9ac3a5f004f18413b68c3b5fd4}
+get the word\-List size \begin{DoxyReturn}{Returns}
+size\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classWordList_a2762e9ee93989472cf787b0cbda73cea}{\index{Word\-List@{Word\-List}!get\-Word\-List@{get\-Word\-List}}
+\index{get\-Word\-List@{get\-Word\-List}!WordList@{Word\-List}}
+\subsubsection[{get\-Word\-List}]{\setlength{\rightskip}{0pt plus 5cm}list$<$ shared\-\_\-ptr$<$ {\bf Word} $>$ $>$ $\ast$ Word\-List\-::get\-Word\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classWordList_a2762e9ee93989472cf787b0cbda73cea}
+get the word\-List \begin{DoxyReturn}{Returns}
+word\-List\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classWordList_afb3441c905e2b67dbc9b4e565e530c66}{\index{Word\-List@{Word\-List}!get\-Word\-Set@{get\-Word\-Set}}
+\index{get\-Word\-Set@{get\-Word\-Set}!WordList@{Word\-List}}
+\subsubsection[{get\-Word\-Set}]{\setlength{\rightskip}{0pt plus 5cm}set$<$ shared\-\_\-ptr$<$ {\bf Word} $>$ $>$ $\ast$ Word\-List\-::get\-Word\-Set (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classWordList_afb3441c905e2b67dbc9b4e565e530c66}
+get the word\-Set \begin{DoxyReturn}{Returns}
+word\-Set\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classWordList_a73e587d2f0c94919303c3873cecae43b}{\index{Word\-List@{Word\-List}!insert@{insert}}
+\index{insert@{insert}!WordList@{Word\-List}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}void Word\-List\-::insert (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Word} $>$}]{w}
+\end{DoxyParamCaption}
+)}}\label{classWordList_a73e587d2f0c94919303c3873cecae43b}
+Insert a word in the word\-List 
+\begin{DoxyParams}{Parameters}
+{\em w} & word to be inserted \\
+\hline
+\end{DoxyParams}
+\hypertarget{classWordList_a1526b6133bf3f55a802e431fe2e60c70}{\index{Word\-List@{Word\-List}!set\-Occs\-Vec@{set\-Occs\-Vec}}
+\index{set\-Occs\-Vec@{set\-Occs\-Vec}!WordList@{Word\-List}}
+\subsubsection[{set\-Occs\-Vec}]{\setlength{\rightskip}{0pt plus 5cm}void Word\-List\-::set\-Occs\-Vec (
+\begin{DoxyParamCaption}
+\item[{vector$<$ pair$<$ shared\-\_\-ptr$<$ {\bf Word} $>$, int $>$ $>$}]{v}
+\end{DoxyParamCaption}
+)}}\label{classWordList_a1526b6133bf3f55a802e431fe2e60c70}
+Set the occurences vector of the \hyperlink{classWordList}{Word\-List} 
+\begin{DoxyParams}{Parameters}
+{\em v} & vector of ocurrences \\
+\hline
+\end{DoxyParams}
+\hypertarget{classWordList_aedf495a6048450a25ac3754a0081f834}{\index{Word\-List@{Word\-List}!sum\-Words\-Length\-Without\-Repeats@{sum\-Words\-Length\-Without\-Repeats}}
+\index{sum\-Words\-Length\-Without\-Repeats@{sum\-Words\-Length\-Without\-Repeats}!WordList@{Word\-List}}
+\subsubsection[{sum\-Words\-Length\-Without\-Repeats}]{\setlength{\rightskip}{0pt plus 5cm}int Word\-List\-::sum\-Words\-Length\-Without\-Repeats (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classWordList_aedf495a6048450a25ac3754a0081f834}
+Sum all the words length without repeating words \begin{DoxyReturn}{Returns}
+sum 
+\end{DoxyReturn}
+\hypertarget{classWordList_acba58ad886cc0029592df6c942b4dd2b}{\index{Word\-List@{Word\-List}!sum\-Words\-Length\-With\-Repeats@{sum\-Words\-Length\-With\-Repeats}}
+\index{sum\-Words\-Length\-With\-Repeats@{sum\-Words\-Length\-With\-Repeats}!WordList@{Word\-List}}
+\subsubsection[{sum\-Words\-Length\-With\-Repeats}]{\setlength{\rightskip}{0pt plus 5cm}int Word\-List\-::sum\-Words\-Length\-With\-Repeats (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classWordList_acba58ad886cc0029592df6c942b4dd2b}
+Sum all the words lenght of the wordlist \begin{DoxyReturn}{Returns}
+sum 
+\end{DoxyReturn}
+\hypertarget{classWordList_a867573338edd050d6c121b4debe5276c}{\index{Word\-List@{Word\-List}!word\-Pos@{word\-Pos}}
+\index{word\-Pos@{word\-Pos}!WordList@{Word\-List}}
+\subsubsection[{word\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}int Word\-List\-::word\-Pos (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Word} $>$}]{w}
+\end{DoxyParamCaption}
+) const}}\label{classWordList_a867573338edd050d6c121b4debe5276c}
+get the word position in the \hyperlink{classWordList}{Word\-List} 
+\begin{DoxyParams}{Parameters}
+{\em w} & word \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pos 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classWordList_a70775d63dafa9f9c753f622bb6d945bf}{\index{Word\-List@{Word\-List}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!WordList@{Word\-List}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{cout, }
+\item[{const {\bf Word\-List} \&}]{w\-S}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classWordList_a70775d63dafa9f9c753f622bb6d945bf}
+Overload $<$$<$ operator to cout the \hyperlink{classWordList}{Word\-List} 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Word\-List.\-h\item 
+Word\-List.\-cpp\end{DoxyCompactItemize}

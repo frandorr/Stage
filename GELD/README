@@ -1,0 +1,55 @@
+================
+Grammar with Encoding List for Disambiguation (GELD) Context Free Grammar (CFG) generator
+================
+
+IMPORTANT: Code Documentation can be find in "latex" (run make) or "html" dirs. It was created
+by Doxyfile based on comments in the code.
+
+1. The GELD version of this programm generates a grammar with certain properties 
+given in the Report and an encoding list to decode it, from a given sequence. 
+
+The author of the code is:
+Francisco Dorr
+fran.dorr@gmail.com
+
+taking parts of Matthias Gallé code from his PhD thesis (all the suffix array things
+and the saerch for maximal repeats).
+
+2. Compilation:
+
+I used the boost library, so it should be installed before compilation. For
+information how to do it go to: http://www.boost.org/
+
+After that, just type "make" in a terminal in the source folder. 
+This will create "main" executable.
+
+3. Basic Usage:
+
+$> ./main <file> [iter] [Output]
+
+where file should be sequence of tokens separate by spaces. For example:
+"a g g t g a g g a g t g a g t g a c a c a c a c a c a g g g t g a g a g a c"
+
+is a valid file. Or:
+
+"pep io 142 ioi 122 caci giso po2 20 paos 20 28 sss aggt ass a 20 wrr wg02"
+
+Is also a valid file.
+
+iter: is the number of iterations we want to do. If the grammar couldn't get 
+improved it stop without doing all iters. Should be an integer > 2. If no iter is given
+it continues until there is no improvement.
+
+[OptionalOutput]: an output file to write grammar information.
+
+
+As an example there is a file called ecoli in the current dir, run:
+
+$> ./main ecoli 2000 ecoliGram
+
+
+
+EXTRA: 
+- apostol: executable to run the apostolico approach (SLG)
+- contextFirst: executable to select first context and when there's no option select words.
+

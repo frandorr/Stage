@@ -1,0 +1,1535 @@
+Buscar etiquetas: IDEA, TODO, OJO, ATENCIÓN, François
+
+Para después del almuerzo:
+Completar la creación de un suffix array como atribute de la clase Secuencia.
+
+Cuando imprimo el sArray me está devolviendo una lista ordenada de numeritos
+en forma descendente.... no me cabe naaaa.
+
+Pero si lo creo con suffixArray si parece pasar algo... Igual tira cualquier cosa.
+
+Voy a hacer una clase que se llama SACA (SA construction algo) o SA, o algo así que contenga todo lo referido
+al suffix array, así encapsulo y es más fácil de manejar. Si no, me queda muy horrible
+la parte de la secuencia.
+
+IMPORTANTE: que carajo es un w interval en el suffix array?
+
+13/5: terminé clases sequence y subsequence.
+Mañana voy a hacer el algoritmo de maximal repeats y si puedo empezar a diagramar
+las clases ya específicas como (u-v) y eso. El algoritmo de los cruces ya lo tengo.
+Así que no creo que haya problemas con eso.
+Maximal Repeats puede ser un algoritmo de la clase Sequence.
+
+ver si extractRangeFromSequence no debería ser privada..
+
+
+14/5:
+Estoy viendo como hacer el alfabeto. Opciones:
+1) Clase Alfabeto donde tengo el alfabeto y el inverso y todo lo que tenga que ver con esto
+2) un map en la clase dencoder
+
+Prefiero que sea una clase por si acaso. No tengo ni idea como voy a usarlo más
+adelante al alfabeto.
+Ya hice la clase con un bimap. Lo que quiero tener ahora es una Sequence que
+tenga cada elemento acorde a lo que aparece en el alphabeto.
+
+Tengo que agregar el alphabet a la función readFromFile, porque ahí utilizo el int.
+O... hacer otra función que me convierta a Int la sequence.
+Listo, ya tengo al alfabeto hecho con un bimap.
+
+Ahora continuamos buscando... maximal repeats?
+
+Paso que hace mathi:
+Crea dencoder de.
+llama a de->encode
+
+-Lee sequence
+- llama Apply Rules.
+
+
+Para el algo de maximal repeats debería devolver una lista de subsecuencias
+que son maximal repeats, pero no sé si hacer una nueva clase que herede de
+subsequence y tenga un attr "occs" o simplemente agregar el attr "occs" a la clase
+subsequence.
+
+Implementé maximal repeats pero está fallando, me encuentra subsecuencias bizarras
+que no tienen absolutamente nada que ver.
+Posibles problemas:
+1) Lcp, no entiendo muy bien este arreglo. Puede ser cualquier chamuyo.
+2) Algo con los límites en las subsecuencias.
+3) Posiblemente sea que start y end en mi subsecuencia no es lo que significa
+en start y end en el algoritmo (index en el suffix array)
+4) Debería reformular la creación de las Subsecuencias para que sea basado en el
+suffix array. En vez de pasarles el start y el end. Lo que podría hacer es pasarle
+el start y el largo nomás. Y con eso buscar en el suffix array? Es hacer una búsqueda
+binaria en el suffix array en O(log n). O puedo directamente buscar que tengo en
+SuffixArray[index] y eso ponerlo como startpos de mi subsecuencia.
+
+El sArrayIndex mapea bien con el index de la Secu. Pero el end es cualquier cosa, no representa
+el largo para nada. A su vez, el lcp no sé si anda bien.
+
+
+LISTO!!! ESTÁ ENCONTRANDO BIEN LAS MAXIMAL REPEATS!!!! WIIIII WIII WIIIII.
+
+Para mañana: realizar los cruces entre maximal repeats y mmmm, ver que hacer con
+los maximal repeats que son |r| = 1.
+
+Pensar como hacer las clases para (u-v). Como llamarlo, como va a estar compuesto.
+Etc. Los Y podrían ser simplemente SubSecuencias.
+
+Todavía no me decido si cada ssubsecuencia debería o no tener sus ocurrencias.
+
+Los prints los podría modificar para que imprima según parametros que les paso:
+print(secu, 1, 0) imprime los chars pero no los int. Y así. Me pareace que va a
+ser más piola.
+
+15/05:
+Hice la igualdad en la SubSequence. Igual es medio trucho, porque toma como
+si fueran dos subsecuencias iguales si tienen los mismos caracteres, pero no se
+basa en las posiciones.
+
+En la clase UYiV podría usar una nueva clase llamada Inside que represente todos los
+insides, así si en un futuro quiero cambiar la implementación es más sencillo.
+You are a genius my boy.
+
+Que tengo que hacer. Modificar en Maximal Repeats para que me cree un Word y no
+una SubSequence. Hacer la función que obtenga las ocurrencias. Esto lo calculo directamente
+con los index en el suffix array de la subsecuencia. Lo calculo cuando hago lo de las maximal
+repeats.
+
+Para mañana: solucionar los problemas de forward decalaration de la clase word.
+Y chequear si funciona lo de buscar los nonoverlapping maximal repeats
+y las clase word si está bien creada con sus ocurrencias.
+
+16/5:
+Imprime bien las occurencias de las words, pero nunca imprime la primera de todas.
+Corregirrrrr. Listo, tenía que agregar lo de iter++ en getSubSeqOccs... la verdad que no sé por qué.
+
+Estoy teniendo problemas. Algo pasa con con obtainWordsInside. No me está
+creando bien la lista. Yo creo que puede ser porque a veces no existe tal lista.
+Puede ser Nula, puede haber posiciones sin y en el medio. Tengo que chequear estas
+cosas porque si no hay lioooo.
+Entonces:
+Chequear: obtainWordsInside
+bestUV
+createUYiVList.
+
+SOLUCIONADO.
+
+
+17/5: qué pasa si busco maximal repeats, después aplico common_contexts de cada uno de estas maximal repeats y tomo los contextos que aparecieron con más frecuencia para reemplazar??
+
+18/5: Tengo problemas, no estoy liberando bien los punteros... me quedan bocha asignados.
+Pero bueno. Es para corregir más adelante.
+
+19/5: Debería empezar a investigar como se manejarían los símbolos y el parseo
+de las gramática. Posibilidades:
+1) Implementar en C++ las clases y todo. Puedo copiarlo de NLTK
+2) Utilziar NLTK que ya tiene un buen manejo de las gramáticas. Debería hacer un
+estudio de como importar las cosas de C++ a Python utilizando boost.python.
+
+IDEA basada en lo que dijo François el otro día: guardar también los y_i que están
+fuera de los contextos y reemplazarlos por el nonterminal I.
+S-> N....N...I...I....N
+N -> uIv
+I -> y1 | y2 | ... | yn
+
+Voy a empezar a trabajar en la gramática y sus clases.
+Non-terminal, Production,
+
+
+USAR SMART POINTERRRRRRSS.
+
+Y cuando vuelva de almorzar voy a hacer todo el ApplyRulesGreedy.
+
+SecuOri va a ser la secu de donde saco la info antes de reemplazar los no terminales.
+pero no quiere decir uqe sea la PRIMER PRIMER PRIMER secu.
+
+
+Para mañana, tratar de terminar lo de reemplazar los contextos. Terminar bien la
+función de greedy rules. Modificar la clase UYiV para que guarde las apariciones
+de u y v que estoy usando para reemplazar este contexto. Ahora sólo lo estoy
+calculando pero no lo estoy guardando. Lo puedo guardar cuando creo los UYiV a
+partir de las posiciones (justamente estas posiciones son las que quiero guardar.)
+
+20/5: si reemplazo todos los y_i primero creo que no hace falta que haga dos pasadas,
+porque ya tengo las posiciones en la secuencia donde aparece mi word (start).
+
+Así que voy a hacer eso directamente, la función replace.
+
+Voy a tener que modificar la clase secuencia para que tenga un constructor con
+más parámetros como el tamaño.
+
+
+Llegué a ese punto donde queda algo realmente horrible.
+No me gusta nada como se hace el reemplazo. No quiero saber nada con esto.
+Yo creo que con NLTK se podría hacer mucho más sencillo.
+
+Tal vez podría rediseñar toda esta percha con lo de los gramáticas. Algo así:
+
+
+prod->AddOR(yList)
+
+seq = buildSequenceFromGrammar(G)
+
+updateSequence(seq);
+
+
+Me parece que quedaría mucho más prolijo y entendible que la percha que estoy
+haciendo ahora. Me va a llevar tiempo, sí. Pero puede funcionar.
+Así que vuelvo a las gramáticas. Para eso voy a dejar todo preparado para que funcione
+a mi regreso.
+
+PARA MAÑANA: arreglar la función replace. Está reemplazando algo bastante bien creo.
+Pero hace lio con esas cuentas del medio, suma diff, resta i, bla bla bla. Eso hay que
+revisarlo porque está tirando fruta. Me parece que se saltéa un lugar (porque hay 0s).
+O sea, estoy saltenado un i o algo así.
+
+21/5: Hice lo de generar la gramática, igual hay que automatizar los largos, está
+hardcodeado a lo loco la función replaceUYiV (que además tiene un nombre horrible).
+Voy a hacer un print lindo que imprima los caracteres a la vuelta del almuerzo.
+
+TODO-LISTO: cambiar para que si ya existía un Y no me lo ponga en la production. Listo.
+
+TODO: cambiar para que cuando me lea la secuencia la lea directamente como las letras
+de mi alfabeto. Es decir hacer la traducción y no mostrar los códigos ascii. DONE.
+
+TODO: hacer pruebas con más cadenas, porque la que estoy usando de ejemplo de una mierda.
+Para eso tengo que automatizar como medimos los tamaños de las producciones y eso.
+
+
+ERROR: tira seg faulta en casos borde como: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.
+Y no busca máximal repeats porque pone como que cada substring de aaaaaaaaaaaaa es una
+maximal repeat y eso es mentira.
+
+ERROR: está haciendo mal los cruces porque pro ejemplo con:
+agttttagtaaagtgccagtggcgagtttttagtttttagtaaagtgcgagt
+
+Me reemplaza sólo los agt en vez de reemplazar los (agtIagt). Ni siquiera los cruza.
+Por alguna razón o no encuentra los maximal repeats (no creo) o estoy cruzando mal (
+Chequear especialmente esto).
+
+CREO que el problema está en Maximal Repeats porque me tira también la maximal
+repeat vacía. Entonces obviamente me tira siempre un únicon contexto en muchos casos.
+Esto está bueno sí tenemos otro tipo de función de score, pero por ahora prefiero no
+tenerlo.
+
+CONFIRMADO, el ERROR está en la búsqueda de maximal repeats. Algo extrañó está pasando ahí.
+Hay que rechequear toda la función.
+Hay un problema con el endPos, muchas veces mi está tirando una posición fuera del rango de
+mi secuencia. Hay un cálculo que se está haciendo mal.
+
+También chequear el cruce, o las wordPos. Creo que está haciendo muchas cosas mal. Así que
+hay que chequear mucho mucho.
+
+27/5: maximalRepeats no me está devolviendo correctamente. Siempre hay alguna MR que
+no me devuelve. En el caso de ahora es mi simple "a" que no me da.
+esta es la secuencia: aaggtgcaccggtgacg.
+
+Descubrí que había grandes problemas con el alfabeto. Ya que era lo mismo que haya
+una a o que haya un 0 entonces me tiraba cualquier cosa.
+
+Logré hacer que funcione y también mejoré la función de score para que respete
+lo que había escrito teóricamente.
+
+TODO (DONE): calcular tamaño de los yList e ySet como un atributo dentro de WordList.
+Si no, tengo que pasar todo el tiempo por toda la lista y eso es muy costoso O(n).
+
+TODO: empezar a pensar el tema de las iteraciones en la gramática para ir reduciéndola.
+Sobre todo como voy a buscar los contextos en las diferentes producciones. Para que no pase
+que me queda *context que abre* ...., N -> Prod *context que cierra* porque se me
+estaría yendo todo a la percha si pasa eso, porque queda un símbolo de producción en el medio.
+ATENTIIII!!!
+
+TODO (DONE): Cuidado que hice el cambio de los sizes pero no sé si me lo está haciendo bien.
+En el pushBack de WordList hago el chequeo pero es medio turbio creo.
+
+TODO (DONE): Imprimir gramática como caracteres.
+
+TODO (DONE): está reemplazando mal el último nonterminal de la secu original, deja el v
+sin reemplazar.
+
+28/5: No es que deja el v sin reemplazar, me había equivocado. Es que no agrega
+el noterminal si está al final de la cadena. O simplemente no lo estoy imprimiendo.
+Era que no lo estaba imprimiendo, porque le pasaba mal el tamaño de la producción a la
+hora de crearlo.
+
+Me sigue escribiendo la gramática mal, ahora me pone un S al final (representado por
+un 0 si no me equivoco). Quiere decir que estoy hacienndo algo mal con las cuentas
+cuando pongo el tamaño de la producción S. LISTO.
+
+Ahora voy a empezar a ver el tema de las iteraciones.
+
+Cuando tengo que reemplazar dos no terminales seguidos me pone sólo uno.
+Me está haciendo cualquier cosa con la gramática. Agrega cosas al final donde
+no deberían ir y además.
+
+TODO: Cuando las cadenas son grandes me tira seg fault. Por qué puede ser?
+Double free me dice, pero que será lo que libero dos veces?
+
+A la vuelta ver esto. Ir probando con diferentes tamaños de secuencias y tratar
+de encontrar donde está habiendo algún error. Una vez que tenga esto seguir con
+las iteraciones para ir reemplazanando con casos minimales y exhaustivos (?).
+
+TODO: tengo problemas de pérdida de memoria. Leaks. Están en create UYiV list.
+El resto está bastante solucionado. Ver que cambié todo el main para detectar estos
+leaks.
+
+CONTINUARÁ. SOLUCIONADOS los leaks con shared_ptr
+
+2/6:
+Tengo que escribir mail a castaño (listo) y empezar a ver el tema de las iteraciones.
+
+Cómo voy a reemplazar los uv dentro la primer iteración? Cómo busco maximal repeats
+en todas las producciones? Voy a pensar las diferentes opciones.
+
+Voy a empezar con la siguiente versión:
+1) Buscar maximal repeats en la Grammar convertida a secuencia
+2) hacer las cuentas para ver que ganancia me trae reemplazar ciertas cosas,
+tengo que hacerlo en cada producción por separado para evitar los problemas.
+3) Reemplazar y agregar las producciones necesarias.
+repetir.
+
+
+TODO: me tira a veces error de lectura, pero en otros casos no, y no me doy cuenta
+por qué.
+
+Voy a ir paso a paso con esta nueva etapa de las iteraciones.
+Empezando por:
+1) Convertir gramática a un objecto Sequence
+
+
+NUNCA PONER COMO 0 o -1 al valor de la separación porque trae hartos problemas.
+
+3/6: Hay problemas en:
+i) convertToInt(), me genera 3 errors
+
+Me tira errores hasta cuando imprimo la nueva gramática.
+
+Solucionado con smartpointers... son una masa la puta que los parió.
+
+Estoy intentando poner smartpointers pero tengo problemas cuando tengo que pasar
+this como parámetro. Cómo lo convierto a smart ptr??
+
+PARA LA PRÓXIMA CERRAR ESTE TEMA DEL ORTO. O trabajar el finde un poco.
+
+9/6:
+Estoy haciendo lo de las iteraciones, los pasos que voy a hacer son los siguientes:
+
+i) Convertir gramática a seq de enteros (DONE)
+ii) Crear seq y suffix array a partir de esta seq de enteros (DONE)
+iii) Buscar MR en secu, chequeando que si aparece $ o | no agrego esa MR
+iv) Al reemplazar en la secuencia y agregar las nuevas producciones tengo que guardarme las viejas producciones, o recrearlas, por ejemplo, cada vez que aparece un $ sé que cierro una producción.
+
+Hay que tener en cuenta que $ (si pongo que sea 0 me da error) tiene el nro 36 o algo así, y | el 124. Entonces eso afectaría al suffix array.
+
+REFACTORING: en vez de reemplazar en la secuencia, lo que voy a hacer es reemplazar directamente en la gramática.
+Semánticamente me parece más correcto y creo que va a ser más fácil para
+agregar nuevas producciones.
+
+Así que tengo que cambiar replaceYields y replace.
+
+Pude hacer el reemplazo pero tengo algunos problemitas con pérdida de memoria.
+Creo que es con newSeq en el caso que sólo tengo una producción, porque utilizo la misma newSeq uqe paso como parámetro para armar la Prod y eso
+hace lio. Habría que hacerlo con shared ptr y listo el pollo supongo.
+mañana hacer shared ptr en esa parte.
+
+Está haciendo cualquiera con las producciones, no me respeta los delimiters.
+Hay que chequear eso apenas arranco mañana. EL problema es que está tomando mal las MR, porque puede aparece una maximal repeat que sea:
+u - Cambio de Prod - v. Estoy tengo que arreglarrrrrlo.
+
+10/6: voy a ver de corregir el tema de las MR, cómo saber si en el medio hay un $ o |?
+
+I) Versión poco efectiva, analizar la secu una vez creada... O(|Sub|)
+II) tratar de hacer el algo en el algoritmo que buscar MR para que las saque directo.
+III) Hacer algo desde WordPos, fijándose en que si alguna posición apareace en abarcando dos posiciones.
+
+
+Parecen estar funcionando las iteraciones. Ahora tengo un par de errores y leaks, 
+que supongo que puedo solucionar con algún que otro cambio en shared_ptr.
+
+TODO: en algunos casos, me queda el I -> t, una únca opción. Esto no me suma nada
+sería lo mismo que aparezca la t cada vez que hay un I y listo. Hay que modificarlo.
+
+También hay que agregar la selección de qué I usamos porque como está ahora 
+no es fiel en cuanto se reduce la gramática. Se necesito un extra de tamaño p, 
+donde p es la cantidad de pipes. Esto me va a arruinar mucho la reducción.
+
+DEADLINE: Para la próxima semana tengo que tener el decode hecho. 
+La pu que me parioooooooooooooo
+
+el vector de decisiones no sé como ponerlo, me parece un problema super complicado.
+Una opción que se me ocurrió para evitar este vector es poner NoTerminal+i 
+como representación del NoTerminal. Para la secuencia pongo NoTerminal+i%NoTerminal
+sin resto y ahí obtengo el NoTerminal original y si quiero saber que número de opción 
+usar hago NoTerminal+i mod NoTerminal. No me parece mala idea pero la implementación
+puede ser un tanto complicada, pero me ahorro bocha de espacio me parece...
+es posible??
+
+Puede ser... en el replace tengo que hacer la lógica de esto. Para dencodear
+lo que debería hacer es empezar desde los noterminales más grandes reemplazándolos.
+Del más grande que no tenga opciones y tal vez funciona... no me da mucho la cabeza 
+para pensarlo.
+
+Estoy modificando rebuildGrammar, para que me cambie el valor del símbolo. No
+encuentro una buena forma...
+
+Bueno, estudiar esto en casa o mañana, porque así no va. 
+
+Me lo tiró abajo François por cosas que muy bien no entiendo. Soy medio gilo logi
+tal vez... o me expresé mal.
+
+Tiene que ver con lo del árbol de opciones, que a partir de una opción puedo 
+tener dentro más opciones entonces como hago para predecir el resto de los niveles?
+
+11/6: Continuamos intentando saber como elegir las opciones. 
+Tiene que existir cierto órden dado que al decodear se siga inversamente.
+
+Posibilidades:
+Cada producción con opciones tiene a su lado un vector con integers que marcan
+que opción usar. Cada vez que se utiliza esta producción se pushea una nueva opción.
+Al decodear un iterador va recorriendo el vector y cada vez que aparece esta producción
+vemos dónde estoy parado.
+
+Creo que las únicas producciones que pueden tener opciones son las pares. 
+Lo que puedo hacer es una función hasOptions.
+
+Ya hice una pila por cada producción con opciones para saber cuál usar.
+Ahora lo que estoy haciendo es el decoder que va recorriendo la gramática y 
+cambiando los símbolos desde el más grande al más pequeño. 
+Hace tantas pasadas como producciones tengo... no sé si esto es bueno, pero 
+tengo que tener algo rápidamente.
+
+Las produccciones las puedo sacar directo de mi grammarToInt, haciendo alguna
+que otra cuenta con los delimitadores. En realidad, tal vez puedo incluso
+con la función groupNumber o algo así sacar dado un nonterminal dónde se encuentra
+en la cadena. Para después del almuerzo tengo que hacer esto.
+
+Ya tengo el reemplazo medianamente bien hecho, pero ahora tengo que reemplazar TODO
+y no sólo 1. 
+
+Estoy teniendo problemas porque reemplazo sólo en la primer producción pero después
+el resto no lo reemplazo al resto de las prods. Debería recrear la gramática en cada 
+iteración? Es una manera muy poco eficiente pero tal vez sirve.
+
+Perdí mi principal objetivo por intentar hacer las cosas rápidas. Recordemos que estamos
+modulizando. Así que desde la clase gramática podemos hacer este tipo de funciones:
+
+1) unfoldNonTerminal(int nonTerminal)
+2) eraseProduction(shared_ptr<Production> p)
+
+
+PARA MAÑANA:
+tengo que terminar estas funciones porque estoy haciendo cualquiera. Estoy muy cansado 
+para pensarlo ahora. Necesito dormir, descansar bien y mañana lo quemo todo. 
+Posiblemente este bastaaaaante bien lo de unfoldNonTerminal.
+Tengo que armar la lógica de la función principal para ir reemplazando en toda 
+la gramática. Una vez que tenga todo reemplazado y las producciones que están de más
+eliminadas, puedo tener un decoder funcional. Preferentemente para mañana me 
+gustaría tenerlo andando.
+
+12/6: Ya funciona el unfold para las producciones que NO tienen opciones.
+Ahora voy a ver la versión para las producciones que sí tienen opciones. Tengo 
+diferentes posibilidades:
+1) Pasar como parámetro la queue de opciones de la producción (la tiene el 
+dencoder)
+2) No sé... así que vamos a arrancar con 1).
+
+Tal vez lo deje para después del almuerzo porque esta dificil la concentración.
+
+Por qué no hacer una producción por cada opción? Sería mucho más fácil hacer todo...
+lo de las opciones es un dolor de cabeza. Si hiciera una producción porque cada 
+opción todo sería mucho más sencillo. Ahora voy a seguir con los pipes y esa
+gilada para tene algo andando, pero me parece que sería mucho mejor hacer lo de 
+las producciónes. Total lo que estoy haciendo ahora es sólo para medir el tamaño
+de la gramaática y nada con comprensión. 
+Pensando mejor... es posible esto? Como sería el árbol de opciones de esto? 
+No sé si se puede..... NO SE NO SESEEESEEE.
+
+Soy un pelotudo, acabo de perder dos horas de trabajo. En estos casos que se hace?
+Se llora o se arranca de nuevo piano piano. 
+vamos piano piano. 
+NO HACER NUNCA MÄS UN PUTO RESET.
+
+hacer CHECKOUT.
+
+Nuevamente. Sin elección parece funcionar bastante bien pero el problema son 
+las elecciones justamente. Vamos a probar con pasar como parámetro la queue.
+
+Logré tener una versión funcionando pero harcodeada, tengo que ver ahora como
+voy a hacer automáticamente todo esto.
+
+Logré hacerlo de forma automática.
+
+Para mañana:
+i)  tratar de ver lo de las producciones que sólo tienen 1 de largo 
+(no me hacen falta).
+ii) agregar al tamaño la lista de elecciones DONE
+iii) si hay tiempo, solucionar los leaks. DONE
+
+Para arrancar tengo que corregir lo de getProdElectionSize que si pongo que sea
+const tengo que usar at(i) pero at(i) tira excepción si el i no existe.
+Esto ya está corregido. 
+
+13/6: me falta hacer el punto i), lo de corregir las producciones de largo 1.
+Estoy lo podría hacer cuando creo una nueva producción, cheque que su largo 
+sea mayor a 1. Y me ahorro todo el recorrido por la lista para modificarlo.
+
+
+TODO: hay un caso extraño, con algunos inputs tengo leaks por alguna razón, pero
+no logro detectar dónde está. Me dice que en replace en newSeq, pero no sé en 
+qué momento no estoy liberando. (DONE CREO)
+
+
+Bueno, no pude mejorar la performance... la verdad que no sé como hacer y el 
+programa de mathi se comporta muchísimo muchísimo mejor que el mio chotito.
+
+16/6: Necesito agilizar la performance porque anda para atrás. Estoy pensando 
+formas de reducir la cantidad de contextos que analizo porque por ejemplo de 
+2000 maximal repeats estoy teniendo 4.000.000 de posibles cruces y analizar 
+todos y crear para todos las palabras internas es muchísimos costo. 
+
+Debería encontrar alguna forma de evitar todo eso de buscar las palabras internas.
+
+Estaría muy lindo hacer lo de reemplazar los y que se encuentran por fuera de los
+contextos también. Creo que eso me daría una linda ventaja. 
+Es más... hasta hay auto recursión en las opciones se puede dar:
+
+6-> agt | aagg 6 | ..
+
+El problema es que no conozco una buena forma efectiva de hace los reemplazos
+de los Y porque las posiciones estarían intercaladas y se complica a la hora
+de reconstruir la gramática. 
+
+Lo que puedo hacer es hacer los reemplazos y después pensar de nuevo como recontruir.
+
+Voy a empezar guardando las posiciones en que aparecen los y.
+Listo. 
+Ahora, lo que tengo que hacer es recorrer las lista de los Insides viendo en que 
+posiciones se encuentra, una vez que aparecen hacer el reemplazo. Esto no es tan
+trivial porque debería precalcular el tamaño. No creo que sea tan dificil tampoco.
+Puedo primero calcular el tamaño de reemplazar todos los Y. Y luego, el tamaño
+de reemplazar los contextos.
+
+Usando esta cuenta también me puedo dar cuenta cuanto estaría ganando.
+
+PARA MAÑANA: completar lo de los reemplazos de los y de manera así nomás, después
+pensar como hacer el decoder. Si puedo hacerlo en casa tal vez mejor, me gustaría
+ver como quedan.
+
+También debería cambiar el rebuild de la gramática porque cada vez que aparece
+
+17/6: REUNIÓN con François. Le estuve mostrando lo que hice y quedamos que 
+para tratar de mejorar los resultados voy a aceptar también los uIv que tengan
+I vacío. De esta forma estaría buscando algo así como repeats. Así que ahora 
+me voy a poner a hacer eso y ver que pasa con los resultados.
+
+Para mañana: cosas que tengo que corregir para que funcione lo de encontrar
+uv sin Y.
+1) Por alguna razón en ningún caso me busca algo como N -> uv, siempre hay un 
+I en el medio. De esta forma nunca voy a poder encontrar cosas interesantes.
+Va a seguir siendo lo mismo que siempre.
+2) Si tengo una sola opción en mi I -> agag no hace falta que tenga prodElection.
+Ahí me ahorro un par de lugares también.
+3) 
+
+18/6: cambié para que el score sea >= best, en vez de sólo > y me da mejores 
+resultados. Ahora me está dando un yield que es bueno para reducir pero que no
+tiene Y list (justo una de las cosas que estaba buscando). Entonces tengo que resolver
+este caso en el que los Insides son NULLs y ver que hago con eso.
+
+ERROR: me aparece algo horrible. Un 11 que no tiene nada que ver con nada y encima
+el toChar me lo convierte a ";". Es que el 11 tiene más que un char de tamaño... por eso.
+Igual ahora no me voy a interesar por esto. 
+
+Vamos con el paso a paso de por qué no me funcionan los cambios que estoy haciendo.
+
+Creo que tengo un problema con getProdElectionSize() como que me está sumando
+sobre algo que ya tenía sumado a algo así... pensarlo...
+
+ATENCION TODO: mi score está devolviendo 0 si el y es NULL y esto está equivocado.
+Por eso nunca puedo encontrar mejores scores
+
+getSubSeqOccPos está BUGGED: no me elige nunca dos words que esten contiguas.
+Ejemplo: word g y tengo gga sólo pone la primer posición y no la segunda.
+
+Definitivamente tengo problemas con totalElectionSize. No tiene sentido que lo sume,
+ lo que tendría que hacer es calcular los Elections que me va a agregar usar determinado
+ UyV y ESO es lo que debería contar. Lo que estoy haciendo ahora es usar el TotalElectionSize
+ de la gramática anterior... o sea, no fucking sense.
+
+
+ EPSILON: al final lo del epsilón lo "solucioné" sin agregar una opción que sea "e"
+ porque me sumaba al pedo espacio. Lo único que hago es sumar la elección elegida al 
+ "encodingSequence"
+ De esta forma me ahorro un toque de mambos. 
+
+ Ahora que pienso de la misma forma podría utilizar el resto. Guardar un ptr
+ en el "encodingSequence" al y que quiero cambiar y no necesito guardar en una 
+ producción.
+
+ puedo tener todos los y: 
+
+ agg, gg, tg, gg, ggtt, gga, ga, gta, g, tt...
+
+ pt1, pt0, pt2, pt1, pt2, pt3, pt4, pt5, pt6, pt4, pt5, pt6, pt7, pt8, pt9 ... etc
+
+ Esto no crea que sea muy bueno para comprensión pero para reducir el tamaño de la 
+ gramática seguro que sí, porque me ahorro... qué? .... no me ahorro nada creo. Es
+ exactaente lo que tengo jeje jeje jej ejej jejeje
+
+ Continuación: tengo problemas con estos casos:
+
+ uv---uv---uv----uagtv---uv 
+
+ Porque cuando reemplazo estoy agregando un monton de info en encoding que es al pedo
+ porque sólo tengo un Inside y muchos con nada. Entonces lo que debería hacer es:
+
+ 1) encontrar alguna forma de evitar los insides
+ 2) hacer una lógica completamente diferentes que utilice palabras simples 
+ para reducir las gramáticas.
+
+ Me parece bastante complicado la 1) porque no sé cuando evitar los insides y cuando no.
+ Bajo que parámetro sigo esto? En qué caso evito? En qué caso lo dejo? Semánticamente
+ no me gusta tampoco.
+
+ El 2), por otro lado me parece un tanto más interesante porque es como estar usando
+ greedy mezclado con UV, por lo que semánticamente no estaría mal, porque estoy 
+ buscando la mejor reducción haciendo un híbrido.
+
+ Le voy a dar con el 2) entonces.
+
+
+ Estoy haciendo la parte 2), me tira errores y ya no doy mucho la verdad. 
+ Creo que abandono acá y me pa el superrrr. Lo dejo a medio hacer, para terminar
+ mañana.
+
+ Me está dando cosas que no pueden ser posibles. ES PORQUE SAQUÉ LO DEL OVERLAP!
+ ES POR ESO!!! TENGO QUE VOLVER A PONERLOOOO AHAHAAHAHAHAHHHHHHHHHHHHHHHHHHHHH.
+
+ Lo volví a poner pero se recontra tilda ahora después del último comentario que hago.
+ Lo voy a dejar así por ahora y veremos que pasa mañana. Tengo que estar atengo a lo
+ de los OVERLAP, porque no estaba andando biennnnnn.
+
+ Ahora que funciona con los maximalRepeats simples, me los elige siempre a ellos.
+ Ya no usa más lo uyv... es un bajón.
+
+ OJO: modifiqué el unfold así que ahora no va a funcionarme con UYV. Lo que tengo que 
+ hacer es cambiar el órden en el que me pone los no terminales nuevos. En vez 
+ de ser N , I; tiene que ser I , N y creo que debería funcionar bien.
+
+ Estoy cambiando el unfold para que sea más directo. Sin importar si lso cambios que
+ hice fueron yields o Words. 
+ el tema es que tengo que cambiar el orden de los N I para que funcione bien, porque si
+ no hace cualquier cosa (tengo que remplazar primero los N y después los I), pero para
+ estoy tengo que armar de forma diferente los N y I y todos los algoritmos que estén 
+ relacionados con esto.
+
+
+ Grandes retos: sólo está reemplazando palabras sueltas porque siempre son 
+ mejores que reemplazar los contextos. De todas formas funciona mejor que lo 
+ que hizo Mati por alguna razón extraña...
+
+ Ahora lo que quiero ver es que onda el score de los yields, por qué siempre es 
+ peor? No puede ser que alguna puta vez sea mejor? Qué onda loco? Wacho que onda?.
+
+19/6:
+ IDEA: El tema es que mis u-v los estoy sacando de cruzas entre maximal repeats. 
+ Y esa cruza no va a ser un maximal repeats claramente, entonces no tengo muchas
+ apariciones en la secuencia. En cambio al buscar palabras, busco exactamente las
+ maximalRepeats lo que me da una buena comprensión del tamaño.
+
+ *La idea es buscar u-v que venga de una MR desglozada.
+ Es decir a partir de una mr1 tomar un prefijo que sea u y un sufijo que sea v.
+ Y utilizar eso como UYiV yield.
+
+ Charla con François: Ahora voy a continuar tratando de hacer tests con XMl files
+ a ver si se comporta algo mejor... no creo pero podría llegar a pasar.
+
+ De fallar esto lo que voy a hacer es buscar como dije en *.
+
+ Las posibles complicaciones son:
+
+ i) como elegir los prefijos y sufijos de la maximal repeat.
+ ii) ?
+
+
+ Voy a empezar con esto. Por ejemplo una función que sea takeRandomPrefix y otra
+ que sea takeRandomeSuffix. 
+
+ Voy a tomar un nro random r entre 0 y Size(word), luego tomo un prefijo hasta ahí
+ Luego tomo un sufijo random entre r y Size(word).
+
+ Bueno... ya voy a ir dejando el resto para mañana. 
+
+ Agregué esto: uyvList = d->createUYiVFromMaximalRepeats(mrs);
+ y anda todo mal obviamente. Tengo que hacer las funciones en SubSequence
+ para tomar prefijos y sufijos y bueno... ver que pasa.
+
+ La complejidad creo que es algo así como O(|mrs||m|^2) m in mrs- Es medio mentira.
+a complejidad creo que es menos que eso.
+
+ 20/6: Charla con François:
+ Estuvimos analizamos diferentes puntos sobre la propuesta de las maximal Repeats.
+ Me dijo:
+ 1) Que no debería haber mucha diferencia en lso resultados porque los uv que encontremos
+ probablemten también sean maximal Repeats (yo sospecho de esto).
+ 2) hablamos de cambiar la forma de hacer el encoding, la propuesta fue introducir
+ un símbolo en la gramática cuando haya un cambio entonces tengo algo así como:
+
+ S -> N ... N .... N .... c3 N .... N ... N ... c1 N ... N ... N c2 N ...
+ N -> u I v
+ I -> ... | ... | ...
+
+ Que quiere decir hasta que aparece c3, todas las opciones serán el 1, luego
+ cambio y me dice que todas las que siguen serán las opción 3, luego la 1 otra vez
+ y luego la 2.
+
+ Otra cosa que me dijo es sacar la esperanza de ocurrencias de los Insides. 
+ es decir y1 aparece 3 veces, y2 aparece 2, y3 aparece 10... calcular la esperanza
+ y usarla para una función de score heurística. 
+
+ También, otra forma de encodear sería en vez de poner un arreglo 1|2|2|0|...
+ poner 1*1|2*2|1*0 o algo así... pero bien pensado porque esto pinta bastante
+ bastante feucho.
+
+ 23/6: tenía un problema en las occurrencias, me falta poner un -1 en endPosition.
+ Creo que ahora estaría solucionado. Por lo menos así parece. Tal vez habría qe testear
+ ppero me da extrema paja.
+
+ Ahora voy a acondicionar las cosas para poder leer cualquier tipo de archivo
+ y poder hacer pruebas con archivos de diferentes tipos.
+ Ideas:
+ 1) Puedo contar la cantidad de caracteres diferentes y asignarles nros lexico
+ gráficamente.
+ 2) Puedo dejar simplemente que tengan su código ascii y empezar a poner las nuevas
+ producciones no números que empiecen en el último caracter ascii procesado.
+ 3) Vamos a ver que hace Mathi para resolver esto.
+
+ Mathi la flashea y es una paja hacer esto... me parece que voy a seguir con el ADN, 
+ tal vez prueba con un corpus grandotote y lo dejo correr.
+
+ EXTRA: si quiero elegir una fórmula para las elecciones algo que podría funcionar
+ es el polinomio x⁷ + x⁶ = 1 <--- que x me da primera elección 
+ x⁷ + x⁶ = 2 <--- que x me da segunda elección
+
+ para la rama de más abajo derivo: 7x⁶ + 6x⁵ = 1 <--- x que me da la primera opción de la rama de más abajo..
+ y así hasta el infinito.
+
+
+24/6: extensa reunción con François: 
+charlamos de varias cosas en especial de como continuar con este proyecto a 
+continuación:
+
+1) Ver por qué me da diferente mi código a le Mathi
+2) Hacer una fórmula que me diga cuando es mejor elegir un contexto que una palabra.
+Pero no comporando cual es mayor, sino despejando algún parámetro o cosas así, como 
+hice antes.
+3) Implementar cambio en el encoding, va a ser así:
+
+S -> .... N .... N .... 2 N .... N .... 1 N .... 
+N -> uIv
+I -> 0 | 1 | 2 
+
+Agregar este cambio a las fórmulas.
+
+Dejé todo armado para trabajar mañana en el encoding.
+Ya resolví el 1), era porque estoy tomando en diferente orden los pares, pero nada más.
+Y además porque el sigue buscando empeorando tu gramática (pero supongo que mejorando el
+encoding... preguntar a françois).
+
+25/6: TENÍA MAL EL SCOREEEEE, ESTABA RESTANDO ALGO QUE TENÍA QUE RESTAR
+Y ESTABA RESTANDO ALGO QUE TENÍA QUE SUMAR Y AHORA DA MUCHO MEJOR!
+
+Hay algo extraño con el size de la gramática... no me está dando la ecuación correcta
+
+
+TODO: Me dice que el score es 5 por ejemplo, pero la gramática no se está reduciendo en 5 
+unidades. Pero si saco el encoding cuando muestro el total Size sí se reduce en 5 unidades...
+
+Es por esto: int UYiV::getEncoding() const
+{
+  list<shared_ptr<Word> > * wl = y_->getWordlist();
+  
+}
+
+tengo que obtener el encoding del nuevo, NO EL TOTAL DE LOS ENCODINGS! 
+Eso cambiar absolutamente TODO.
+
+La función getEncoding está mal, tiene que cambiar porque estás tirando frula.
+Tiene que ver con que algunos UYiV no tienen inside y entonces no estoy contando
+esos cambios.
+
+IDEA: para reducir aún más el costo de encoding, puedo hacer que al agregar un
+número antes de un non terminal, por ejemplo --- N --- 1 N ---- N --- 2 N ---
+estos también puedan ser reemplazados por un nuevo noTerminal:
+
+C -> 1 N
+
+Tengo que pensar bien cómo voy a agregar este cambio porque tengo que tener las
+siguientes cosas en cuenta:
+
+1) No puedo repetir un número que ya haya sido usado. Es decir, debemos elegir 
+un en un margen que sepamos que nunca va a ser usado para esto. 
+Por ejemplo, empezar a contar desde el tamaño total de la secuencia inicial.
+Si tiene size 3005, empezar desde el 3005. (para ver que elección tomo hago módulo 3005 y listo).
+
+2) Lo estaría encodeando dentro de la misma gramática por lo que voy a tener bastantes
+problemas con los arrays que son de tamaño fijo, como inserto la elección? Cómo
+precalculo dónde va a haber un cambio?
+
+3) Ya no necesito más llevar la cuenta del encoding, porque pasa a formar parte
+de la gramática y listo, no es más necesario.
+
+4) Es dificil calcular el score, precalcular cuales van a ser los cambios necesarios
+de manera poco costosa.
+
+IDEA: lo de los números de ir tomando n+1, n+2 para  saber que elección tomar
+y luego hacer módulo no es una muy mala idea. El tema es que me agrega símbolos 
+entonces después es más complicado encontrar repeticiones. Pero habría que ver si
+con lo que gano me sirve o estoy empeorando las cosas. Para un futuro sería lindo
+implementarlo... sería lindo.
+
+Hice unas cuentas muy pedorras de un caso muy pedorro y me dio que era mejor
+hacer la codificación de François... pero es para tomar con pinzas.
+
+Para mañana: meterle con lo de la nueva gramática con encoding loco y ver que 
+resultados me da eso.
+
+26/6: Voy a empezar con los cambios en la gramática después de almorzar.
+
+1) Precalcular cuantos cambios voy a hacer.
+2) Utilizando esta cuenta, agregar este tamaño a los arrays.
+3) Agregar los cambios a la gramática a partir del Size de la gramática.
+
+
+Cómo está ahora no estoy contando el Encoding en el score, no estoy contando el encoding
+al final.
+
+1) Para precalcular los cambios, podría recorrer los pares de posiciones de UYiV
+y ver que hay entre medio. 
+Estoy lo puedo hacer cuando calculo los UYiV, es decir cuando los creo y busco
+sus insides. Puedo crear un nuevo atributo dentro de la clase que sea algo así 
+como "cantidadDeCambios".
+
+ Estoy haciéndolo bastante bien, pero tengo problemas a la hora de agregarlo con 
+ el i y el diff. Tengo que ver como hacer para agregar el nro sin causar problemas.
+
+ Como voy a hacer para el decoding si tengo lo siguiente:
+
+ 3000 15 15 2999 15
+
+ pero 15 es así:
+
+ 15 -> 14 14
+
+ como sé si el 3000 ese me modifica al 15 o al 14?
+
+ lo puedo solucionar haciendo así:
+ busco el 15, me fijo si tiene opciones, si no tiene esa opción dada quiere decir
+ que no es para él. Si la tiene listo, sí o sí le pertenece a él. 
+
+
+ Con la versión de poner en cada NoTerminal la elección y luego buscar reemplazar
+ esto por un non Terminal me da mejores resultados que en el encoding loco.
+ En mi código:
+
+ Branch encoding2 mejor a encoding1
+
+ 27/6: cambié la función createUYVFrom para no crear una lista de UyVLIst, sino, 
+ tomar directo la mejor. Así no estoy usando tanta memoria junta todo el tiempo.
+ Tal vez tarde más esto... no sé, pero tengo menos memoria en uso.
+
+ Estuve haciendo cambios. Ahora sólo busco los contextos UyV en la Word que tenga
+ mayor puntaje, es decir sólo me quedo con una maximal repeat. En general creo que 
+ coincide el mejor uyv es sacado de la mejor Word. Puede pasar que no pero
+ por la diferencia estoy me parece que es mejor a la hora de buscar uyv. Me da
+ mucha más velocidad. 
+
+ Pero no estoy usando mucho los UyV, siemrpe me suele elegir una palabra. 
+ Estoy se puede seguir explotando. Podemos hacerlo más ágil aún.
+ Voy a probar también con encoding1 y encoding3
+
+ 30/6: voy a trabajar hoy en el decode para los nuevos encoding.
+
+ Supongo que se puede hacer una mejor heurística con lo de elegir la mejor palabra
+ para sacar los UyV. Tal vez en vez de elegir sólo la de mejor puntaje, elegir
+ todas las que tienen buen puntaje y ver que pasa con eso? 
+
+ Para resultados: tengo que probar agregar cuantas veces se eligió una palabra simple
+ y cuantas veces se eligió un contexto.
+
+ Después habrá que probar con lo de Minimal Grammar Parsing.
+
+ 
+ PROBLEMAS DETECTADOS: 
+
+ 1) SIEMPRE la elección de contextos es muy baja comparada con la elección de 
+ palabras, menos del 5% son contextos. Por qué pasa esto? Que imposibilita que se 
+ elijan más? Sí saco lo del score en context elige 100% contextos, así que está bien.
+ O sea, pasa qué rápidamente se acaban buenos contextos para reemplazar.
+
+
+ 2) Si corro primero sólamente los uyv encuentro muy pocos, y el tamaño aumenta...
+
+
+ 1/7: Reunión con François. Pasada en limpio de todo lo que hablé.
+
+ Estuvimos charlando de las diferentes opciones.
+
+ 1) Poner la codificación en la gramática es una posibilidad, pero no es 
+ tan copado semánticamente me parece. Es preferible dejarla de lado para el final.
+ E ir haciendo las gramáticas en la gramática en sí, sin esos agregados que la 
+ transforman en un engendro.
+
+ 2) Estuvimos viendo si puede existir algún problema con lo de la codificación
+ al lado del no terminal, por ejemplo en el caso siguiente
+
+ S -> 1N ... 1N
+ N -> 2M I ---
+ I -> --- | ... | ...
+ M -> ... I2 ...
+ I2 -> ... | ... |
+
+ Cómo sé que M usar? Es sencillo, el reemplazo del M se hizo luego del reemplazo
+ de la N, por lo tanto no habrá problemas con esto. No me perjudica, ya que no 
+ voy a tener nunca este caso en el que más abajo en el árbol tenga un no determinismo
+ que no pueda resolver.
+
+ 3) Por el punto 2) funcionaría bien lo de poner N+1, N+2 en la gramática, pero 
+ el punto bajo acá es que agrego muchos símbolos.
+ 
+ 4) Otra cosa que se penso es hacer la gramática y resolver todo como si no hubiera
+ no determinismo. Es decir poner el N sin anotaciones ni nada. Una vez que terminamos
+ en la gramática final le podemos hacer anotaciones basados en la secuencia. 
+ Es como parsear la secuencia y decir en que orden se eligieron los símbolos. 
+ No sé que tipo de beneficio me daría esto porque tengo que agregar un buen encoding al final.
+ Lo que para mi viene siendo lo mismo que estuve haciendo todo este tiempo. 
+
+ 5) Se hablaron otras cosas para más adelante, como evitar usar el símbolo y con
+ una nueva notación como la siguiente: 
+ S -> ..... C ... C .... C
+ C -> u | v | y.y2.y3
+
+ o algo así
+
+ otra era:
+
+ S -> ..... C y1 .... C y2 .... C y3
+ C -> u.v
+
+ 2/7: mi genial idea de la codificación de pares fue rechazada.
+ <l(z), r(z)> = z
+ 2^x(2*y+1) -1 = z 
+
+ entonces recorría la lista de codificación de a pares comprimiéndo cada par
+ en un único nro z.
+
+ A François le gustó la versión del N+1, N+2 para eligir la opción correspondiente
+ así que vamos a seguir con eso.
+
+ Tengo que hacer un informe lindo sobre esto y empezar a trabajar para mejorar
+ el score y toda esa movida sobre este tema.
+
+ Pero primero creo que lo mejor es hacer el encode, decode para ver si realmnente
+ es factible este método bizarro y capo.
+
+Decoding: arrancan las complicaciones, como voy a realizar el decoding de esto?
+Es un tanto compliquetti parece. 
+
+
+TODO: por alguna razón, estoy encontrando yields que tienen yList vacío pero 
+no nulo... estoy por qué pasa?
+
+3/7: el flashero de François quiere encodear toda la gramática como viene pero
+recordando las opciones. Al final, con el encoding escribir una gramática final
+de la forma N+1, N+2. Obviamente no tiene fakin sentido. 
+
+4/7: efectivamente estaba mal y no había manera de resolver la ambigüedad.
+Aśí que ahora volvemos a los esquemas anteriores con dos posibles approachs que 
+pueden ser interesantes:
+
+ATENCÏON: BUSCAR UYV POR FUERZA BRUTA CRUZANDO TODOS LOS MAXIMAL REPEATS, COMO
+ERA AL PRINCIPIO. NO IMPORTA QUE TARDE DÉCADAS.
+
+1) El mismo de antes, simplemente usar N+1, N+2 en cada iteración.
+2) Un engendro entre la versión con encoding y la de N+1. Ya que en cada paso
+memorizamos el encoding. Pero al final, hacemos una especie de unfold en toda 
+la gramática y la escribimos como si fuera el 1). 
+La diferencia es que en cada iteración elijo a N+1, N+2, etc como si fuera el mismo N.
+
+Ejemplos de ambos casos:
+
+Primer caso:
+
+S -> ......8+1.........8+2.....
+7 -> ..|...
+8 -> u7v
+
+Segundo caso:
+
+S -> .....8a ..........8a........ (1,2)
+7 -> ...| ..
+8 -> u7v
+
+Luego, si tengo un 9 -> 8a 
+
+puedo escribir 
+9+1 -> 8+1a
+9+2 .> 8+2a
+
+si tengo además un 10 dentro del 9
+9+3 -> 8+1a10+1
+9+4 -> 8+1a10+2
+
+y así sucesivamente.
+
+Igual hay que comenzar probando los básicos encoding1, encoding2, encoding3 y 
+ver qué pasa.
+
+
+Próximos pasos: implementar para que use todas las maximas repeats y las cruce
+entre todas. Como era antes, pero de tratar de hacerlo más dinámico. Tipo online.
+Así no guardo todos los posibles cruces (en realidad guardar los cruces no me jode),
+me jode crear los UyV. Voy a hacer que sean shared_ptrs así es más sencillo trabajar con ellos.
+
+DONE: mejoré el uso de memoria también, ahora no creo absolutamente todos los uyv
+al mismo tiempo...
+
+Para después de almorzar: hacer lo de la memoria pero para trabajar con el encoding.
+Una vez que tengo esto hecho pensar tests para lanzar y empezar a correrlos.
+Para ver que encuentro de interesante. Score en 0 pero al final contándolo.
+Sigue ocupando mucha memoria. Pensar una forma de agilizar las cosas sería óptimo.
+Pero realmente no se me ocurre.
+
+8/7: reunión con François. Tengo que volver a pensar lo del unfolding al final
+de todo, agregando reglas como 
+T+1 -> 8+1.. 9+0
+T+2 -> 8+2...9+0
+...
+...
+
+Como nuevas reglas nomás.
+
+Cosas que me estuvo diciendo François y lo poco que entendí:
+
+Lo del N+1 tiene que hacerse a partir del parse tree, con una metodología bottom
+up. El primero no terminal tiene que salir directo, a medida que vamos subiendo
+si tenemos varias opciones dividimos el no terminal con muchas opciones 
+
+N -> option1 | option2
+
+Para referirnos a option1 decimos N1, y esto no tiene que ver con el N+1 que es 
+el que me dice que inside usar!
+
+De esta forma tenemos que rearmar toda la gramática pero sin ambiguedades.
+
+Toda esas cosas tal vez las puedo hacer directo con el NLTK que ya tiene lo del
+parser incorporado.
+
+9/7: logré obtener el parse tree de las gramáticas obtenidas con el NLTK. 
+(ver parseTree.py), a partir de ahí lo que estoy haciendo es hacer como una especie
+de bottom up y convirtiéndolo en una gramática determinística agregando nuevos símbolos
+cuando son necesarios.
+
+Cada nivel N decide sobre que elección tomar usando N+x, además tengo un índice
+i, que me dice que índice de esa N usar. Porque puedo tener por ejemplo:
+
+N -> 8+1t 9 | 8+2 9
+
+1N + 2 me está diciendo tomar la opción 2 del 9. Y el índice 1 me dice que tome
+el primer N: 8+1t 9
+
+En lo que puedo trabajar ahora es en el output de mi programa así me genera una 
+gramática compatible con NLTK para utilizar directamente sin necesidad de hacer la
+conversión.
+
+Tengo problemas para distinguir cuales son no terminales Inside y cuales o no, y
+como saber cuales incluyen un epsilon y cuales no. Esto es muy importante a la 
+hora de generar la gramática que va a ser tomada por el NLTK y generar el parse
+tree de nuestra secuencia.
+
+10/7: voy a empezar haciendo alguna pruebita más para ver si funciona de verdad
+esto del parsing. Luego empieza la parte de la implementación que creo la voy a
+hacer con python y nltk.
+
+Habrá alguna forma de predecir el tamaño usado por el approach del parse tree?
+
+Algoritmo DFS sobre el parse tree para obtener la gramática buscada:
+Paso a paso, como ir avanzando:
+
+Para después de la pausa:
+
+1) Ver como puedo hacer que el árbol tenga atributos. Es decir, que los nodos
+puedan tener información. Todo esto a partir de NLTK.
+
+	agregados: creo que no puedo tener atributos en los nodos, por eso, se me ocurre
+	hacer una tabal hash donde las claves sean los nodos y los valores sean los X
+	y otra tabla donde los valores sean los i.
+
+	Tabla hash con encodings.
+	Conclusión por ahora necesito:
+
+	Tabla Hash x
+	Tabla Hash i
+	Tabla Hash encoding
+
+	No importa si ocupo mucho espacio o si no es eficiente, porque después puedo
+	borrar todo esto y sólo quedarme con la gramática.
+
+2) Investigar si NLTK tiene un dfs incluido para recorrer los nodos. Ver algoritmos
+que recorran nodos en forma DFS. Probarlo con un árbol y mostrando en la salida
+los nodos.
+	
+	agregados:    def treepositions(self, order='preorder') me devuelve en las diferentes
+	formas los nodos. Tengo que ver cuál es la que representa el DFS. 
+	El postorder es el orden que tengo que usar para conseguir lo que yo quiero.
+
+	Entonces los coloc en postorder y voy buscando las X y los i
+
+
+	subtrees(self, filter=None), busca los subtrees, puedo filtar por nombre de No 
+	Terminal me parece. Esto tal vez está piola para buscar todos los no terminales
+	de un algún tipo. Puede servirme para algo... no sé.
+
+Para el 11/7:
+
+2) Chequear la gramática para ver si tengo casos como el de un Inside cuya opción
+sea otro Inside. Esto debería evitarlo para armar el árbol porque me complica las cosas.
+Solución: agregar un NoTerminal que sea N -> I_interno. Y listo.
+
+	Cuando haga la implementación tengo que acordarme de hacer esto, para que el 
+	comportamiento cuando lo implemente sea siempre igual.
+
+3) Agregar en los atributos el x en los no terminales que no son Insides. 
+Imprimir los resultados:
+
+si cod(prox) = n then x(actual) = n only if N(prox) = N(actual)-1. Porque puede
+pasar que un No Terminal que era yield ahora es word por los reemplazos que se 
+hicieron en él.
+
+Para el 15/7
+
+4) Imprimir el nuevo árbol con los +x incluidos, puedo imprimir como pares (N, x).
+
+5) Cuando recorrí todos los hijos de un árbol puedo agregar el índice i de ese árbol.C
+cómo? Chequeando si todos los hijos en el orden que aparecen son iguales a la producción
+de dicho árbol (no terminal). Si son diferentes incremento el i y ese es el nuevo i.
+Si encuentro una producción/árbol igual, simplemente pongo el índice de esa producción/árbol.
+
+6) Imprimo y veo que onda.
+
+7) Al agregar nuevos índices podemos agregar directamente toda la producción completa o
+ver formas más piolas y de ahorrar espacios de hacerlo. Dedicarse a esto.
+
+	agregado: una opción es cada vez que aparece un no terminal tener una lista
+	que según la opción me diga cual corresponde. 
+	8 -> agt 19 tt
+					 19+1
+
+	algo así, entonces 8¹ -> agt 19 tt
+	y 								 8² -> agt 19+1 tt 
+	y sólo tengo que sumar el char del 19 y no toda la lista.
+	El tema es que la implementación de esto no sé exactamente como hacerlo.
+	Porque si copio toda la producción estoy agregando bocha de caracteres totalmente
+	innecesarios.
+
+
+IMPORTANTE: hay una función en nltk que es para borrar los símbolos que están al
+pedo. Por ejemplo 7 -> a está al pedo, porque puede ir directo una a.
+
+15/7: implementación, la voy a hacer en C++ al final, porque ya lo estoy dominando.
+Empezar con python sería perder mucho tiempo.
+
+Mentira, cambié de nuevo porque era imposible. Así que volví a nltk basándome en el
+parse tree. Ya tengo algo funcionando muy muy pedorro.
+
+TODO: mañana lo que puedo hacer para mejorar un toque es lo siguiente:
+
+Antes de hacer cualquier cosa, recorro el parse tree agregando los x. 
+Si encuentro un 7 en el parse tree, voy al padre (si es un 8 sólamente) y le digo
+que ahora se llama 9 = 8+1.
+
+Cómo son strings, lo puedo llamar directamente 8+1 creo...
+
+16/7: 
+
+Cómo hacer la implementación: 
+puedo tener una estructura que me vaya guardando, 
+
+8 -> 1, 4, 5, 19
+7 -> 2, 7
+
+Entonces una vez que tengo todas las producciones lo que hago es ir reemplazando
+el 1 por 8
+el 4 por 8+1
+...
+
+etc.
+
+En realidad para no repetir no terminales debería ser algo así como:
+8 -> 1, 4, 5, 19
+8+size(8) = 12 -> 2, 7
+
+una vez que tengo esto así definido tengo que encontrar la forma de ver cuales
+son Insides y cuales no. 
+
+Como hago para saber cuales son insdes y cuales no?
+
+1) Antes de hacer cualquier cosa me guardo la lista de insides.
+2) Necesito dos variables:
+
+	lastInside: que me dice cuál fue el último inside usado (así hago la cuenta,
+	 si el terminal que viene tiene que tener un +2 o no)
+	lastInsideIndex: que me dice en último índice (el +2).
+
+3) La notación 8+1 sólo la hago en el árbol, NO en las producciones que agrego.
+Es decir, no agrego una producción 8+1, dejo la del 8 nomás.
+
+
+Tengo que además tener una buena poĺítica de numeración, porque lo que tengo 
+hasta ahora es patético y sólo me va a generar errores. Realmente es la desesperación
+pura esto. Me falta diseño.
+
+Cómo numerar correctamente? 
+
+Si numero como vengo haciendo empezando por el 1 tengo todos diferentes, pero
+debería tal vez hacer un mapeo, por ejemplo:
+
+8  corresponde al 1,5, 10
+7 al 5,6,19
+
+y así, ahí tal vez podría diferenciar a todos de alguna forma. La verdad ni idea.
+No me me ocurre por el momento, para después de almorzar tengo que ponerle onda
+a esto.
+
+Pensar desde 0 también con otra perspectiva, muchas veces uno se enrieda con algo
+y no ve un camino por el costado. Arrancar con algo diferente. O hacer una versión
+pijoleta con saltos entre los números, en vez de 1, 2, 3.
+
+1, 200, 300 o cosas así. Que por el momento no me jode y tal vez me ayuda a tener
+cosas como 200+4, 200+9, etc.
+
+Resultados:
+
+S -> 11 t 12 11 g t 13 10+0 g 10+0 t t 12 t t t g g 10+1 10+1 t 13 11 a 13 g 8+5        28
+
+11 -> a g	     3
+
+12 -> a a      3
+1
+3 -> 8+1 t      5     
+			8+5 
+			8+0
+
+8 -> g a 7 11      5
+
+7 -> a | cc | ccg | c 12 12 c | caca | Epsi   19
+
+9 -> c g a | epsi     4
+
+10+1 -> 8+4 a 9 t      8
+				8+2
+				8+1
+				8+3  
+
+
+Para conseguir un resultado mejor tengo que ver como pder comprimir las reglas.
+Por ejemplo
+
+13 -> 8+1 t           
+13 -> 8+5 t           
+
+lo puedo poner como:
+13 -> 8+1 t           
+			8+5 
+			8+0
+
+10+1 -> 8+4 a 9 t
+				8+2
+				8+1
+				8+3             
+
+
+
+
+
+-1 --> 22 7 19 19 19 19 t t 11 18 
+7 --> 11 14 c 23 9 10 c g 23 t t t a a t 15 a a a 10 8 a 14 10 11 a t 14 c 8 t 8 
+8 --> a g 
+9 --> t g g 
+10 --> a c 
+11 --> a 8 
+12 --> 9 7 
+13 --> 9 
+14 --> t 13 g 10 
+15 --> t | 11 
+16 --> 8 16 12 
+20 --> t a 11 g t | 10 
+21 --> 8 20 g a 
+
+
+
+------------------------------------------------------------------------------
+
+
+Tengo algo bastante funcional con los i puestos.
+
+S -> 11^0 't' 12^0 11^0 'g' 't' 13^0 10^0+0 'g' 10^1+0 't' 't' 12^0 't' 't' 't' 'g' 'g' 10^2+1 10^3+1 't' 13^1 11^0 'a' 13^2 'g' 8^0+5
+11^0 -> 'a' 'g'
+12^0 -> 'a' 'a'
+13^0 -> 8^0+0 't'
+8^0+0 -> 'g' 'a' 7^0 11^0
+7^0 -> 'a'
+10^0+0 -> 8^0+1 'a' 9^0 't'
+7^0 -> 'c' 'c'
+9^0 -> 'c' 'g' 'a'
+10^1+0 -> 8^0+2 'a' 9^0 't'
+7^0 -> 'c' 'c' 'g'
+10^2+1 -> 8^0+3 'a' 9^0 't'
+7^0 -> 'c' 12^0 12^0 'c'
+9^0 ->
+10^3+1 -> 8^0+4 'a' 9^0 't'
+7^0 -> 'c' 'a' 'c' 'a'
+13^1 -> 8^0+1 't'
+13^2 -> 8^0+5 't'
+7^0 ->
+
+
+
+El tema es que con esto ocupo bochísima de espacio... tranquilamente.
+
+Tengo que pensar diferentes formas de reescribir producciones similares por ejemplo.
+Para ahorrar espacio. También, eliminación de epsilon. Comprensión de Insides.
+
+17/7: Petit Reunión con François: 
+
+Hablamos de que hacer en lso casos:
+
+N¹ -> (M+1) g t 
+N² -> (M+2) g t 
+
+la idea es correr una vez que tengo esta gramática final, una vez el algoritmo
+spe y ver si me reemplaza esta "g t"
+
+otra idea que salió es pensar en reemplazar el (M+1) g y (M+2) g 
+por ejemplo:
+
+Pn -> (M+1) | (M+2)
+N -> Pn g
+
+supuestamente estamos ahorrando algo ahí, pero no sé cual es la idea muy bien de
+este reemplazo..
+
+Lo que voy a hacer ahora es intentar hacer el pasaje para luego del parseo pasar
+una vez más spe y ver que me queda.
+
+
+El problema cuando leo es que es más grande que char los números esos...
+
+
+Puede haber un problema con la búsqueda de maximum repeats, porque hay varias cosas
+repetedias que ni me las cuenta como opciones... es raro. 
+
+Chequear eso mañana a primera hora.
+
+18/7: El problema es el siguiente:
+
+si tengo por ejemplo agt$, y esto es una maximal repeat, la estoy eliminando completamente.
+Pero lo que debería hacer es tomar agt. 
+Ahora bien, cuando intento cambiar esto me rompe todo por como es que creo las MR.
+
+Tal vez, en vez de buscar maximal repeats, puedo buscar sólo repeats.  NO. NO sirve.
+Por eso me anda mal TODO.
+Tengo que encontrar la forma. Voy a chequear que hace Mathi Galle.
+
+
+TODO: cambié un par de cosas, pero es super turbio....
+debe andar mal.. la parte de maximal repeats que busca isInvalid().
+
+Medio que está solucionado por el momento. Posiblemente no esté andando bien igual.
+Pero mejor que antes va.
+
+Ahora lo que tengo que hacer es configurarlo para que corra el 
+python parseTree automáticamente me llame al spe para que haga una corrida más
+sobre el resultado. Tengo que automatizar esto después de comer.
+
+Y ponerme a hacer un par de calculos con algunos ejemplos a ver como se está 
+portando spe y como speD. En ambos ya hice el cambio en la subseq.
+
+
+21/7: 
+
+ERROR en parse tree. No me está poniendo bien el +x en el siguiente caso:
+
+aparece un 7, seteo el x, aparece un 11, sobreescribo el x, entonces cuando voy al
+8 padre del 7 seteo el x del 11 y no del 7 como corresponde.
+
+Novedades de reunión con François: 
+
+Lo que vamos a trabajar ahora es nuevamente la gramática con un encoding por fuera
+de ella. Este encoding no será una lista por cada no terminal, sino una secuencia
+basada en el parse tree recorrido con DFS, por order o lo que sea. 
+Una vez que tenemos esta secuencia, podemos usar un algoritmo de comprensión 
+claśico basado en símbolos como el Lempel Ziv y comprimir esta secuencia. 
+O incluso con nuestro sistema de gramática en un loop infinito...
+
+
+Creo que spe normal es el más parecido a esta cosa. 
+
+22/7: reunión con François y próximos pasos a seguir:
+
+Voy a trabajar en comprimir el encoding de manera naive pero con los siguientes cambios:
+
+0) Arregar la lectura por character... la hago con int? Como leo?
+i) Agregar epsilón como un a opción más, y no sólo tratarlo en el encoding.
+ii) Ordenar los insides en orden de ocurrencias (esto nos sirve en el encoding para
+comprimirlo).
+
+
+i) para poner a epsilón como una opción más tengo que encontrar un char especial
+para él. Digamos un 0 o algo así (funcionará el 0 o como antes no?).
+
+Y contarlo cuando busco los insides porque por ahora no lo estaba contando. 
+A la hora que busco los insides también tengo que hacer la ordenación por orden 
+de aparición. Por ejemplo, ir poniendo en una lista todos los insides con un contador
+que diga cuantas apariciones tiene. Una vez que guarde todos, ordeno la lista por
+orden de aparición y me quedo sólo con los insides.
+
+Una manera de escribir el epsilón es poniendo ||, por ejemplo:
+I -> y1 | | y2
+o
+I -> y1 | |
+
+
+Voy a dejar corriendo a spe y dfsEnc con corpus a ver que resultados me tiran.
+
+TODO: con el cambio en maximal repeats ahora tengo MR repetidas. Debería corregir
+esto de alguna forma.
+
+
+23/7: estoy viendo si en algún momento tengo contextos grandes. Porque por lo que
+veo hasta ahora los contextos son en general de valor 1 y hay algunos de valor 2 o 3.
+Pero no se suele sobrepasar esta medida.
+
+Cosas para mejorar performance: 
+i) estoy probando con limitaar el size de las palabras a buscar.
+ii) fijarse sí en general pasa que la mejor Word elegida es parte de alguno de los
+contextos del mejor yield elegido.
+De pasar esto, tal vez se puedo buscar unas 10 palabras buenas y sólo cruzar esas
+entre sí y tal vez hay grandes chances de que se formen buenos contextos. Para probar.
+
+24/7: voy a trabajar con estadísticas para obtener criterios interesantes:
+
+i) Cuántas verces best Word forma parte de alguno de los contextos?
+
+
+Resultados interesantes:
+
+i) En gral, más del 50% del encoding pertenece a epsilón
+ii) Si tomo maximal repeats con máximo tamaño 2, el resultado que obtengo al final
+es similar a si busco todo.
+Explicación? Me parece que cuando tomo MR más grandes, después igual voy a reemplazar
+esa cadena por MR más chicos, entonces es como hacer este paso directamente.
+iii) El encoding suele tener tamaño del 50% del tamaño final encontrado. 
+iv) 
+
+
+Reunión con François: Lo que tengo que hacer ahora es terminar con la codificación
+DFS, una vez que tengo la gramática final ir siguien la apareción de los no Terminales
+y agregando el encoding a una secuencia.
+
+François me habló de algo llamado CRISPR y me dijo que comprima el encoding 
+con LZ77 (aunque es más o menos lo mismo que mathias gallé). 
+También que pruebe comprimiendo plásmidos, pero no sé de donde sacarlos.
+
+
+El dfs me está andando mal. Cuando entro en un inside, consumo toda la cola pero
+todavía siguen apareciendo insides por alguna razón. 
+Posibles errores:
+
+i) Estoy guardando mal el encoding y uno no lo meto. Creo que es esto. En replace
+yield simple tengo no estoy agregando la election por el epsilón.
+ii) La recursión hace alguna cosa extraña y me consume la cola (?).
+
+
+Descubrí que es por un tema como este:
+
+s -> 10 10 a 8 10
+8 -> 10 
+
+El encoding va a recorrer primero todo el s sin meterse en el 8, entonces eso 
+ya me trae problemas porque después en el dfs me meto en el 8.
+
+
+30/7: Para el viernes a la mañana:
+
+Necesito:
+- state of art (y cuáles son los cambios que introducimos)
+- como quiero seguir mi tesis
+- Informe que se entienda
+- Fórmulas, etc
+
+
+31/7: hay varias cosas que debería hacer, como el decoder de spe,
+el dfs en dfsEnc (aunque no me guste la versión).
+
+Está siendo realmente un bardo hace el dfs con el encoding correcto. No encuentro
+la forma de hacerlo de forma correcta y me estoy volviendo crazy dog.
+
+5/8: encoding DFS. Me parece que no sirve para un comino pero acá hay una nueva 
+versión que soluciona el 8 -> 10 | 10
+
+Cada vez que agrego un nuevo no terminal, agrego su disambiguation list de forma DFS.
+O sea, voy a tener más encoding, porque antes solo ponía un encoding por ejemplo
+en el 8 -> 10 
+pero ahora cada vez que aparezca el 8 va a figurar un encoding explícito para el
+10 al que llama. Es decir que por cada subtree del árbol voy a tener un encoding.
+
+Me parece una gilada y no creo que funcione, me va a agregar bocha de encodings
+incomprimibles, pero no veo otra forma de solucionar lo del 10 | 10.
+
+
+7/8: reunión con Clovice. Estuvimos pensando si siempre es mejor elegir repeats
+que contextos... parece ser que existe una chance de que sea mejor elegir contextos.
+Me dijo una forma de probar esto.
+
+Correr un gramática, ver el encoding que me tira como resultado. Reemplazar todo
+ese encoding por 1111122222 por ejemplo, cosa que puede comprimirse en dos símbolos.
+
+Y fijarse cuanto me da.
+
+Un cambio que puede ser interesante para el score es el siguiente:
+
+- En vez de comparar el score en una iteración entre context y word. Tomar 3 iter
+de word contra 1 de context. Por qué?
+Por lo siguiente.
+
+Si tengo AxB----AyB ---- AyB 
+con contexto tomaría todo eso de una. En cambio con words nomás necesito de 3
+iteraciones para comprimir todo eso: 1er para tomar, 2da para la B, 3ra para la y.
+
+De otra forma no es muy fiel.
+
+Una pregunta que puedo hacerme... que gano haciendo lo de los contextos que no
+gane en 3 iteraciones de solo reemplazos de words??
+
+En realidad no son 3 iteraciones, son todas las iteraciones necesarias para 
+reeemplazar también los insides.
+
+11/8: hoy voy a terminar el informe. 
+i) Puedo poner un algoritmo para cada una 
+de las opciones. DONE
+ii) Y agregar fórmulas y discusión sobre cuando puede ser mejor
+tomar contextos que sólo palabras. 
+iii) Correr un par de resultados berretones para 
+probar las diferencias entre ambos approachs.
+iv) Debería programar los decodes de cada uno también...
+v) Hacer el README y como correr con diferentes opciones. 
+
+13/8: voy a empezar con la limpieza del código ahora y el Readme y el doxyfile
+y toda la bola esa.
+
+i) Comentar código y generar doxyfile.
+
+21/8: trabajar en el appendix.

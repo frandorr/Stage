@@ -1,0 +1,141 @@
+% Preview source code from paragraph 5 to 51
+
+\chapter{Brief Daily Report}
+
+\section{Formulas (only in size of characters)}
+
+Based on MDL principle I want to find an hipothesis that minimize:
+\begin{center}
+$|H| + |S/H|$
+\end{center} 
+
+In our case, that would be a grammar:
+\begin{center}
+$|G| + |S/G|$
+\end{center} 
+
+
+Naming $G_{0}$ the original Sequence:
+\begin{center}
+ $G_{0}: S \rightarrow -uy_{1}v ... uy_{n}v-$
+\end{center}
+
+We want to find $G_{1}$ so: $|G_{1}|+|S/G_{1}|<|G_{0}|$.\\
+
+Or in general we want: $|G_{n}|+|S/G_{n}|<|G_{n-1}|$ 
+
+
+\subsection{What we gain?}
+
+\subsubsection{Revised 18/4}
+
+Everytime we replace a yield we want to gain something, if we lost it's better to leave the grammar as it is.
+If we have:
+\begin{itemize}
+	\item $|u| = k, |v| = l$
+	\item $p$ yields ($uy_iv$ with $i=0..q \leq p$) to be replace
+\end{itemize}
+
+We could have two cases:
+\begin{enumerate}
+	\item $q=p \rightarrow$ worst case.
+	\item $q<p$	
+\end{enumerate}
+
+\begin{itemize}
+	\item $\bm{q=p}$: \\
+		$|G_1| = |G_0| -p*k -p*l -\sum_{i=1}^{p}|y_i| + p + 1 + k + l + 1 + 1 + \sum_{i=1}^{p}|y_i| + (p-1)$. \\
+		
+		That means:\\
+
+		\begin{itemize}
+			\item $|G_1|$: size of next grammar 
+			\item $|G_0|$: size actual grammar
+			\item $-p*k-p*l$: remove of contexts u-v
+			\item $-\sum_{i=1}^{p}|y_i|$: remove of insides $y_i$ 
+			\item $+ p$: yields replaced by N symbol
+			\item $+1$: N production symbol
+			\item $+k+l$: u and v in N production
+			\item $+1+1$: I production symbol + I symbol in N production
+			\item $+ \sum_{i=1}^{p}|y_i|$: $y_i$ in I production
+			\item $+(p-1)$: pipes in I production
+		\end{itemize}
+
+
+		and we want this whole thing after $|G_0|$ to be below 0. We got in a few trivial steps:
+		$k+l+2p+2<kp+lp$\\
+		According to this formula we obtain the following result:\\
+
+		\begin{itemize}
+					\item 	$l>2-k$ 
+					\item   $p>\dfrac{k+l+2}{k+l-2}$
+		\end{itemize}	
+
+		For example, setting $|u|=3$ and $|v|=5$ we need:
+
+		\begin{center}
+			$p> \lfloor \dfrac{3+5+2}{3+5-2} \rfloor = \lfloor \dfrac{10}{6} \rfloor = 1 $
+		\end{center}
+		That means that having more than 1 yield to replace (doesn't matter the size of the inner $y_i$) will give us a gain.
+
+		This bound is really useful because when we test some contexts we can calculate if the replacement is going to reduce or not our grammar.
+
+		Lets try another example:
+
+		setting $|u|=1$ and $|v|=2$ we need:
+		\begin{center}
+			$p> \lfloor \dfrac{1+2+2}{1+2-2} \rfloor = \lfloor \dfrac{5}{1} \rfloor = 5 $
+		\end{center}
+
+	\item $\bm{q<p}$:\\
+		This case is more interesting in terms of grammar size reduction, because besides reducing contexts we gain also with the inner of the yields.
+
+		The formula is similar but we have to substract the inner sizes that occurs more than one time:
+		\begin{center}
+		$|G_1| = |G_0| -p*k -p*l -\bm{\sum_{i=1}^{q}|y_i|(\o(y_i)-1)}+ p + 1 + k + l + 1 + 1 + (\bm{q}-1)$. \\
+		\end{center}
+
+		where $q$ is the number of different inners and $\o(y)$ is the occurrences number of y. 
+
+		Again, doing some trivial steps if we want to reduce the size, the follow must state: \\
+
+		$p(-k-l+1) + 2 +k+l+q < \sum_{i=1}^{q}|y_i|(\o(y_i)-1)$\\
+
+		For example, setting $|u|=2$, $|v|=1$, $p=3$, $q=2$ we have:
+		\begin{center}
+		$3(-2-1+1) + 2 +2+1+2 < \sum_{i=1}^{2}|y_i|(\o(y_i)-1)$\\
+		$1<|y_r|$
+		\end{center}
+		where $y_r$ is the $y$ with 2 occurrences. 
+		So if $|y_r| =1$ we are not gaining, but if it is bigger we gain in the grammar size where in the case of $\bm{q=p}$ we didn't (with $k=1,l=2$ we needed $p>5$ and now just $p=3$)
+	
+
+\end{itemize}
+
+% At last, we want to formalize this results and look at the gain in number of letters and not in $l,k$ and $y_r$.
+% For example: if I replace $n$ letters and $m$ of them are repetead, what is my gain? Gotta think about it next week!
+
+% \subsubsection{22/4}
+
+% Instead of measuring the contexts size and the inners size, we could measure how many letters and their occurrences are we replacing.
+
+
+
+% Comparing the new hipothesis with the old one we can analyse our worst
+% scenario with such formula. This scenario is when the number of occurrences of each $y_i$ is 1, so we'd have $k=n$. 
+
+% Fixing the size of $u$ and $v$ in for example 3 we have that:
+
+% $|G_{0}|-(n-1)6+(n-1)+n+2<|G_{0}|$
+
+% $-6n+6+2n+1<0$
+
+% $-4n<-7$
+
+% $n>7/4$ 
+
+% We can see that altough we have no repeats inside the contexts we
+% can gain in the size just by means of $u$and $v$
+
+
+

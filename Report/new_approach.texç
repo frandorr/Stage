@@ -1,0 +1,56 @@
+
+	\chapter{New approach proposed}
+
+	Adding rules with a certain type of ambiguity allows us to take more constituents to be replaced, 
+	because we aren't limitated only by the repeats.
+
+	But we don't want	to lose	information, so we need a way to recover the sequence from the grammar.
+
+	\section{Local-context K,L Substitutable Language}
+
+	In an informal way, we can define the local-context k,l substitutable languages, 
+	as a subset of the CFL (Context-Free languages), where we have yields formed
+	by contexts $u$ and $v$ of size k and l, sourrounding different insides $y_i$ that can be 
+	interchangeable within them.
+
+	A language $L$ is, $k$,$l$-local context substitutable if for any 
+	$x_1,y_1,z_1,x_2,y_2,z_2,x_3,z_3 \in \sum^*$ and $u, v \in \sum^{k,l}$, 
+	such that $uy_1v, uy_2v \neq x_1uy_1vz_1 \in L$ $\wedge x_3uy_2vz_3 \in L$
+	$\Rightarrow (x_2uy_1vz_2 \in L \Leftrightarrow x_2uy_2vz_2 \in L)$.
+
+	More robust definitions could be find in \cite[p. 3-4]{KL}
+
+	This definition will be clarified with an example. \\
+
+	With contexts we mean $u$ and $v$ subsequence of our grammar.
+	For example if we had:\\
+	\begin{center}
+	$S \rightarrow agtggtgaaccaagatggaccacacggttggaccg$
+	\end{center}
+
+	Two possible contexts could be $u = ag$ and $v = gt$
+
+	\begin{center}
+	$S \rightarrow \textbf{u}tg\textbf{v}gaacca\textbf{u}atggaccacacg\textbf{v}tggaccg$
+	\end{center}
+
+	and by pairing them in an ordered way we can obtain different inside subsequences surrounded
+	by those given contexts. In this case, those insides are: \\
+	\begin{center}
+	$y_1 \rightarrow tg$ \\
+	$y_2 \rightarrow atggaccacacg$
+	\end{center}
+
+	The insides will give us the ambiguity: \\
+
+	\begin{center}
+	$S \rightarrow \textbf{N}gaacca\textbf{N}tggaccg$\\
+	$N \rightarrow u I v$ \\
+	$I \rightarrow y_1 | y_2$
+	\end{center}
+
+	The problem here, is that if we want to decode the grammar and go back to our
+	first sequence, there is no way to know which Inside to use in each replacement, as
+	we did with the SLG approach. 
+
+	In following sections we will see how to resolve it.

@@ -1,0 +1,218 @@
+\chapter{Results}
+
+We run three experiments: 
+\begin{enumerate}
+	\item Fragment DNA Corpus: a fragment from the canterbury Ecoli corpus
+	\item XML: a simple xml file
+	\item Small Ecoli: a tiny subsequence from the Ecoli corpus.
+\end{enumerate}
+
+Bigger experiments were unaffordable, because of the resources consumption. With
+better heuristics this could be done.\\
+
+For comparition purpose, we have here the results obtained with the same dataset
+with the classical SLG approach from \cite{GThesis}. \\
+
+\textbf{Fragment DNA Corpus (Initial Size: 4757)}\\
+Final Size: \textbf{1977} \\
+
+\textbf{XML (Initial Size: 3886)}\\
+Final Size: \textbf{1082} \\
+
+\textbf{Small Ecoli Sequence (Initial Size: 386)}\\
+Final Size: 268\\
+
+\newpage
+\section{Results 1}
+
+\begin{itemize}
+	\item Contexts obtained from Crossing all MR
+	\item k and l $<$ 3
+	\item score with encoding penalty 0
+\end{itemize}
+
+\subsection{Fragment DNA Corpus (Initial Size: 4757) }
+\textbf{GELD}:\\
+Encoding Size: 2517 \\
+Final Size: 1670 \\
+Grammar + Encoding: 4187 \\
+Words Chosen: 41(60.2941 per cent) \\
+Contexts Chosen: 27(39.7059 per cent) \\
+Size compared to SLG:  +111\% \\
+
+\textbf{SLID}:\\
+Encoding Size: 0 \\
+Final Size: 2383 \\
+Grammar + Encoding: \textbf{2383} \\
+Words Chosen: 64(86.4865 per cent) \\
+Contexts Chosen: 10(13.5135 per cent) \\
+Size compared to SLG:  +20,5\% \\
+
+
+
+\subsection{XML (Initial Size: 3886)}
+\textbf{GELD}: \\
+Encoding Size: 655 \\
+Final Size: 1025 \\
+Grammar + Encoding: 1680 \\
+Words Chosen: 31(62 per cent) \\
+Contexts Chosen: 19(38 per cent) \\
+Size compared to SLG:  +55\% \\
+
+\textbf{SLID}:\\
+Encoding Size: 0 \\
+Final Size: 1084 \\
+Grammar + Encoding: \textbf{1084} \\
+Words Chosen: 31(60.7843 per cent) \\
+Contexts Chosen: 20(39.2157 per cent) \\
+Size compared to SLG:  +0,1\% \\
+
+
+\subsection{Small Ecoli Sequence (Initial Size: 386)}
+\textbf{GELD}  \\
+Encoding Size: 122\\
+Final Size: 231\\ 
+Grammar + Encoding: 353 \\
+Words Chosen: 12(75 per cent) \\ 
+Contexts Chosen: 4(25 per cent) \\
+Size compared to SLG:  +31,7\% \\
+
+\textbf{SLID} \\
+Encoding Size: 0 \\
+Final Size: 249 \\
+Grammar + Encoding: \textbf{249} \\
+Words Chosen: 13(81.25 per cent) \\
+Contexts Chosen: 3(18.75 per cent) \\
+Size compared to SLG:  -7,1\% \\
+
+
+\newpage
+\section{Results 2}
+
+\begin{itemize}
+	\item Contexts obtained from Crossing all MR.
+	\item k and l $<$ 3
+	\item score with encoding penalty $log(|disambiguation list|)$
+\end{itemize}
+
+\subsection{Fragment DNA Corpus (Initial Size: 4757) }
+\textbf{GELD}:\\
+Encoding Size: 2354 \\
+Final Size: 1634 \\
+Grammar + Encoding: 3988 \\
+Words Chosen: 56(77.7778 per cent) \\
+Contexts Chosen: 16(22.2222 per cent) \\
+Size compared to SLG:  +101\% \\
+
+\textbf{SLID}: \\
+Encoding Size: 0 \\
+Final Size: 2358 \\
+Grammar + Encoding: \textbf{2358} \\
+Words Chosen: 77(91.6667 per cent) \\
+Contexts Chosen: 7(8.33333 per cent)\\
+Size compared to SLG:  +19\% \\
+
+
+\subsection{XML (Initial Size: 3886)} 
+\textbf{GELD}\\
+Encoding Size: 594 \\
+Final Size: 1009 \\
+Grammar + Encoding: 1603 \\
+Words Chosen: 42(73.6842 per cent) \\
+Contexts Chosen: 15(26.3158 per cent) \\
+Size compared to SLG:  +48\% \\
+
+\textbf{SLID}\\
+Encoding Size: 0 \\
+Final Size: 1064 \\
+Grammar + Encoding: \textbf{1064} \\
+Words Chosen: 38(69.0909 per cent) \\
+Contexts Chosen: 17(30.9091 per cent) \\
+Size compared to SLG:  -1,7\% \\
+
+
+\subsection{Small Ecoli Sequence (Initial Size: 386)} 
+\textbf{GELD}\\
+Encoding Size: 98 \\
+Final Size: 225 \\
+Grammar + Encoding: 323 \\
+Words Chosen: 16(88.8889 per cent) \\
+Contexts Chosen: 2(11.1111 per cent) \\
+Size compared to SLG:  +20\% \\
+
+\textbf{SLID}\\
+Encoding Size: 0 \\
+Final Size: 247 \\
+Grammar + Encoding: \textbf{247} \\
+Words Chosen: 15(88.2353 per cent) \\
+Contexts Chosen: 2(11.7647 per cent) \\
+Size compared to SLG:  -7,9\% \\
+
+\newpage
+\section{Results 3}
+
+\begin{itemize}
+	\item Contexts obtained from Crossing all MR.
+	\item No restrictions in k,l sizes.
+	\item score with encoding penalty 0
+\end{itemize}
+
+\subsection{Fragment DNA Corpus (Initial Size: 4757)}
+\textbf{GELD}
+Encoding Size: 2504 \\
+Final Size: 1664 \\
+Grammar + Encoding: 4168 \\
+Words Chosen: 52(71.2329 per cent) \\
+Contexts Chosen: 21(28.7671 per cent) \\
+Size compared to SLG:  +110\% \\
+
+\textbf{SLID}:
+Encoding Size: 0 \\
+Final Size: 2388 \\
+Grammar + Encoding: \textbf{2388} \\
+Words Chosen: 71(87.6543 per cent) \\
+Contexts Chosen: 10(12.3457 per cent) \\
+Size compared to SLG:  +20\% \\
+
+
+\subsection{XML (Initial Size: 3886)} 
+\textbf{GELD}:\\
+Encoding Size: 581 \\
+Final Size: 987 \\
+Grammar + Encoding: 1568 \\
+Words Chosen: 59(92.1875 per cent) \\
+Contexts Chosen: 5(7.8125 per cent) \\
+Size compared to SLG:  +44,9\% \\
+
+\textbf{SLID}:\\
+Encoding Size: 0 \\
+Final Size: 1041 \\
+Grammar + Encoding: \textbf{1041} \\
+Words Chosen: 46(79.3103 per cent) \\
+Contexts Chosen: 12(20.6897 per cent) \\
+Size compared to SLG:  -3,8\% \\
+
+
+\subsection{Small Ecoli Sequence (Initial Size: 386)} 
+\textbf{GELD}:\\
+Encoding Size: 122 \\
+Final Size: 231 \\
+Grammar + Encoding: 353 \\
+Words Chosen: 15(78.9474 per cent) \\
+Contexts Chosen: 4(21.0526 per cent) \\
+Size compared to SLG:  +31,7\% \\
+
+\textbf{SLID}:\\
+Encoding Size: 0 \\
+Final Size: 249 \\
+Grammar + Encoding: \textbf{249} \\
+Words Chosen: 14(82.3529 per cent) \\
+Contexts Chosen: 3(17.6471 per cent) \\
+Size compared to SLG:  -7,1\% \\
+
+
+
+
+
+
+	

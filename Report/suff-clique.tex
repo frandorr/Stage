@@ -1,0 +1,72 @@
+\section{Algorithms in Suffix Tree}
+
+\subsection{Greedy}
+\subsubsection{17/4}
+
+After thinking and rethinking the problem, perhaps the greedy way is the best approach we can have after all. 
+We can use it once we have selected some contexts u and v. 
+
+We start analysing the sequence from left to right, if a $u$ appears we remember it and continue our way. If another $u$ appears we save it over the last one. We continue this way until a $v$ appears. At that moment, we mate the last $u$ with the $v$, that yield will be replacerd by a non-terminal. We repeat until the end.
+
+This take $\Theta(n)$, where $n$ is the size of the sequence.
+
+It can be done directly in the suffix tree using the already known contexts positions.
+
+For example: 
+
+\begin{center}
+	\begin{itemize}
+		\item $pos_s(u)\rightarrow |0|6|22|30|49|62|$
+		\item $pos_s(v)\rightarrow |12|17|26|45|$
+	\end{itemize}
+\end{center}
+
+we start looking what's the first $v$ position:
+
+\begin{center}
+	\begin{itemize}
+		\item $pos_s(u)\rightarrow |0|6|22|30|49|62|$
+		\item $pos_s(v)\rightarrow |\bm{12}|17|26|45|$
+	\end{itemize}
+\end{center}
+
+and then we look for $\max_i (pos_s(u)[i]) < pos_s(v)[j]$, where j is the actual index in $pos_s(v)$. In our first step, this would be $\bm{6-12}$. 
+This way we can obaint allp ossible yields.
+\begin{center}
+	\begin{itemize}
+		\item $y_1 \rightarrow 6-12$
+		\item $y_2 \rightarrow 22-26$
+		\item $y_3 \rightarrow 30-45$
+	\end{itemize}
+\end{center}
+
+This is supposing we don't have two different contexts overlapped (it doesn't matter if we have the same context overlapped, like $aaaaa$ because we are going to pick the last one).
+
+One solution is to pick one of the yields, following with the greedy approach it would be the shorter one. 
+
+\subsection{Max Clique} 
+\subsubsection{16/04}
+
+There are some ideas talked in the 14/04 meeting, about applying directly max-clique problem in the suffix tree, using for example the contexts positions.
+
+Going back to max-clique problem, we have said that we could make a graph where nodes are all possible yields within contexts u,v and edges bind to nodes iff the yields they represent do not overlap in the original sequence S.\\
+
+The main idea is:
+\begin{enumerate}
+	\item Obtaing maximal repeats paying attention to the contexts that overlap with themselfes overlapped ones(to see later)
+	\item Using the position information we have in the suffix tree mate the contexts u-v generating a yield $y_i$.
+	\item To add the edge withing $y_i$ and $y_j$ we could check if they are overlapped by checking their positions: 
+
+		\begin{center}
+			$[pos_s(y_i), pos_s(y_i)+|y_i|] \cap [pos_s(y_j), pos_s(y_j)+|y_j|] = \emptyset$ with $i \neq j$
+		\end{center}
+	\item Run the max-clique algo.
+	\item Choose the $K_l$ yield set and replace it by non-terminal
+\end{enumerate}
+
+
+\subsection{Dealing with overlapped contexts}
+
+As stated in \cite{StringStats} the string statistics problem consists of preprocessing a string of lenght $n$ such that given a query pattern of lenght $m$, the maximum number of non-overlapping occurrences of the query pattern in the string can be reported efficiently. 
+
+We are interested in such thing because we want to avoid problems carried by overlapped contexts. We have to see what we gain and what we lose using this technique, because maybe it is better to ignore the overlapping contexts.

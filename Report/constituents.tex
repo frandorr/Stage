@@ -1,0 +1,280 @@
+\section{Choosing yields to replace}
+
+% \subsubsection{11/04, 14/04, 22/4}
+
+We could try all possible repeats pairs configurations of a given sequence S, and compare all of them
+to see which is the best one. \\
+
+To do so, we should find the set R which contains all the repeats and, after that, we calculate the cartesian product RxR obtaining all possible contexts combinations, with a complexity of $\O(n^2)$ where $|R| = n$.  \\  
+
+For each pair in RxR we should apply some heuristic (see section \emph{Heuristics}) and select the best one. \\
+
+But checking all possible contexts pair is time and resources demanding as it depends on the size of the 
+maximal repeat set. This is a naive approach because we could obtain extra information about each repeat to avoid crossing them all to improve the performance.\\
+
+As stated in \cite{GThesis}, the best way to manage the repeats is with a Suffix Array
+data structure. Information about it could be founded in: \cite[p. 40]{GThesis}.
+
+
+% \begin{enumerate}
+% 	\item $S$ is the original sequence 
+% 	\item $C$ is the set of all possible contexts (u and v) founded in $Seq$
+% 	\item $k$ is the fixed size (assuming $l=k$) of $|u|$ and $|v|$
+% 	\item $pos_s(\mu)$ denotes all the positions where context $\mu$ occurs in s (the occurrences of $\mu$).
+% 	\item $|Seq| - k - 1$ is the number of contexts with size $k$ we can have in a sequence (including repeated and overlapped occurrencies )
+% \end{enumerate}
+
+% Lets call AC (Analized Contexts) the set of context that has already been analized (mated with everyone else).
+
+
+% Two different occurrences of $\mu$ (let say, i and j, with $i<j$) overlap if $i + |\mu| -1 \leq j$. (def from: \cite{GThesis}).
+
+% For example, if we have the next sequence \emph{aaaaagtgagtag} and we are searching for contexts of lenght 3, we'd have overlapped contexts in \emph{aaaaaa}.
+
+% Then, we can say that each $\mu_i$ can mate with $\mu_j$ with $j>i$ (because if $j<i$ this mate was already analized),  obtaining the formula below:
+
+% \begin{center}
+% 	Possible Matings $PM(\mu_i) = |Seq| - k + 1 - \sum_{\mu \in C\setminus AC} (|pos_s(\mu)|-1)$
+% \end{center}
+
+% In case we have overlapped contexts we should specify which one to choose. For example, if we have \emph{aaaaaa} we can chose as a context the last three $a$ and ignore the others.
+
+
+% For example anaylising a fragment of size 1000 from the E.Coli corpus we obtain the fellow results:
+
+% \begin{table}[h]
+% \centering
+% 	\begin{tabular}{ll}
+% 	    Sequence Original Size:            & 1000 \\
+% 	    Total possible contexts of size 3: & 996  \\
+% 	    Different contexts of size 3:      & 63   \\
+% 	    Percentage:                        & 6\%  \\
+% 	\end{tabular}
+% \end{table}
+
+% Once we have them all, we should start mating the most repeated contexts. \\
+
+% After it, we chose the pair who obtained best score (for example: total lenghts, max compression, (u,v) repeats frecuency, etc).
+
+
+% Each time we test a mating we should give it a score (using the graphs methods, coloring, max-clique, etc) or we could try to do a MGP (not sure how could it be done). 
+% For example, if our most repeated contexts are $u$ and $v$, and $r(u) = n$, $r(v) = m$ and we find a mating $a$, where we used $n$ times $u$ and $v$ or $m$ times $u$ and $v$ we stop, because we know we can't find anything better (if we are trying to maximize the number of yields to be replaced). \\
+
+% If it wasn't that good and is feacible to find better combinations with another context, we continue our search. 
+
+% \subsubsection{Search stop}
+
+% We could stop when we know it's better to replace just the most repeated context with a SLG. For example in the E.Coli Corpus, we have the context in Tab 1.1.
+
+% \begin{table}[h]
+% \centering
+% \caption{Stop table}
+% 	\begin{tabular}{ll}
+% 	    \emph{aaa} repeats:			            & 47 \\
+% 	    contexts with repeats within 22-47: 	& 7  \\
+% 	    \emph{gaa} repeats:      				& 22   \\
+% 	    repeats under 22:       				& 54  \\
+% 	\end{tabular}
+% \end{table}
+
+% If we've already mated the repeats within 22-47, we know it's better to replace just \emph{aaa} with a SLG.
+
+% I think that the best way to choose which context to replace is following
+% the next steps (if we are using a graph approach):
+
+To choose which contexts pair to replace we have many possibilites that we will study in the next chapter, but first we need to pair the contexts without overlaps.
+
+\section{Greedy Pairing}
+
+Suppose we take $u$ and $v$ contexts. We start analysing the sequence from left to right. 
+If an $u$ appears we store its position and continue our way. If another $u$ appears we overwrite the last one. We continue this way until a $v$ appears. At that moment, we mate the last $u$ viewed with the first $v$, and that yield will be replacerd by a non-terminal. We repeat until the end.
+
+This take $\Theta(n)$, where $n$ is the size of the sequence.
+
+It can be done directly in the suffix tree using the already known contexts positions ($pos_s(u)$ is the positions in the sequence of context $u$). \\
+
+For example: 
+
+\begin{center}
+	\begin{itemize}
+		\item $pos_s(u)\rightarrow |0|6|22|30|49|62|$
+		\item $pos_s(v)\rightarrow |12|17|26|45|$
+	\end{itemize}
+\end{center}
+
+we start looking what's the first $v$ position:
+
+\begin{center}
+	\begin{itemize}
+		\item $pos_s(u)\rightarrow |0|6|22|30|49|62|$
+		\item $pos_s(v)\rightarrow |\bm{12}|17|26|45|$
+	\end{itemize}
+\end{center}
+
+and then we look for $\max_i (pos_s(u)[i]) < pos_s(v)[j]$, where j is the current index in $pos_s(v)$. In our first step, this would be $\bm{6-12}$. 
+This way we can obaint all possible yields:
+\begin{center}
+	\begin{itemize}
+		\item $y_1 \rightarrow \bm{6-12}$
+		\item $y_2 \rightarrow \bm{22-26}$
+		\item $y_3 \rightarrow \bm{30-45}$
+	\end{itemize}
+\end{center}
+
+To avoid overlapping we can just ask if the start of a new pair doesn't step over
+the last context pair added. For example $6-17$ is avoided this way.
+
+Once done, we use an heuristic to select the adequate yields to be replaced.
+
+\subsection{Heuristics}
+
+Until now we only focused in a greedy heuristic, that assigns a score in each 
+iteration to each possible yield, but we have more possibilities. \\
+
+Some are enumerated here: \\
+
+\begin{enumerate}
+	\item Greedy Score Function
+	\begin{itemize}
+		\item Assign to each contexts pair a score based on its occurrences, insides, contexts, length, etc.
+		\item The one with the best score is chosen to be replaced in each iteration.
+	\end{itemize}
+	\item Coloring a graph: 
+	\begin{itemize}
+
+		\item Each node represents a u-$y_i$-v yield founded 
+
+		\item Each edge means that the two nodes it's joining are overlapped.
+
+		If we color that graph and then choose the set of nodes with maximal
+		coloring number we could obtain a good set of u-y-v to replace.
+
+		As there are lot of u-y-v substring in a very large sequence S, we
+		could split S in subsequences Ss of the same size and for each Ss
+		build a graph and search for the best nodes set.
+	\end{itemize}
+
+	\item Max-Clique:
+
+	\begin{itemize}
+
+		\item Each node represents an u-y-v substring
+
+		\item Each edge means that the two nodes it's joining are \emph{NOT} overlapped.
+
+		After building the graph we can search for the Max-Clique and that
+		would be our set of nodes.
+
+		If there're a lot of overlapped substrings perhaps is better to use	Max-Clique, because graphs would be smaller.
+
+		Using the $G^{t}$ from Max-Clique approach, we could search
+		for the maximum independent set. 
+	\end{itemize}
+
+	% \item Minimal Grammar Parsing: based on a set of yield constituents build a graph
+	% and search for the shortes path in it. 
+\end{enumerate}
+
+\newpage
+
+\subsection{Score function}
+
+We will call $|G| = \sum_{N \rightarrow \alpha \in P}(|\alpha|+1)$. \\
+
+Based on MDL principle \cite[p. 8]{GThesis} we want to find an hypothesis $H$ that minimize our sequence $S$:
+\begin{center}
+$|S| > min_H(|H| + |S/H|)$
+\end{center} 
+
+Where $|S|$ and $|H|$ are, respectively, the sizes in characters.
+
+In our case, that would be a grammar:
+\begin{center}
+$|G| + |S/G|$
+\end{center} 
+
+
+Naming $G_{0}$ the original Sequence:
+\begin{center}
+ $G_{0}: S \rightarrow -uy_{1}v ... uy_{n}v-$
+\end{center}
+
+We want to find $G_{1}$ so: $|G_{1}|+|G_{0}/G_{1}|<|G_{0}|$\\
+
+Or in general we want: $|G_{n}|+|G_{n-1}/G_{n}|<|G_{n-1}|$, to reduce the size
+in each iteration. \\
+
+The score function is used to chose the yields to be replaced. 
+It says us what is the the gain in our grammar size if we
+use a given contexts pair u-v and what's the penalty. \\
+
+It's based on a greedy approach. It means, in each
+iteration we are trying to get the best possible reduction in the grammar size. \\
+
+We use to different scores, one for the single 
+words constituents (single repeats) and one for the contexts yields (paired repeats with insides). Then we compare them. \\ 
+
+\subsubsection{Single Repeat Score}
+
+\indent Let w be a substring of the a sequence S, $|w|$ its lenght and $\o(w)$ its occurrences in S. \\
+We want to replace each occurrence of w with a non terminal N ($\o(w)*|w| - \o(w)$), and add the new rule N
+to the grammar productions ($|w| - 1$). So we add this changes to the score function. \\
+
+	Then, we have: \\
+	\begin{center}
+		 score =  $\o(w)*|w| - \o(w) - |w| - 1$
+	\end{center}
+
+\subsubsection{Contexts Yield Score}
+
+Beeing $u$ and $v$ prefix and suffix, respectively, of a chosen yield of the sequence S:\\
+
+	\begin{itemize}
+		\item $k = |u|$
+		\item $l = |v|$
+		\item p: number of non overlapped u-v contexts pairs in the sequence. \\
+		For example, in the next sequence, $p=3$ \\
+		\begin{center}
+		$uy_1v ... uy_2v ... uy_3v$
+		\end{center}
+		\item q: number of different yields ($uy_iv$) (or number of different insides y). \\
+		If all insides are distinguibles, then $q = p$, but in general, $q \leq p$.
+		\item $\o(y_i)$: occurrences of inside $y_i$.
+		\item $pipes = (q-1)$. Those are the pipes that separate the options in the
+		I rules.
+	\end{itemize}
+	Finally, we got the score function: \\
+	\begin{center}
+		$score = k(p-1) + l(p-1) + \sum_{y \in Y} |y|(\o(y)-1) -
+                          p - 3 - pipes$
+	\end{center}
+
+	That means:\\
+
+	\begin{itemize}
+		\item $k(p-1) + l(p-1)$: remove of contexts u-v occurrences from grammar, and
+		the add of one of each to the new N rule.
+		\item $\sum_{y \in Y} |y|(\o(y)-1)$: remove of insides within contexts, and
+		the add of one of each to the new I rule.
+		\item $-p$: added $p$ N symbols when replacing the yields.
+		\item $-3$: - N - I production symbol - I symbol inside N rule.
+		\item $-(q-1)$: pipes in I production
+	\end{itemize}
+
+	If we obtain a $score > 0$ we are gaining in the next grammar size, it means it's
+	going to be reduced.\\
+
+	So we compare the best yield score with the best single word score.
+
+	\newpage
+% \subsection{SACA-K suffix array and context matches}
+
+% I was looking for the latests implementations of suffix array I've
+% found that there's one called Saca-K with a basico source code include
+% here: http://code.google.com/p/ge-nong/downloads/detail?name=saca-k-tois-20130413.zip\&can=2\&q=
+
+% It's based on paper: Practical Linear-Time O(1)-Workspace Suffix Sorting
+% for Constant Alphabets from 2013.
+
+% Might not work on our topic because it's for fixed alphabet. Gotta look for an dynamic approach maybe.
+

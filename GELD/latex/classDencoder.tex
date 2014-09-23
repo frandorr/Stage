@@ -1,0 +1,420 @@
+\hypertarget{classDencoder}{\section{Dencoder Class Reference}
+\label{classDencoder}\index{Dencoder@{Dencoder}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDencoder_a5e50eb7f889e5d1880111bf4cd42985b}{Dencoder} ()
+\item 
+\hyperlink{classDencoder_a1d030025676e52628f911f9262bfc892}{$\sim$\-Dencoder} ()
+\item 
+void \hyperlink{classDencoder_af5dc170b4feaff7ed8743ce1f7c17582}{read\-Sequence} (const char $\ast$filename)
+\item 
+void \hyperlink{classDencoder_aebc51ef45ee13914e51627b04a07ea27}{update\-Sequence} (shared\-\_\-ptr$<$ \hyperlink{classSequence}{Sequence} $>$ new\-Seq)
+\item 
+shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ \hyperlink{classDencoder_a2da7de0ad2cea870406d318316090583}{create\-U\-Yi\-V\-From\-Maximal\-Repeats} (\hyperlink{classWordList}{Word\-List} $\ast$mrs)
+\item 
+shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ \hyperlink{classDencoder_ad73c4ee6f7eb88cd2ecee07514d26b92}{get\-Best\-U\-Yi\-V} (unordered\-\_\-set$<$ shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ $>$ $\ast$ws) const 
+\item 
+double \hyperlink{classDencoder_acfb48805d38b387440332b4f98d02bec}{score} (shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ uyv) const 
+\item 
+double \hyperlink{classDencoder_acb61796bd459bb115b277cb249a05aac}{score} (shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ w) const 
+\item 
+shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ \hyperlink{classDencoder_a6276f38e8d95fa8603a1fe80e6de504e}{best\-U\-V} (const list$<$ shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ $>$ $\ast$ls) const 
+\item 
+shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ \hyperlink{classDencoder_ab538a82eb2e31be2ad8e10b6d02fa959}{best\-Word} (unordered\-\_\-set$<$ shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ $>$ $\ast$us) const 
+\item 
+\hypertarget{classDencoder_ae6f7c6f84888d022589549979c4be3ea}{void {\bfseries recursion\-Replace} (shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ uyv)}\label{classDencoder_ae6f7c6f84888d022589549979c4be3ea}
+
+\item 
+\hypertarget{classDencoder_a4ee6f71a4466a853b19a78457c787c0c}{void {\bfseries update\-Word} (shared\-\_\-ptr$<$ \hyperlink{classSequence}{Sequence} $>$ seq, shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ \&w)}\label{classDencoder_a4ee6f71a4466a853b19a78457c787c0c}
+
+\item 
+void \hyperlink{classDencoder_a1482876f6aa77c3d06aea0ded13b6a22}{get\-U\-V\-From\-Maximal\-Repeat} (shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ \&best, shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ mr)
+\item 
+\hypertarget{classDencoder_aaa99f2ab3e47c3b7c40deb5c1eecc2f8}{int {\bfseries encoding\-Changes} (shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ uyv) const }\label{classDencoder_aaa99f2ab3e47c3b7c40deb5c1eecc2f8}
+
+\item 
+void \hyperlink{classDencoder_a6f277d3bf91144be89643626214c798e}{replace} (shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ uyv)
+\item 
+void \hyperlink{classDencoder_af79918dee8bfe223023356f586d6f21e}{replace\-Non\-Terminal} (shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ uyv, int non\-Terminal)
+\item 
+void \hyperlink{classDencoder_a6a796494a7caed55b71dd8c3e725ce3b}{replace\-Non\-Terminal\-Simple} (shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ uyv, int non\-Terminal)
+\item 
+void \hyperlink{classDencoder_a40dec7fcc058dbb18a7ee3f5729c5d95}{replace\-Non\-Terminal\-Word} (shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ w, int non\-Terminal)
+\item 
+list$<$ shared\-\_\-ptr$<$ \hyperlink{classProduction}{Production} $>$ $>$ $\ast$ \hyperlink{classDencoder_a4a83e4396020fc47b969af504f3f4dee}{rebuild\-Grammar} (int $\ast$sec, vector$<$ int $>$ delimiter\-Pos, int total)
+\item 
+void \hyperlink{classDencoder_a58efab8245727d4cf284964907e047f8}{replace\-Word} (shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ w)
+\item 
+void \hyperlink{classDencoder_aeda162ad58a07d6472878bf6dc31245e}{replace\-Yield} (shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ uyv)
+\item 
+void \hyperlink{classDencoder_a02caefcb12787c42d483e3fc3280441d}{replace\-Yield\-Simple} (shared\-\_\-ptr$<$ \hyperlink{classUYiV}{U\-Yi\-V} $>$ uyv)
+\item 
+void \hyperlink{classDencoder_ac54580ccea343b815ae0790d0d671a0c}{decode} ()
+\item 
+\hypertarget{classDencoder_aed77f2f64705826f2d91d2959da55761}{void {\bfseries dfs\-Enc} (int non\-Terminal, int start, int end, vector$<$ int $>$ \&enc)}\label{classDencoder_aed77f2f64705826f2d91d2959da55761}
+
+\item 
+shared\-\_\-ptr$<$ \hyperlink{classSequence}{Sequence} $>$ \hyperlink{classDencoder_a72a971a43c744b743485b6a2130d09a0}{get\-Seq\-Ori} () const 
+\item 
+shared\-\_\-ptr$<$ \hyperlink{classSequence}{Sequence} $>$ \hyperlink{classDencoder_aee23fb62f64684360a0bfc53a34e7774}{get\-Seq} () const 
+\item 
+\hyperlink{classSymbol}{Symbol} $\ast$ \hyperlink{classDencoder_abef2c3b60fa243c530aebf7633187d2d}{get\-Symbol} () const 
+\item 
+shared\-\_\-ptr$<$ \hyperlink{classGrammar}{Grammar} $>$ \hyperlink{classDencoder_a308586ca235e3cac1c63a2ae924c84ea}{get\-Grammar} () const 
+\item 
+queue$<$ int $>$ \& \hyperlink{classDencoder_aa1b80b0f842d7cca9bb4c02be6c7ba9d}{get\-Prod\-Election\-Order} (int non\-Terminal)
+\item 
+int \hyperlink{classDencoder_aafe24f8efee20570ef46e48e5627a9ba}{get\-Prod\-Election\-Size} () const 
+\item 
+void \hyperlink{classDencoder_a99625de506fedf9d41fdbdb42daf062a}{set\-Grammar} (shared\-\_\-ptr$<$ \hyperlink{classGrammar}{Grammar} $>$ g)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classDencoder_a5e50eb7f889e5d1880111bf4cd42985b}{\index{Dencoder@{Dencoder}!Dencoder@{Dencoder}}
+\index{Dencoder@{Dencoder}!Dencoder@{Dencoder}}
+\subsubsection[{Dencoder}]{\setlength{\rightskip}{0pt plus 5cm}Dencoder\-::\-Dencoder (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_a5e50eb7f889e5d1880111bf4cd42985b}
+all ptr to N\-U\-L\-L \hypertarget{classDencoder_a1d030025676e52628f911f9262bfc892}{\index{Dencoder@{Dencoder}!$\sim$\-Dencoder@{$\sim$\-Dencoder}}
+\index{$\sim$\-Dencoder@{$\sim$\-Dencoder}!Dencoder@{Dencoder}}
+\subsubsection[{$\sim$\-Dencoder}]{\setlength{\rightskip}{0pt plus 5cm}Dencoder\-::$\sim$\-Dencoder (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_a1d030025676e52628f911f9262bfc892}
+Delete Sequences objects 
+
+\subsection{Member Function Documentation}
+\hypertarget{classDencoder_a6276f38e8d95fa8603a1fe80e6de504e}{\index{Dencoder@{Dencoder}!best\-U\-V@{best\-U\-V}}
+\index{best\-U\-V@{best\-U\-V}!Dencoder@{Dencoder}}
+\subsubsection[{best\-U\-V}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-ptr$<$ {\bf U\-Yi\-V} $>$ Dencoder\-::best\-U\-V (
+\begin{DoxyParamCaption}
+\item[{const list$<$ shared\-\_\-ptr$<$ {\bf U\-Yi\-V} $>$ $>$ $\ast$}]{ls}
+\end{DoxyParamCaption}
+) const}}\label{classDencoder_a6276f38e8d95fa8603a1fe80e6de504e}
+Get the best u-\/v contexts based on a score function from the dencoder 
+\begin{DoxyParams}{Parameters}
+{\em ls} & list containing uyv \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+best shared\-\_\-ptr$<$\-U\-Yi\-V$>$ 
+\end{DoxyReturn}
+\hypertarget{classDencoder_ab538a82eb2e31be2ad8e10b6d02fa959}{\index{Dencoder@{Dencoder}!best\-Word@{best\-Word}}
+\index{best\-Word@{best\-Word}!Dencoder@{Dencoder}}
+\subsubsection[{best\-Word}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-ptr$<$ {\bf Word} $>$ Dencoder\-::best\-Word (
+\begin{DoxyParamCaption}
+\item[{unordered\-\_\-set$<$ shared\-\_\-ptr$<$ {\bf Word} $>$ $>$ $\ast$}]{us}
+\end{DoxyParamCaption}
+) const}}\label{classDencoder_ab538a82eb2e31be2ad8e10b6d02fa959}
+Get the best \hyperlink{classWord}{Word} based on a score function 
+\begin{DoxyParams}{Parameters}
+{\em us} & unordered set of words \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+best word 
+\end{DoxyReturn}
+\hypertarget{classDencoder_a2da7de0ad2cea870406d318316090583}{\index{Dencoder@{Dencoder}!create\-U\-Yi\-V\-From\-Maximal\-Repeats@{create\-U\-Yi\-V\-From\-Maximal\-Repeats}}
+\index{create\-U\-Yi\-V\-From\-Maximal\-Repeats@{create\-U\-Yi\-V\-From\-Maximal\-Repeats}!Dencoder@{Dencoder}}
+\subsubsection[{create\-U\-Yi\-V\-From\-Maximal\-Repeats}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-ptr$<$ {\bf U\-Yi\-V} $>$ Dencoder\-::create\-U\-Yi\-V\-From\-Maximal\-Repeats (
+\begin{DoxyParamCaption}
+\item[{{\bf Word\-List} $\ast$}]{mrs}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_a2da7de0ad2cea870406d318316090583}
+Given a \hyperlink{classWordList}{Word\-List}, get the best Yield formed from one of those maximal repeats 
+\begin{DoxyParams}{Parameters}
+{\em mrs} & a word\-List \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+best Yield founded based on score. 
+\end{DoxyReturn}
+\hypertarget{classDencoder_ac54580ccea343b815ae0790d0d671a0c}{\index{Dencoder@{Dencoder}!decode@{decode}}
+\index{decode@{decode}!Dencoder@{Dencoder}}
+\subsubsection[{decode}]{\setlength{\rightskip}{0pt plus 5cm}void Dencoder\-::decode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_ac54580ccea343b815ae0790d0d671a0c}
+decode the grammar into the original sequence \begin{DoxyReturn}{Returns}
+\hyperlink{classSequence}{Sequence} 
+\end{DoxyReturn}
+\hypertarget{classDencoder_ad73c4ee6f7eb88cd2ecee07514d26b92}{\index{Dencoder@{Dencoder}!get\-Best\-U\-Yi\-V@{get\-Best\-U\-Yi\-V}}
+\index{get\-Best\-U\-Yi\-V@{get\-Best\-U\-Yi\-V}!Dencoder@{Dencoder}}
+\subsubsection[{get\-Best\-U\-Yi\-V}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-ptr$<$ {\bf U\-Yi\-V} $>$ Dencoder\-::get\-Best\-U\-Yi\-V (
+\begin{DoxyParamCaption}
+\item[{unordered\-\_\-set$<$ shared\-\_\-ptr$<$ {\bf Word} $>$ $>$ $\ast$}]{ws}
+\end{DoxyParamCaption}
+) const}}\label{classDencoder_ad73c4ee6f7eb88cd2ecee07514d26b92}
+Given a wordset create \hyperlink{classUYiV}{U\-Yi\-V} yields crossing them and return the best one 
+\begin{DoxyParams}{Parameters}
+{\em ws} & set of words \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+best \hyperlink{classUYiV}{U\-Yi\-V} 
+\end{DoxyReturn}
+\hypertarget{classDencoder_a308586ca235e3cac1c63a2ae924c84ea}{\index{Dencoder@{Dencoder}!get\-Grammar@{get\-Grammar}}
+\index{get\-Grammar@{get\-Grammar}!Dencoder@{Dencoder}}
+\subsubsection[{get\-Grammar}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-ptr$<$ {\bf Grammar} $>$ Dencoder\-::get\-Grammar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classDencoder_a308586ca235e3cac1c63a2ae924c84ea}
+get the \hyperlink{classGrammar}{Grammar} \begin{DoxyReturn}{Returns}
+grammar\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classDencoder_aa1b80b0f842d7cca9bb4c02be6c7ba9d}{\index{Dencoder@{Dencoder}!get\-Prod\-Election\-Order@{get\-Prod\-Election\-Order}}
+\index{get\-Prod\-Election\-Order@{get\-Prod\-Election\-Order}!Dencoder@{Dencoder}}
+\subsubsection[{get\-Prod\-Election\-Order}]{\setlength{\rightskip}{0pt plus 5cm}queue$<$ int $>$ \& Dencoder\-::get\-Prod\-Election\-Order (
+\begin{DoxyParamCaption}
+\item[{int}]{non\-Terminal}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_aa1b80b0f842d7cca9bb4c02be6c7ba9d}
+returns a reference to the non\-Terminal elections queue \hypertarget{classDencoder_aafe24f8efee20570ef46e48e5627a9ba}{\index{Dencoder@{Dencoder}!get\-Prod\-Election\-Size@{get\-Prod\-Election\-Size}}
+\index{get\-Prod\-Election\-Size@{get\-Prod\-Election\-Size}!Dencoder@{Dencoder}}
+\subsubsection[{get\-Prod\-Election\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Dencoder\-::get\-Prod\-Election\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classDencoder_aafe24f8efee20570ef46e48e5627a9ba}
+Get the total size of the elections queues \begin{DoxyReturn}{Returns}
+total size 
+\end{DoxyReturn}
+\hypertarget{classDencoder_aee23fb62f64684360a0bfc53a34e7774}{\index{Dencoder@{Dencoder}!get\-Seq@{get\-Seq}}
+\index{get\-Seq@{get\-Seq}!Dencoder@{Dencoder}}
+\subsubsection[{get\-Seq}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-ptr$<$ {\bf Sequence} $>$ Dencoder\-::get\-Seq (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classDencoder_aee23fb62f64684360a0bfc53a34e7774}
+Get ptr to current \hyperlink{classSequence}{Sequence} if N\-U\-L\-L exit. \begin{DoxyReturn}{Returns}
+ptr to current sequence 
+\end{DoxyReturn}
+\hypertarget{classDencoder_a72a971a43c744b743485b6a2130d09a0}{\index{Dencoder@{Dencoder}!get\-Seq\-Ori@{get\-Seq\-Ori}}
+\index{get\-Seq\-Ori@{get\-Seq\-Ori}!Dencoder@{Dencoder}}
+\subsubsection[{get\-Seq\-Ori}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-ptr$<$ {\bf Sequence} $>$ Dencoder\-::get\-Seq\-Ori (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classDencoder_a72a971a43c744b743485b6a2130d09a0}
+get ptr to the original \hyperlink{classSequence}{Sequence}. If N\-U\-L\-L exit. \begin{DoxyReturn}{Returns}
+ptr to original sequence 
+\end{DoxyReturn}
+\hypertarget{classDencoder_abef2c3b60fa243c530aebf7633187d2d}{\index{Dencoder@{Dencoder}!get\-Symbol@{get\-Symbol}}
+\index{get\-Symbol@{get\-Symbol}!Dencoder@{Dencoder}}
+\subsubsection[{get\-Symbol}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Symbol} $\ast$ Dencoder\-::get\-Symbol (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classDencoder_abef2c3b60fa243c530aebf7633187d2d}
+get the symbol \begin{DoxyReturn}{Returns}
+symbol\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classDencoder_a1482876f6aa77c3d06aea0ded13b6a22}{\index{Dencoder@{Dencoder}!get\-U\-V\-From\-Maximal\-Repeat@{get\-U\-V\-From\-Maximal\-Repeat}}
+\index{get\-U\-V\-From\-Maximal\-Repeat@{get\-U\-V\-From\-Maximal\-Repeat}!Dencoder@{Dencoder}}
+\subsubsection[{get\-U\-V\-From\-Maximal\-Repeat}]{\setlength{\rightskip}{0pt plus 5cm}void Dencoder\-::get\-U\-V\-From\-Maximal\-Repeat (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf U\-Yi\-V} $>$ \&}]{best, }
+\item[{shared\-\_\-ptr$<$ {\bf Word} $>$}]{mr}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_a1482876f6aa77c3d06aea0ded13b6a22}
+Given the current best Yield and a word, try to find a Yield with the suffix and prefix of this word that's better than the current one. 
+\begin{DoxyParams}{Parameters}
+{\em best} & current best yield \\
+\hline
+{\em mr} & word \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDencoder_af5dc170b4feaff7ed8743ce1f7c17582}{\index{Dencoder@{Dencoder}!read\-Sequence@{read\-Sequence}}
+\index{read\-Sequence@{read\-Sequence}!Dencoder@{Dencoder}}
+\subsubsection[{read\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}void Dencoder\-::read\-Sequence (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_af5dc170b4feaff7ed8743ce1f7c17582}
+read the string in the file and convert it to an \hyperlink{classSequence}{Sequence} object. Points sequence\-Ori to it. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDencoder_a4a83e4396020fc47b969af504f3f4dee}{\index{Dencoder@{Dencoder}!rebuild\-Grammar@{rebuild\-Grammar}}
+\index{rebuild\-Grammar@{rebuild\-Grammar}!Dencoder@{Dencoder}}
+\subsubsection[{rebuild\-Grammar}]{\setlength{\rightskip}{0pt plus 5cm}list$<$ shared\-\_\-ptr$<$ {\bf Production} $>$ $>$ $\ast$ Dencoder\-::rebuild\-Grammar (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{sec, }
+\item[{vector$<$ int $>$}]{delimiter\-Pos, }
+\item[{int}]{total}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_a4a83e4396020fc47b969af504f3f4dee}
+Rebuild the grammar based on a given int sequence. It iterates over the sec looking for the delimiters \$, when they are founded it means a new production must be created. 
+\begin{DoxyParams}{Parameters}
+{\em sec} & the int sequence \\
+\hline
+{\em delimiter\-Pos} & a vector telling where are the delimiters \\
+\hline
+{\em total} & the total size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the grammar list of productions 
+\end{DoxyReturn}
+\hypertarget{classDencoder_a6f277d3bf91144be89643626214c798e}{\index{Dencoder@{Dencoder}!replace@{replace}}
+\index{replace@{replace}!Dencoder@{Dencoder}}
+\subsubsection[{replace}]{\setlength{\rightskip}{0pt plus 5cm}void Dencoder\-::replace (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf U\-Yi\-V} $>$}]{uyv}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_a6f277d3bf91144be89643626214c798e}
+replace given yield in the sequence 
+\begin{DoxyParams}{Parameters}
+{\em uyv} & yield to be replaced \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDencoder_af79918dee8bfe223023356f586d6f21e}{\index{Dencoder@{Dencoder}!replace\-Non\-Terminal@{replace\-Non\-Terminal}}
+\index{replace\-Non\-Terminal@{replace\-Non\-Terminal}!Dencoder@{Dencoder}}
+\subsubsection[{replace\-Non\-Terminal}]{\setlength{\rightskip}{0pt plus 5cm}void Dencoder\-::replace\-Non\-Terminal (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf U\-Yi\-V} $>$}]{uyv, }
+\item[{int}]{non\-Terminal}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_af79918dee8bfe223023356f586d6f21e}
+replace the given shield with a \hyperlink{classNonTerminal}{Non\-Terminal} in the \hyperlink{classSequence}{Sequence} 
+\begin{DoxyParams}{Parameters}
+{\em uyv} & the yield to be replaced \\
+\hline
+{\em non\-Terminal} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDencoder_a6a796494a7caed55b71dd8c3e725ce3b}{\index{Dencoder@{Dencoder}!replace\-Non\-Terminal\-Simple@{replace\-Non\-Terminal\-Simple}}
+\index{replace\-Non\-Terminal\-Simple@{replace\-Non\-Terminal\-Simple}!Dencoder@{Dencoder}}
+\subsubsection[{replace\-Non\-Terminal\-Simple}]{\setlength{\rightskip}{0pt plus 5cm}void Dencoder\-::replace\-Non\-Terminal\-Simple (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf U\-Yi\-V} $>$}]{uyv, }
+\item[{int}]{non\-Terminal}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_a6a796494a7caed55b71dd8c3e725ce3b}
+replace given uyv yield by a non terminal. \hyperlink{classUYiV}{U\-Yi\-V} must have empty insides. It's similar to word replace. 
+\begin{DoxyParams}{Parameters}
+{\em uyv} & yield to replace \\
+\hline
+{\em non\-Terminal} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDencoder_a40dec7fcc058dbb18a7ee3f5729c5d95}{\index{Dencoder@{Dencoder}!replace\-Non\-Terminal\-Word@{replace\-Non\-Terminal\-Word}}
+\index{replace\-Non\-Terminal\-Word@{replace\-Non\-Terminal\-Word}!Dencoder@{Dencoder}}
+\subsubsection[{replace\-Non\-Terminal\-Word}]{\setlength{\rightskip}{0pt plus 5cm}void Dencoder\-::replace\-Non\-Terminal\-Word (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Word} $>$}]{w, }
+\item[{int}]{non\-Terminal}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_a40dec7fcc058dbb18a7ee3f5729c5d95}
+replace a word by a non terminal in the sequence 
+\begin{DoxyParams}{Parameters}
+{\em w} & word to be replaced \\
+\hline
+{\em non\-Terminal} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDencoder_a58efab8245727d4cf284964907e047f8}{\index{Dencoder@{Dencoder}!replace\-Word@{replace\-Word}}
+\index{replace\-Word@{replace\-Word}!Dencoder@{Dencoder}}
+\subsubsection[{replace\-Word}]{\setlength{\rightskip}{0pt plus 5cm}void Dencoder\-::replace\-Word (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Word} $>$}]{w}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_a58efab8245727d4cf284964907e047f8}
+replace the given word by the next non terminal 
+\begin{DoxyParams}{Parameters}
+{\em w} & word to be replaced \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDencoder_aeda162ad58a07d6472878bf6dc31245e}{\index{Dencoder@{Dencoder}!replace\-Yield@{replace\-Yield}}
+\index{replace\-Yield@{replace\-Yield}!Dencoder@{Dencoder}}
+\subsubsection[{replace\-Yield}]{\setlength{\rightskip}{0pt plus 5cm}void Dencoder\-::replace\-Yield (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf U\-Yi\-V} $>$}]{uyv}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_aeda162ad58a07d6472878bf6dc31245e}
+replace the given yield and generate the productions needed 
+\begin{DoxyParams}{Parameters}
+{\em uyv} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDencoder_a02caefcb12787c42d483e3fc3280441d}{\index{Dencoder@{Dencoder}!replace\-Yield\-Simple@{replace\-Yield\-Simple}}
+\index{replace\-Yield\-Simple@{replace\-Yield\-Simple}!Dencoder@{Dencoder}}
+\subsubsection[{replace\-Yield\-Simple}]{\setlength{\rightskip}{0pt plus 5cm}void Dencoder\-::replace\-Yield\-Simple (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf U\-Yi\-V} $>$}]{uyv}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_a02caefcb12787c42d483e3fc3280441d}
+replace the given yield with Inside N\-U\-L\-L (simple repeat) and generate the productions needed 
+\begin{DoxyParams}{Parameters}
+{\em uyv} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDencoder_acfb48805d38b387440332b4f98d02bec}{\index{Dencoder@{Dencoder}!score@{score}}
+\index{score@{score}!Dencoder@{Dencoder}}
+\subsubsection[{score}]{\setlength{\rightskip}{0pt plus 5cm}double Dencoder\-::score (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf U\-Yi\-V} $>$}]{uyv}
+\end{DoxyParamCaption}
+) const}}\label{classDencoder_acfb48805d38b387440332b4f98d02bec}
+Calculate score of a given \hyperlink{classUYiV}{U\-Yi\-V}. The score is based on the formulas written in the inform. 
+\begin{DoxyParams}{Parameters}
+{\em uyv} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+score 
+\end{DoxyReturn}
+\hypertarget{classDencoder_acb61796bd459bb115b277cb249a05aac}{\index{Dencoder@{Dencoder}!score@{score}}
+\index{score@{score}!Dencoder@{Dencoder}}
+\subsubsection[{score}]{\setlength{\rightskip}{0pt plus 5cm}double Dencoder\-::score (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Word} $>$}]{w}
+\end{DoxyParamCaption}
+) const}}\label{classDencoder_acb61796bd459bb115b277cb249a05aac}
+Calculate score of a given \hyperlink{classWord}{Word}. The score is based on the formulas written in the inform. 
+\begin{DoxyParams}{Parameters}
+{\em word} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+score 
+\end{DoxyReturn}
+\hypertarget{classDencoder_a99625de506fedf9d41fdbdb42daf062a}{\index{Dencoder@{Dencoder}!set\-Grammar@{set\-Grammar}}
+\index{set\-Grammar@{set\-Grammar}!Dencoder@{Dencoder}}
+\subsubsection[{set\-Grammar}]{\setlength{\rightskip}{0pt plus 5cm}void Dencoder\-::set\-Grammar (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Grammar} $>$}]{g}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_a99625de506fedf9d41fdbdb42daf062a}
+Set a new grammar 
+\begin{DoxyParams}{Parameters}
+{\em g} & new grammar \\
+\hline
+\end{DoxyParams}
+\hypertarget{classDencoder_aebc51ef45ee13914e51627b04a07ea27}{\index{Dencoder@{Dencoder}!update\-Sequence@{update\-Sequence}}
+\index{update\-Sequence@{update\-Sequence}!Dencoder@{Dencoder}}
+\subsubsection[{update\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}void Dencoder\-::update\-Sequence (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Sequence} $>$}]{new\-Seq}
+\end{DoxyParamCaption}
+)}}\label{classDencoder_aebc51ef45ee13914e51627b04a07ea27}
+update the \hyperlink{classSequence}{Sequence} with the given one. 
+\begin{DoxyParams}{Parameters}
+{\em new\-Seq} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Dencoder.\-h\item 
+Dencoder.\-cpp\end{DoxyCompactItemize}

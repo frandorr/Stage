@@ -1,0 +1,73 @@
+\hypertarget{classWord}{\section{Word Class Reference}
+\label{classWord}\index{Word@{Word}}
+}
+Inheritance diagram for Word\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classWord}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWord_ac4331ca9942a6730a472d6fa7c6d8924}{Word} (const shared\-\_\-ptr$<$ \hyperlink{classSequence}{Sequence} $>$ mother\-Seq, const int start, const int end, list$<$ int $>$ $\ast$occ\-Pos)
+\item 
+\hyperlink{classWord_a1fbcaae6859604d92e94cab540cb3523}{$\sim$\-Word} ()
+\item 
+list$<$ int $>$ $\ast$ \hyperlink{classWord_ac11d4329ae31c430d38fa37753f21e18}{get\-Occ\-Pos} () const 
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{classWord_a0dae9ce1ccead10392c7f5709b047b99}{operator$<$$<$} (ostream \&cout, const \hyperlink{classWord}{Word} \&w)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classWord_ac4331ca9942a6730a472d6fa7c6d8924}{\index{Word@{Word}!Word@{Word}}
+\index{Word@{Word}!Word@{Word}}
+\subsubsection[{Word}]{\setlength{\rightskip}{0pt plus 5cm}Word\-::\-Word (
+\begin{DoxyParamCaption}
+\item[{const shared\-\_\-ptr$<$ {\bf Sequence} $>$}]{mother\-Seq, }
+\item[{const int}]{start, }
+\item[{const int}]{end, }
+\item[{list$<$ int $>$ $\ast$}]{occ\-Pos}
+\end{DoxyParamCaption}
+)}}\label{classWord_ac4331ca9942a6730a472d6fa7c6d8924}
+Itinialize father \hyperlink{classSubSequence}{Sub\-Sequence} class and assign occ\-Pos\-\_\- \hypertarget{classWord_a1fbcaae6859604d92e94cab540cb3523}{\index{Word@{Word}!$\sim$\-Word@{$\sim$\-Word}}
+\index{$\sim$\-Word@{$\sim$\-Word}!Word@{Word}}
+\subsubsection[{$\sim$\-Word}]{\setlength{\rightskip}{0pt plus 5cm}Word\-::$\sim$\-Word (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classWord_a1fbcaae6859604d92e94cab540cb3523}
+Delete occ\-Pos\-\_\- list 
+
+\subsection{Member Function Documentation}
+\hypertarget{classWord_ac11d4329ae31c430d38fa37753f21e18}{\index{Word@{Word}!get\-Occ\-Pos@{get\-Occ\-Pos}}
+\index{get\-Occ\-Pos@{get\-Occ\-Pos}!Word@{Word}}
+\subsubsection[{get\-Occ\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}list$<$ int $>$ $\ast$ Word\-::get\-Occ\-Pos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classWord_ac11d4329ae31c430d38fa37753f21e18}
+get the word occs positions in \hyperlink{classSequence}{Sequence} \begin{DoxyReturn}{Returns}
+occ\-Pos\-\_\- 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classWord_a0dae9ce1ccead10392c7f5709b047b99}{\index{Word@{Word}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Word@{Word}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{cout, }
+\item[{const {\bf Word} \&}]{w}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classWord_a0dae9ce1ccead10392c7f5709b047b99}
+Overload $<$$<$ operator to cout the \hyperlink{classSubSequence}{Sub\-Sequence} 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Word.\-h\item 
+Word.\-cpp\end{DoxyCompactItemize}

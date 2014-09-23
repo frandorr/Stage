@@ -1,0 +1,160 @@
+\hypertarget{classSubSequence}{\section{Sub\-Sequence Class Reference}
+\label{classSubSequence}\index{Sub\-Sequence@{Sub\-Sequence}}
+}
+Inheritance diagram for Sub\-Sequence\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSubSequence}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSubSequence_a655d0a3b46af9b6bf646d37708221668}{Sub\-Sequence} (shared\-\_\-ptr$<$ \hyperlink{classSequence}{Sequence} $>$ mother\-Seq, const int start, const int end)
+\item 
+\hyperlink{classSubSequence_a8b9442f5f1d03952c5a0491f6dac0f63}{$\sim$\-Sub\-Sequence} ()
+\item 
+int $\ast$ \hyperlink{classSubSequence_aef9b8911ccfcc690a46734afad4fa2f1}{extract\-Range\-From\-Sequence} (const shared\-\_\-ptr$<$ \hyperlink{classSequence}{Sequence} $>$ mother\-Seq, const int start, const int end) const 
+\item 
+char $\ast$ \hyperlink{classSubSequence_ad53b4e7176f666ca97841850c7d25a38}{extract\-Range\-From\-Char\-Sequence} (const shared\-\_\-ptr$<$ \hyperlink{classSequence}{Sequence} $>$ mother\-Seq, const int start, const int end) const 
+\item 
+bool \hyperlink{classSubSequence_a2fab95b3b19abbcce7450b7c5c5ef169}{is\-Invalid} () const 
+\item 
+int \hyperlink{classSubSequence_a9d468d8c8e06ed55bbbfaead2fc16b4d}{get\-Size} () const 
+\item 
+int $\ast$ \hyperlink{classSubSequence_a3b17db4593e36945699c662510a6dded}{get\-Sub\-Sequence} () const 
+\item 
+bool \hyperlink{classSubSequence_a360b7b8f15252a929575c67ac43f6203}{operator==} (const \hyperlink{classSubSequence}{Sub\-Sequence} \&other) const 
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{classSubSequence_af7f3c998197b1785cee5d549df007173}{operator$<$$<$} (ostream \&cout, const \hyperlink{classSubSequence}{Sub\-Sequence} \&seq)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSubSequence_a655d0a3b46af9b6bf646d37708221668}{\index{Sub\-Sequence@{Sub\-Sequence}!Sub\-Sequence@{Sub\-Sequence}}
+\index{Sub\-Sequence@{Sub\-Sequence}!SubSequence@{Sub\-Sequence}}
+\subsubsection[{Sub\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}Sub\-Sequence\-::\-Sub\-Sequence (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Sequence} $>$}]{mother\-Seq, }
+\item[{const int}]{start, }
+\item[{const int}]{end}
+\end{DoxyParamCaption}
+)}}\label{classSubSequence_a655d0a3b46af9b6bf646d37708221668}
+Given a sequence, do the logic to find a a subsequence of it and construct a \hyperlink{classSubSequence}{Sub\-Sequence} object. It's \mbox{[}start, end) 
+\begin{DoxyParams}{Parameters}
+{\em mother\-Seq} & \\
+\hline
+{\em start,a} & start index of the subsequence \\
+\hline
+{\em end,an} & end index, the closest to start \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSubSequence_a8b9442f5f1d03952c5a0491f6dac0f63}{\index{Sub\-Sequence@{Sub\-Sequence}!$\sim$\-Sub\-Sequence@{$\sim$\-Sub\-Sequence}}
+\index{$\sim$\-Sub\-Sequence@{$\sim$\-Sub\-Sequence}!SubSequence@{Sub\-Sequence}}
+\subsubsection[{$\sim$\-Sub\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}Sub\-Sequence\-::$\sim$\-Sub\-Sequence (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSubSequence_a8b9442f5f1d03952c5a0491f6dac0f63}
+delete sub\-Sequence. mother\-Seq is deleted in \hyperlink{classSequence}{Sequence} destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classSubSequence_ad53b4e7176f666ca97841850c7d25a38}{\index{Sub\-Sequence@{Sub\-Sequence}!extract\-Range\-From\-Char\-Sequence@{extract\-Range\-From\-Char\-Sequence}}
+\index{extract\-Range\-From\-Char\-Sequence@{extract\-Range\-From\-Char\-Sequence}!SubSequence@{Sub\-Sequence}}
+\subsubsection[{extract\-Range\-From\-Char\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ Sub\-Sequence\-::extract\-Range\-From\-Char\-Sequence (
+\begin{DoxyParamCaption}
+\item[{const shared\-\_\-ptr$<$ {\bf Sequence} $>$}]{mother\-Seq, }
+\item[{const int}]{start, }
+\item[{const int}]{end}
+\end{DoxyParamCaption}
+) const}}\label{classSubSequence_ad53b4e7176f666ca97841850c7d25a38}
+given a range (start-\/end), extract the characters within this range from the sequence 
+\begin{DoxyParams}{Parameters}
+{\em mother\-Seq} & sequence \\
+\hline
+{\em start} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+characters in range 
+\end{DoxyReturn}
+\hypertarget{classSubSequence_aef9b8911ccfcc690a46734afad4fa2f1}{\index{Sub\-Sequence@{Sub\-Sequence}!extract\-Range\-From\-Sequence@{extract\-Range\-From\-Sequence}}
+\index{extract\-Range\-From\-Sequence@{extract\-Range\-From\-Sequence}!SubSequence@{Sub\-Sequence}}
+\subsubsection[{extract\-Range\-From\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Sub\-Sequence\-::extract\-Range\-From\-Sequence (
+\begin{DoxyParamCaption}
+\item[{const shared\-\_\-ptr$<$ {\bf Sequence} $>$}]{mother\-Seq, }
+\item[{const int}]{start, }
+\item[{const int}]{end}
+\end{DoxyParamCaption}
+) const}}\label{classSubSequence_aef9b8911ccfcc690a46734afad4fa2f1}
+extract an int subsequence delimited by a range from the sequence 
+\begin{DoxyParams}{Parameters}
+{\em mother\-Seq} & sequence from we extract \\
+\hline
+{\em start} & start index \\
+\hline
+{\em end} & end index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return in subsequence 
+\end{DoxyReturn}
+\hypertarget{classSubSequence_a9d468d8c8e06ed55bbbfaead2fc16b4d}{\index{Sub\-Sequence@{Sub\-Sequence}!get\-Size@{get\-Size}}
+\index{get\-Size@{get\-Size}!SubSequence@{Sub\-Sequence}}
+\subsubsection[{get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Sub\-Sequence\-::get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSubSequence_a9d468d8c8e06ed55bbbfaead2fc16b4d}
+get the size of the subsequence \begin{DoxyReturn}{Returns}
+int size\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classSubSequence_a3b17db4593e36945699c662510a6dded}{\index{Sub\-Sequence@{Sub\-Sequence}!get\-Sub\-Sequence@{get\-Sub\-Sequence}}
+\index{get\-Sub\-Sequence@{get\-Sub\-Sequence}!SubSequence@{Sub\-Sequence}}
+\subsubsection[{get\-Sub\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Sub\-Sequence\-::get\-Sub\-Sequence (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSubSequence_a3b17db4593e36945699c662510a6dded}
+get the int representation of the subsequence \begin{DoxyReturn}{Returns}
+int$\ast$ sub\-Sequence\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classSubSequence_a2fab95b3b19abbcce7450b7c5c5ef169}{\index{Sub\-Sequence@{Sub\-Sequence}!is\-Invalid@{is\-Invalid}}
+\index{is\-Invalid@{is\-Invalid}!SubSequence@{Sub\-Sequence}}
+\subsubsection[{is\-Invalid}]{\setlength{\rightskip}{0pt plus 5cm}bool Sub\-Sequence\-::is\-Invalid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSubSequence_a2fab95b3b19abbcce7450b7c5c5ef169}
+Say if a subsequence is invalid (if it has a pipe or a \$ is invalid) \begin{DoxyReturn}{Returns}
+true if invalid 
+\end{DoxyReturn}
+\hypertarget{classSubSequence_a360b7b8f15252a929575c67ac43f6203}{\index{Sub\-Sequence@{Sub\-Sequence}!operator==@{operator==}}
+\index{operator==@{operator==}!SubSequence@{Sub\-Sequence}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool Sub\-Sequence\-::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Sub\-Sequence} \&}]{other}
+\end{DoxyParamCaption}
+) const}}\label{classSubSequence_a360b7b8f15252a929575c67ac43f6203}
+equality overloading. Be careful, just check if both has the same characters in the same order, but no if they are in the same position of mother\-Sequence. Complexity\-: O($\vert$left sub\-Sequence$\vert$) 
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classSubSequence_af7f3c998197b1785cee5d549df007173}{\index{Sub\-Sequence@{Sub\-Sequence}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!SubSequence@{Sub\-Sequence}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{cout, }
+\item[{const {\bf Sub\-Sequence} \&}]{seq}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classSubSequence_af7f3c998197b1785cee5d549df007173}
+Overload $<$$<$ operator to cout the \hyperlink{classSubSequence}{Sub\-Sequence} 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Sub\-Sequence.\-h\item 
+Sub\-Sequence.\-cpp\end{DoxyCompactItemize}

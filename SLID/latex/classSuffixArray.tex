@@ -1,0 +1,111 @@
+\hypertarget{classSuffixArray}{\section{Suffix\-Array Class Reference}
+\label{classSuffixArray}\index{Suffix\-Array@{Suffix\-Array}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSuffixArray_a83235ab312aea1c50ab3a616c85ae405}{Suffix\-Array} (int $\ast$seq, int size, bool larsson, int max\-Alph=-\/1)
+\item 
+\hyperlink{classSuffixArray_a6493c8516e4b76cce6fe0bfca47b13b0}{$\sim$\-Suffix\-Array} ()
+\item 
+\hypertarget{classSuffixArray_a1886977617bfc4c9cb7d6c643ebb0696}{pair$<$ int, int $>$ {\bfseries search} (int $\ast$s, int size)}\label{classSuffixArray_a1886977617bfc4c9cb7d6c643ebb0696}
+
+\item 
+int \hyperlink{classSuffixArray_a42c1557b2ad51886208dcf74b200e276}{get\-Size} () const 
+\item 
+int $\ast$ \hyperlink{classSuffixArray_a9f702b7c059a694cad1c776dd90b637a}{get\-S\-Array} () const 
+\item 
+int $\ast$ \hyperlink{classSuffixArray_a4ec9f2035ee2a6ed06ccbba58165c7e2}{get\-L\-C\-P} () const 
+\item 
+\hypertarget{classSuffixArray_a3a714f4d1d641c769b75957ef4f6c083}{int \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (int idx)}\label{classSuffixArray_a3a714f4d1d641c769b75957ef4f6c083}
+
+\item 
+\hypertarget{classSuffixArray_a4b20c30605bb5244ff8efb02f53686d8}{const int \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (int idx) const }\label{classSuffixArray_a4b20c30605bb5244ff8efb02f53686d8}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{classSuffixArray_a79797b488f2191d1fef54a6eb01dce3f}{operator$<$$<$} (ostream \&cout, \hyperlink{classSuffixArray}{Suffix\-Array} \&s\-Array)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSuffixArray_a83235ab312aea1c50ab3a616c85ae405}{\index{Suffix\-Array@{Suffix\-Array}!Suffix\-Array@{Suffix\-Array}}
+\index{Suffix\-Array@{Suffix\-Array}!SuffixArray@{Suffix\-Array}}
+\subsubsection[{Suffix\-Array}]{\setlength{\rightskip}{0pt plus 5cm}Suffix\-Array\-::\-Suffix\-Array (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{seq, }
+\item[{int}]{size, }
+\item[{bool}]{larsson, }
+\item[{int}]{max\-Alph = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}}\label{classSuffixArray_a83235ab312aea1c50ab3a616c85ae405}
+Construct s\-Array based on 
+\begin{DoxyParams}{Parameters}
+{\em seq,the} & sequence \\
+\hline
+{\em size,the} & size of the sequence \\
+\hline
+{\em larsson} & \\
+\hline
+{\em max\-Alpha} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSuffixArray_a6493c8516e4b76cce6fe0bfca47b13b0}{\index{Suffix\-Array@{Suffix\-Array}!$\sim$\-Suffix\-Array@{$\sim$\-Suffix\-Array}}
+\index{$\sim$\-Suffix\-Array@{$\sim$\-Suffix\-Array}!SuffixArray@{Suffix\-Array}}
+\subsubsection[{$\sim$\-Suffix\-Array}]{\setlength{\rightskip}{0pt plus 5cm}Suffix\-Array\-::$\sim$\-Suffix\-Array (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSuffixArray_a6493c8516e4b76cce6fe0bfca47b13b0}
+delete sequence\-\_\- s\-Array\-\_\-, inverse\-\_\-, lcp\-\_\- 
+
+\subsection{Member Function Documentation}
+\hypertarget{classSuffixArray_a4ec9f2035ee2a6ed06ccbba58165c7e2}{\index{Suffix\-Array@{Suffix\-Array}!get\-L\-C\-P@{get\-L\-C\-P}}
+\index{get\-L\-C\-P@{get\-L\-C\-P}!SuffixArray@{Suffix\-Array}}
+\subsubsection[{get\-L\-C\-P}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Suffix\-Array\-::get\-L\-C\-P (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSuffixArray_a4ec9f2035ee2a6ed06ccbba58165c7e2}
+get less common prefix \begin{DoxyReturn}{Returns}
+int$\ast$ lcp\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classSuffixArray_a9f702b7c059a694cad1c776dd90b637a}{\index{Suffix\-Array@{Suffix\-Array}!get\-S\-Array@{get\-S\-Array}}
+\index{get\-S\-Array@{get\-S\-Array}!SuffixArray@{Suffix\-Array}}
+\subsubsection[{get\-S\-Array}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Suffix\-Array\-::get\-S\-Array (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSuffixArray_a9f702b7c059a694cad1c776dd90b637a}
+get s\-Array \begin{DoxyReturn}{Returns}
+int$\ast$ s\-Array\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classSuffixArray_a42c1557b2ad51886208dcf74b200e276}{\index{Suffix\-Array@{Suffix\-Array}!get\-Size@{get\-Size}}
+\index{get\-Size@{get\-Size}!SuffixArray@{Suffix\-Array}}
+\subsubsection[{get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Suffix\-Array\-::get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSuffixArray_a42c1557b2ad51886208dcf74b200e276}
+get suffix array size \begin{DoxyReturn}{Returns}
+int size\-\_\- 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classSuffixArray_a79797b488f2191d1fef54a6eb01dce3f}{\index{Suffix\-Array@{Suffix\-Array}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!SuffixArray@{Suffix\-Array}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{cout, }
+\item[{{\bf Suffix\-Array} \&}]{s\-Array}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classSuffixArray_a79797b488f2191d1fef54a6eb01dce3f}
+overload $<$$<$ operator to print \hyperlink{classSuffixArray}{Suffix\-Array} 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Suffix\-Array.\-h\item 
+Suffix\-Array.\-cpp\end{DoxyCompactItemize}

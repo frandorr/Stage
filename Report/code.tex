@@ -1,0 +1,61 @@
+\section{The Code}
+\subsubsection{1/5 to 13/5}
+
+\subsection{Added functionalities}
+
+The code is being builded over Matthias Gallé PhD thesis code \cite{GThesis}. 
+Many things should be refactored to obtain a clean code and some 
+functionalities for l,k substatibility added, listed below:
+\begin{itemize}
+	\item u-y-v yield class
+	\item Cartesian Product within all yields to obtain all possible crosses
+	\item Greedy algorithm to choose a combination u-v in the sequence
+	\item u-y-v yields replacement by Non-Terminals 
+	\item minor Tests
+\end{itemize} 
+
+All these things were already added, but the code become a monster. It doesn't 
+follow any convention at all, nor a design. Global variables are everywhere and
+classes don't have encapsulation at all...
+
+So I decided to remake a code for the next generation working on this topic. Of
+course it's based on \cite{GThesis}, but it's coded with a goal in mind and following
+some C++ conventions and commented so it's easier to follow and understand what
+is happening.
+
+Also, each function is being commented and an html Documentation created 
+automatically with Dioxygen (see \emph{html} or \emph{latex} folder in the project root).
+
+\subsubsection{10/6}
+
+\subsection{First implementation}
+
+In the first implementation we use to select our u-y-v yields a score function 
+similar to that showed in section \textbf{1.1.1}. 
+We use this formula to obtain the u-y-v that will reduce the most our grammar in the 
+each step. 
+
+\subsubsection{Yield replacement}
+
+Once the yield to be replaced is chosen, we replace it in out grammar in the following way:
+\begin{itemize}
+	\item Search for Maximal Repeats in the contatenation of productions:
+	\begin{center}
+	$P_1 \$ P_2 \$ ... \$ P_n \$$
+	\end{center}
+	A maximal repeat couldn't have a part in a production $P_i$ and the other in 
+	a production $P_j$ with $j \neq i$, so that must be checked.
+	\item Once all Maximal Repeats are founded we crossed them, creating all 
+	u-y-v possibilities.
+	\item each u-y-v should be applied to the score function and from it we select
+	the one that minimize the size of our grammar.
+	\item the yield chosen is replaced in the production concatenation and from it
+ 	the new grammar is retrieved.
+
+\end{itemize}
+
+\subsection{Compression}
+
+Until now we were talking just about grammar size, but now we have to start with
+the compression. We got to find the right score function to obtain the better
+compression rate for the sequence.

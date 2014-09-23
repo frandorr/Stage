@@ -1,0 +1,38 @@
+\subsection{Algorithm}
+\begin{algorithm}
+\caption{Choosing constituents}
+\begin{algorithmic}[1]
+\REQUIRE $Seq$
+\STATE search for Maximal Repeats MR in Seq
+\WHILE{$MR \neq \emptyset \land \neg STOP$}
+	\STATE search for contexts $\mu_i$ and $\mu_j$ that generate as many yields as possible using Max-Clique in every pair of contexts.
+	\STATE check for STOP criteria
+	\IF{it's better to use SLG with the most repeated context}
+	\STATE Do SLG replace
+	\STATE break
+	\ENDIF
+
+	% \IF{$n = min(|pos_s(\mu_i)|, |pos_s(\mu_j)|)$}
+	% 	\STATE \COMMENT{Canot find yields which occurrences are bigger than actual yield}	
+	% 	\STATE $STOP = TRUE$
+	% \ENDIF
+
+	% \STATE pick $\max_i (|pos_s(\mu_i)|) \in MR$ 
+	% \STATE pick $\max_j (|pos_s(\mu_j)|) \in MR \setminus \{\mu_i\}$
+	% \STATE Search for 
+
+	% \STATE $MR \leftarrow MR \setminus \{\mu_j\}$ 
+
+
+	% \STATE look for best possible composition within context $\mu_1$ and $\mu_2$ using Graph algorithm or something similar.
+	% \STATE asign a score
+
+\ENDWHILE
+
+\STATE Do l,k Grammar replace
+
+\end{algorithmic}
+\end{algorithm}
+
+There could be many stop criteria based on heuristics or just waiting until we know the yields obtained couldn't get any better
+

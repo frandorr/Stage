@@ -1,0 +1,150 @@
+\hypertarget{classGrammar}{\section{Grammar Class Reference}
+\label{classGrammar}\index{Grammar@{Grammar}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGrammar_adc518572feacb51f9859556ba8c08502}{Grammar} (list$<$ shared\-\_\-ptr$<$ \hyperlink{classProduction}{Production} $>$ $>$ $\ast$prods)
+\item 
+\hyperlink{classGrammar_a60e8bade0190ee9830d9c600e4216b36}{$\sim$\-Grammar} ()
+\item 
+int $\ast$ \hyperlink{classGrammar_a359e8a4b597224f0c59594d9c8609cee}{convert\-To\-Int} () const 
+\item 
+void \hyperlink{classGrammar_a5fe32ff8e6c0842da64898a45ecc4798}{add\-Prod} (shared\-\_\-ptr$<$ \hyperlink{classProduction}{Production} $>$ p)
+\item 
+int \hyperlink{classGrammar_abb3247e1ddde3fbcbaa66c4ea6595f33}{get\-Size} () const 
+\item 
+list$<$ shared\-\_\-ptr$<$ \hyperlink{classProduction}{Production} $>$ $>$ $\ast$ \hyperlink{classGrammar_a694a03d8053bb9638acde4fcb82dbd53}{get\-Prods} () const 
+\item 
+void \hyperlink{classGrammar_a6755b33e54a291cbec28ad7d8af2961a}{unfold\-Non\-Terminal} (int non\-Terminal, queue$<$ int $>$ \&election\-Queue)
+\item 
+void \hyperlink{classGrammar_a23068f7d1fe5812b8c4bfe5c066e6f7b}{delete\-Prod} (shared\-\_\-ptr$<$ \hyperlink{classProduction}{Production} $>$ p)
+\item 
+shared\-\_\-ptr$<$ \hyperlink{classProduction}{Production} $>$ \hyperlink{classGrammar_af4e0db12fadf358531a511ca0832f5f1}{get\-Prod\-By\-L\-H\-S} (int lhs) const 
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{classGrammar_a54a3c8adc1ef211c3fc4b81e11884337}{operator$<$$<$} (ostream \&cout, const \hyperlink{classGrammar}{Grammar} \&g)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGrammar_adc518572feacb51f9859556ba8c08502}{\index{Grammar@{Grammar}!Grammar@{Grammar}}
+\index{Grammar@{Grammar}!Grammar@{Grammar}}
+\subsubsection[{Grammar}]{\setlength{\rightskip}{0pt plus 5cm}Grammar\-::\-Grammar (
+\begin{DoxyParamCaption}
+\item[{list$<$ shared\-\_\-ptr$<$ {\bf Production} $>$ $>$ $\ast$}]{prods}
+\end{DoxyParamCaption}
+)}}\label{classGrammar_adc518572feacb51f9859556ba8c08502}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em prods} & a list of \hyperlink{classProduction}{Production} \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGrammar_a60e8bade0190ee9830d9c600e4216b36}{\index{Grammar@{Grammar}!$\sim$\-Grammar@{$\sim$\-Grammar}}
+\index{$\sim$\-Grammar@{$\sim$\-Grammar}!Grammar@{Grammar}}
+\subsubsection[{$\sim$\-Grammar}]{\setlength{\rightskip}{0pt plus 5cm}Grammar\-::$\sim$\-Grammar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGrammar_a60e8bade0190ee9830d9c600e4216b36}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classGrammar_a5fe32ff8e6c0842da64898a45ecc4798}{\index{Grammar@{Grammar}!add\-Prod@{add\-Prod}}
+\index{add\-Prod@{add\-Prod}!Grammar@{Grammar}}
+\subsubsection[{add\-Prod}]{\setlength{\rightskip}{0pt plus 5cm}void Grammar\-::add\-Prod (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Production} $>$}]{p}
+\end{DoxyParamCaption}
+)}}\label{classGrammar_a5fe32ff8e6c0842da64898a45ecc4798}
+Add a \hyperlink{classProduction}{Production} to the grammar 
+\begin{DoxyParams}{Parameters}
+{\em p} & production to be added \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGrammar_a359e8a4b597224f0c59594d9c8609cee}{\index{Grammar@{Grammar}!convert\-To\-Int@{convert\-To\-Int}}
+\index{convert\-To\-Int@{convert\-To\-Int}!Grammar@{Grammar}}
+\subsubsection[{convert\-To\-Int}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Grammar\-::convert\-To\-Int (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classGrammar_a359e8a4b597224f0c59594d9c8609cee}
+Convert the grammar to an int array \begin{DoxyReturn}{Returns}
+int$\ast$ seq\-Grammar 
+\end{DoxyReturn}
+\hypertarget{classGrammar_a23068f7d1fe5812b8c4bfe5c066e6f7b}{\index{Grammar@{Grammar}!delete\-Prod@{delete\-Prod}}
+\index{delete\-Prod@{delete\-Prod}!Grammar@{Grammar}}
+\subsubsection[{delete\-Prod}]{\setlength{\rightskip}{0pt plus 5cm}void Grammar\-::delete\-Prod (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Production} $>$}]{p}
+\end{DoxyParamCaption}
+)}}\label{classGrammar_a23068f7d1fe5812b8c4bfe5c066e6f7b}
+delete given production from grammar 
+\begin{DoxyParams}{Parameters}
+{\em p} & production to be deleted \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGrammar_af4e0db12fadf358531a511ca0832f5f1}{\index{Grammar@{Grammar}!get\-Prod\-By\-L\-H\-S@{get\-Prod\-By\-L\-H\-S}}
+\index{get\-Prod\-By\-L\-H\-S@{get\-Prod\-By\-L\-H\-S}!Grammar@{Grammar}}
+\subsubsection[{get\-Prod\-By\-L\-H\-S}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-ptr$<$ {\bf Production} $>$ Grammar\-::get\-Prod\-By\-L\-H\-S (
+\begin{DoxyParamCaption}
+\item[{int}]{lhs}
+\end{DoxyParamCaption}
+) const}}\label{classGrammar_af4e0db12fadf358531a511ca0832f5f1}
+get a \hyperlink{classProduction}{Production} by its L\-H\-S 
+\begin{DoxyParams}{Parameters}
+{\em lhs} & a non\-Terminal \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+production with such lhs 
+\end{DoxyReturn}
+\hypertarget{classGrammar_a694a03d8053bb9638acde4fcb82dbd53}{\index{Grammar@{Grammar}!get\-Prods@{get\-Prods}}
+\index{get\-Prods@{get\-Prods}!Grammar@{Grammar}}
+\subsubsection[{get\-Prods}]{\setlength{\rightskip}{0pt plus 5cm}list$<$ shared\-\_\-ptr$<$ {\bf Production} $>$ $>$ $\ast$ Grammar\-::get\-Prods (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classGrammar_a694a03d8053bb9638acde4fcb82dbd53}
+get \hyperlink{classGrammar}{Grammar} Productions \hypertarget{classGrammar_abb3247e1ddde3fbcbaa66c4ea6595f33}{\index{Grammar@{Grammar}!get\-Size@{get\-Size}}
+\index{get\-Size@{get\-Size}!Grammar@{Grammar}}
+\subsubsection[{get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Grammar\-::get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classGrammar_abb3247e1ddde3fbcbaa66c4ea6595f33}
+Get \hyperlink{classGrammar}{Grammar} size \begin{DoxyReturn}{Returns}
+size\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classGrammar_a6755b33e54a291cbec28ad7d8af2961a}{\index{Grammar@{Grammar}!unfold\-Non\-Terminal@{unfold\-Non\-Terminal}}
+\index{unfold\-Non\-Terminal@{unfold\-Non\-Terminal}!Grammar@{Grammar}}
+\subsubsection[{unfold\-Non\-Terminal}]{\setlength{\rightskip}{0pt plus 5cm}void Grammar\-::unfold\-Non\-Terminal (
+\begin{DoxyParamCaption}
+\item[{int}]{non\-Terminal, }
+\item[{queue$<$ int $>$ \&}]{election\-Queue}
+\end{DoxyParamCaption}
+)}}\label{classGrammar_a6755b33e54a291cbec28ad7d8af2961a}
+given a non\-Terminal, look for it in each \hyperlink{classProduction}{Production} and replace it by its right side 
+\begin{DoxyParams}{Parameters}
+{\em non\-Terminal} & non\-Terminal to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classGrammar_a54a3c8adc1ef211c3fc4b81e11884337}{\index{Grammar@{Grammar}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Grammar@{Grammar}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{cout, }
+\item[{const {\bf Grammar} \&}]{g}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classGrammar_a54a3c8adc1ef211c3fc4b81e11884337}
+cout overload for \hyperlink{classGrammar}{Grammar} 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Grammar.\-h\item 
+Grammar.\-cpp\end{DoxyCompactItemize}

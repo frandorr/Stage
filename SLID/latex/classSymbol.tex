@@ -1,0 +1,150 @@
+\hypertarget{classSymbol}{\section{Symbol Class Reference}
+\label{classSymbol}\index{Symbol@{Symbol}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSymbol_ac4ace96325f7d27f0c79beee1625cee6}{Symbol} (int alph\-Size)
+\item 
+\hyperlink{classSymbol_a505360ad4bd2e0bd1e3954eca1b05723}{$\sim$\-Symbol} ()
+\item 
+bool \hyperlink{classSymbol_a5631acc6635697133072b5c42c00fb14}{is\-Non\-Terminal} (int symbol) const 
+\item 
+bool \hyperlink{classSymbol_ac2c678564d37f7da8258f9ee43d526d3}{is\-Terminal} (int symbol) const 
+\item 
+bool \hyperlink{classSymbol_ab6291680c1ccde7a13b589fc448efbbc}{is\-Delimiter} (int symbol) const 
+\item 
+\hypertarget{classSymbol_ae1181afd00a9c66dbdc67bee4091d152}{int {\bfseries get\-First\-Non\-Terminal} () const }\label{classSymbol_ae1181afd00a9c66dbdc67bee4091d152}
+
+\item 
+int \hyperlink{classSymbol_ab0ea968b00accbaddb7086bf7a719bc4}{get\-Start\-Symbol} () const 
+\item 
+int \hyperlink{classSymbol_af2be74ae7e24fd0bc058e856d97388e7}{get\-Non\-Terminal} ()
+\item 
+\hypertarget{classSymbol_a3cdc637bc61551e0ce4334a1162e8f7f}{void {\bfseries increase\-Non\-Terminal} (int n)}\label{classSymbol_a3cdc637bc61551e0ce4334a1162e8f7f}
+
+\item 
+int \hyperlink{classSymbol_aa25b584739717c9659acee41b2759f3f}{get\-Current\-Symbol} () const 
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{classSymbol_a2361b1d1aff8081f2f7fee0dbfa6e701}{operator$<$$<$} (ostream \&cout, const \hyperlink{classSymbol}{Symbol} \&s)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSymbol_ac4ace96325f7d27f0c79beee1625cee6}{\index{Symbol@{Symbol}!Symbol@{Symbol}}
+\index{Symbol@{Symbol}!Symbol@{Symbol}}
+\subsubsection[{Symbol}]{\setlength{\rightskip}{0pt plus 5cm}Symbol\-::\-Symbol (
+\begin{DoxyParamCaption}
+\item[{int}]{alph\-Size}
+\end{DoxyParamCaption}
+)}}\label{classSymbol_ac4ace96325f7d27f0c79beee1625cee6}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em alph\-Size} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSymbol_a505360ad4bd2e0bd1e3954eca1b05723}{\index{Symbol@{Symbol}!$\sim$\-Symbol@{$\sim$\-Symbol}}
+\index{$\sim$\-Symbol@{$\sim$\-Symbol}!Symbol@{Symbol}}
+\subsubsection[{$\sim$\-Symbol}]{\setlength{\rightskip}{0pt plus 5cm}Symbol\-::$\sim$\-Symbol (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSymbol_a505360ad4bd2e0bd1e3954eca1b05723}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classSymbol_aa25b584739717c9659acee41b2759f3f}{\index{Symbol@{Symbol}!get\-Current\-Symbol@{get\-Current\-Symbol}}
+\index{get\-Current\-Symbol@{get\-Current\-Symbol}!Symbol@{Symbol}}
+\subsubsection[{get\-Current\-Symbol}]{\setlength{\rightskip}{0pt plus 5cm}int Symbol\-::get\-Current\-Symbol (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSymbol_aa25b584739717c9659acee41b2759f3f}
+Get the current symbol \begin{DoxyReturn}{Returns}
+current\-Symbol\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classSymbol_af2be74ae7e24fd0bc058e856d97388e7}{\index{Symbol@{Symbol}!get\-Non\-Terminal@{get\-Non\-Terminal}}
+\index{get\-Non\-Terminal@{get\-Non\-Terminal}!Symbol@{Symbol}}
+\subsubsection[{get\-Non\-Terminal}]{\setlength{\rightskip}{0pt plus 5cm}int Symbol\-::get\-Non\-Terminal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSymbol_af2be74ae7e24fd0bc058e856d97388e7}
+get a non terminal and increments the current\-Symbol counter \begin{DoxyReturn}{Returns}
+nonterminal 
+\end{DoxyReturn}
+\hypertarget{classSymbol_ab0ea968b00accbaddb7086bf7a719bc4}{\index{Symbol@{Symbol}!get\-Start\-Symbol@{get\-Start\-Symbol}}
+\index{get\-Start\-Symbol@{get\-Start\-Symbol}!Symbol@{Symbol}}
+\subsubsection[{get\-Start\-Symbol}]{\setlength{\rightskip}{0pt plus 5cm}int Symbol\-::get\-Start\-Symbol (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSymbol_ab0ea968b00accbaddb7086bf7a719bc4}
+Get the start symbol number \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classSymbol_ab6291680c1ccde7a13b589fc448efbbc}{\index{Symbol@{Symbol}!is\-Delimiter@{is\-Delimiter}}
+\index{is\-Delimiter@{is\-Delimiter}!Symbol@{Symbol}}
+\subsubsection[{is\-Delimiter}]{\setlength{\rightskip}{0pt plus 5cm}bool Symbol\-::is\-Delimiter (
+\begin{DoxyParamCaption}
+\item[{int}]{symbol}
+\end{DoxyParamCaption}
+) const}}\label{classSymbol_ab6291680c1ccde7a13b589fc448efbbc}
+check if a number is a delimiter 
+\begin{DoxyParams}{Parameters}
+{\em symbol} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+\hypertarget{classSymbol_a5631acc6635697133072b5c42c00fb14}{\index{Symbol@{Symbol}!is\-Non\-Terminal@{is\-Non\-Terminal}}
+\index{is\-Non\-Terminal@{is\-Non\-Terminal}!Symbol@{Symbol}}
+\subsubsection[{is\-Non\-Terminal}]{\setlength{\rightskip}{0pt plus 5cm}bool Symbol\-::is\-Non\-Terminal (
+\begin{DoxyParamCaption}
+\item[{int}]{symbol}
+\end{DoxyParamCaption}
+) const}}\label{classSymbol_a5631acc6635697133072b5c42c00fb14}
+check if a number is non terminal 
+\begin{DoxyParams}{Parameters}
+{\em symbol} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+\hypertarget{classSymbol_ac2c678564d37f7da8258f9ee43d526d3}{\index{Symbol@{Symbol}!is\-Terminal@{is\-Terminal}}
+\index{is\-Terminal@{is\-Terminal}!Symbol@{Symbol}}
+\subsubsection[{is\-Terminal}]{\setlength{\rightskip}{0pt plus 5cm}bool Symbol\-::is\-Terminal (
+\begin{DoxyParamCaption}
+\item[{int}]{symbol}
+\end{DoxyParamCaption}
+) const}}\label{classSymbol_ac2c678564d37f7da8258f9ee43d526d3}
+check if a number is terminal 
+\begin{DoxyParams}{Parameters}
+{\em symbol} & number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classSymbol_a2361b1d1aff8081f2f7fee0dbfa6e701}{\index{Symbol@{Symbol}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Symbol@{Symbol}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{cout, }
+\item[{const {\bf Symbol} \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classSymbol_a2361b1d1aff8081f2f7fee0dbfa6e701}
+Overload $<$$<$ operator to cout the \hyperlink{classSymbol}{Symbol} 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Symbol.\-h\item 
+Symbol.\-cpp\end{DoxyCompactItemize}

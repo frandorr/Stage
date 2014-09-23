@@ -1,0 +1,38 @@
+	\chapter{Conclusions}
+
+	\begin{itemize}
+		\item GELD Encoding penalty is huge, so only repeats instead are usually chosen, like in the
+		SLG approach. The most important thing to reduce the final size is reducing the encoding penalty and taking it into account when calculating the heuristics score. \\
+		Ordering the disambiguation list and applying some kind of codification like Hoffman coding could 
+		be a good way to start. \\
+
+		\item All the results showed us that SLID is better than GELD in every corpus we test. 
+		This is because we are not compressing the disambiguation list at all. \\
+		If we manage to get a good compression, we could achieve in some examples better
+		results with GELD
+
+		\item Results don't show great differences when choosing bounded k,l ($+-3\%$) and performance
+		increase a lot. So this seems to be a good heuristic.
+
+		\item As more contexts we choose, more complex become our grammar and the size
+		is bigger. This made us think that for reducing the size it's better to choose just repeats instead
+		of yields, like in SLG.\\
+		It's difficult to find an example where the opposite states, because it's very common
+		that we can replace U, V and the insides with words in 3 or more iterations. That's
+		why in all experiments, but the last one with the tiny Ecoli subsequence, the
+		classical approach gave us better results. \\
+
+
+		\item PT+SLID should has great behaviour if the Parse Tree has many repeated branches, 
+		otherwise it's really bad. We could reduce the final size drastically with
+		a good factorization in the grammar rules, because a lot of the final rules are similar (see 3.3.3).
+		Due to implementation issues we couldn't show results with it.
+
+		\item Crossing all Maximal Repeats to obtain contexts takes long time with small corpus, 
+		and its resource consuming make it impossible with big corpus. 
+		A faster and lighter heuristic should be used instead.
+
+		\item SLID is great with small sequences, but when the size increase the performance
+		decrease as we are adding new symbols in each iteration. 
+	\end{itemize}
+

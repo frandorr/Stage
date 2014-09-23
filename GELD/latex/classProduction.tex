@@ -1,0 +1,139 @@
+\hypertarget{classProduction}{\section{Production Class Reference}
+\label{classProduction}\index{Production@{Production}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classProduction_a92f0f1d1dbb5c68af2d6f8c89844d4ff}{Production} (int lhs, int $\ast$rhs, int size)
+\item 
+\hyperlink{classProduction_ab5b3060f9e0a2bc189844e426d693dab}{$\sim$\-Production} ()
+\item 
+void \hyperlink{classProduction_a4038d894f79a5a86c86a9c1d66040413}{unfold\-Non\-Terminal} (shared\-\_\-ptr$<$ \hyperlink{classProduction}{Production} $>$ n\-T, queue$<$ int $>$ \&election\-Queue)
+\item 
+vector$<$ int $>$ \hyperlink{classProduction_a5990c3ec3c934f4495bb6bb858584921}{get\-Option} (int opt) const 
+\item 
+\hypertarget{classProduction_aab0440acaa257a40d134a2158d5df777}{int {\bfseries get\-Election\-Start\-Pos} (int election) const }\label{classProduction_aab0440acaa257a40d134a2158d5df777}
+
+\item 
+\hypertarget{classProduction_a93f8128c95b20f4f59cbc817efb9d301}{int {\bfseries get\-Election\-End\-Pos} (int election) const }\label{classProduction_a93f8128c95b20f4f59cbc817efb9d301}
+
+\item 
+int \hyperlink{classProduction_a93ac262e02b0ccbb1947a00ee4781cb6}{get\-Size} () const 
+\item 
+int $\ast$ \hyperlink{classProduction_a31a72db90489bc566a819ef360cf23f0}{get\-R\-H\-S} () const 
+\item 
+int \hyperlink{classProduction_ab2dbdb2d626870e8b8f8a655f0d2f17a}{get\-L\-H\-S} () const 
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{classProduction_ad80a14935ba04d26e9067e3c388002d7}{operator$<$$<$} (ostream \&cout, const \hyperlink{classProduction}{Production} \&p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classProduction_a92f0f1d1dbb5c68af2d6f8c89844d4ff}{\index{Production@{Production}!Production@{Production}}
+\index{Production@{Production}!Production@{Production}}
+\subsubsection[{Production}]{\setlength{\rightskip}{0pt plus 5cm}Production\-::\-Production (
+\begin{DoxyParamCaption}
+\item[{int}]{lhs, }
+\item[{int $\ast$}]{rhs, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{classProduction_a92f0f1d1dbb5c68af2d6f8c89844d4ff}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em lhs} & left-\/hand side \\
+\hline
+{\em rhs} & right-\/hand side \\
+\hline
+{\em size} & $\vert$rhs$\vert$+1 \\
+\hline
+\end{DoxyParams}
+\hypertarget{classProduction_ab5b3060f9e0a2bc189844e426d693dab}{\index{Production@{Production}!$\sim$\-Production@{$\sim$\-Production}}
+\index{$\sim$\-Production@{$\sim$\-Production}!Production@{Production}}
+\subsubsection[{$\sim$\-Production}]{\setlength{\rightskip}{0pt plus 5cm}Production\-::$\sim$\-Production (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classProduction_ab5b3060f9e0a2bc189844e426d693dab}
+Destructor, delete rhs 
+
+\subsection{Member Function Documentation}
+\hypertarget{classProduction_ab2dbdb2d626870e8b8f8a655f0d2f17a}{\index{Production@{Production}!get\-L\-H\-S@{get\-L\-H\-S}}
+\index{get\-L\-H\-S@{get\-L\-H\-S}!Production@{Production}}
+\subsubsection[{get\-L\-H\-S}]{\setlength{\rightskip}{0pt plus 5cm}int Production\-::get\-L\-H\-S (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classProduction_ab2dbdb2d626870e8b8f8a655f0d2f17a}
+get \hyperlink{classProduction}{Production} lhs \begin{DoxyReturn}{Returns}
+lhs\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classProduction_a5990c3ec3c934f4495bb6bb858584921}{\index{Production@{Production}!get\-Option@{get\-Option}}
+\index{get\-Option@{get\-Option}!Production@{Production}}
+\subsubsection[{get\-Option}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ int $>$ Production\-::get\-Option (
+\begin{DoxyParamCaption}
+\item[{int}]{opt}
+\end{DoxyParamCaption}
+) const}}\label{classProduction_a5990c3ec3c934f4495bb6bb858584921}
+if the production has many possible branches, return as a vector the one given by opt 
+\begin{DoxyParams}{Parameters}
+{\em opt} & option to return \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector containing the option 
+\end{DoxyReturn}
+\hypertarget{classProduction_a31a72db90489bc566a819ef360cf23f0}{\index{Production@{Production}!get\-R\-H\-S@{get\-R\-H\-S}}
+\index{get\-R\-H\-S@{get\-R\-H\-S}!Production@{Production}}
+\subsubsection[{get\-R\-H\-S}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Production\-::get\-R\-H\-S (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classProduction_a31a72db90489bc566a819ef360cf23f0}
+get \hyperlink{classProduction}{Production} rhs \begin{DoxyReturn}{Returns}
+rhs\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classProduction_a93ac262e02b0ccbb1947a00ee4781cb6}{\index{Production@{Production}!get\-Size@{get\-Size}}
+\index{get\-Size@{get\-Size}!Production@{Production}}
+\subsubsection[{get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Production\-::get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classProduction_a93ac262e02b0ccbb1947a00ee4781cb6}
+get \hyperlink{classProduction}{Production} size \begin{DoxyReturn}{Returns}
+size\-\_\- ($\vert$rhs$\vert$+1) 
+\end{DoxyReturn}
+\hypertarget{classProduction_a4038d894f79a5a86c86a9c1d66040413}{\index{Production@{Production}!unfold\-Non\-Terminal@{unfold\-Non\-Terminal}}
+\index{unfold\-Non\-Terminal@{unfold\-Non\-Terminal}!Production@{Production}}
+\subsubsection[{unfold\-Non\-Terminal}]{\setlength{\rightskip}{0pt plus 5cm}void Production\-::unfold\-Non\-Terminal (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Production} $>$}]{n\-T, }
+\item[{queue$<$ int $>$ \&}]{election\-Queue}
+\end{DoxyParamCaption}
+)}}\label{classProduction_a4038d894f79a5a86c86a9c1d66040413}
+replace non\-Terminal by given rhs 
+\begin{DoxyParams}{Parameters}
+{\em non\-Terminal} & non terminal \\
+\hline
+{\em rhs} & rhs to replace non terminal \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classProduction_ad80a14935ba04d26e9067e3c388002d7}{\index{Production@{Production}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Production@{Production}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{cout, }
+\item[{const {\bf Production} \&}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classProduction_ad80a14935ba04d26e9067e3c388002d7}
+Print \hyperlink{classProduction}{Production} 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Production.\-h\item 
+Production.\-cpp\end{DoxyCompactItemize}

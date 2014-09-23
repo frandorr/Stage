@@ -1,0 +1,13 @@
+\chapter{Appendix}
+
+\section{GELD better than SLG example}
+
+Let S be a sequence, with $u_1,u_2,u_3,v_1,v_2,v_3, y_1, y_2, z_1, z_2$ subsequences and $\bm{\alpha_i}\ $ random chains: \\
+
+$S = u_1\ x_1\ u_2\ y_1\ v_2\ v_1\  \bm{\alpha_1}\ u_1\ x_1\ u_3\ z_1\ v_3\ v_1\ \bm{\alpha_2}\ u_2\ y_2\ v_2\ \bm{\alpha_3}\ u_3\ z_2\ v_3\ \bm{\alpha_4}\ u_1\ x_3\ v_1$ \\
+
+If we run GELD algorithm in it we obtain the next results: \\
+1st iteration: \\ 
+$S = N\ \bm{\alpha_1}\ N\ \bm{\alpha_2}\ u_2\ y_2\ v_2\ \bm{\alpha_3}\ u_3\ z_2\ v_3\ \bm{\alpha_4}\ N$ \\
+$N \rightarrow u_1\ I\ v_1$ \\
+$I \rightarrow x_1\ u_2\ y_1\ v_2\ |\ x_1\ u_3\ z_1\ v_3\ |\ x_3$  

@@ -1,0 +1,130 @@
+\hypertarget{classAlphabet}{\section{Alphabet Class Reference}
+\label{classAlphabet}\index{Alphabet@{Alphabet}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAlphabet_aac9f2f615174ca6c8f89331239cb765e}{Alphabet} ()
+\item 
+\hyperlink{classAlphabet_a8a1da1bd7fdf2fd06a9768f9597a0b44}{$\sim$\-Alphabet} ()
+\item 
+void \hyperlink{classAlphabet_aedbea218764ce0b3a7a6c6c78c8bb512}{insert} (key k, value i)
+\item 
+int \hyperlink{classAlphabet_a549d8ebebef18a820f44c78d714fd57a}{get\-Size} () const 
+\item 
+bm\-\_\-type $\ast$ \hyperlink{classAlphabet_afd7f8853344abf9ffac03f5cd9926ab9}{get\-Alph\-Bi\-Map} () const 
+\item 
+value \hyperlink{classAlphabet_aaf6ac568ec863073cb5a053553b7a683}{get\-Value} (key k) const 
+\item 
+key \hyperlink{classAlphabet_ae9b301e2b793e74fad230f5ab66134da}{get\-Key} (value v) const 
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{classAlphabet_a4c763414b43f53cffd0537ba93827db8}{operator$<$$<$} (ostream \&cout, const \hyperlink{classAlphabet}{Alphabet} \&alph)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classAlphabet_aac9f2f615174ca6c8f89331239cb765e}{\index{Alphabet@{Alphabet}!Alphabet@{Alphabet}}
+\index{Alphabet@{Alphabet}!Alphabet@{Alphabet}}
+\subsubsection[{Alphabet}]{\setlength{\rightskip}{0pt plus 5cm}Alphabet\-::\-Alphabet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classAlphabet_aac9f2f615174ca6c8f89331239cb765e}
+Create new bimap alphabet with (A,0),(C,1),(G,2), (T,3) key-\/values \hypertarget{classAlphabet_a8a1da1bd7fdf2fd06a9768f9597a0b44}{\index{Alphabet@{Alphabet}!$\sim$\-Alphabet@{$\sim$\-Alphabet}}
+\index{$\sim$\-Alphabet@{$\sim$\-Alphabet}!Alphabet@{Alphabet}}
+\subsubsection[{$\sim$\-Alphabet}]{\setlength{\rightskip}{0pt plus 5cm}Alphabet\-::$\sim$\-Alphabet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classAlphabet_a8a1da1bd7fdf2fd06a9768f9597a0b44}
+Delete alphabet\-\_\- 
+
+\subsection{Member Function Documentation}
+\hypertarget{classAlphabet_afd7f8853344abf9ffac03f5cd9926ab9}{\index{Alphabet@{Alphabet}!get\-Alph\-Bi\-Map@{get\-Alph\-Bi\-Map}}
+\index{get\-Alph\-Bi\-Map@{get\-Alph\-Bi\-Map}!Alphabet@{Alphabet}}
+\subsubsection[{get\-Alph\-Bi\-Map}]{\setlength{\rightskip}{0pt plus 5cm}bm\-\_\-type $\ast$ Alphabet\-::get\-Alph\-Bi\-Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classAlphabet_afd7f8853344abf9ffac03f5cd9926ab9}
+get the bimap data struct where the alphabet is buid in \begin{DoxyReturn}{Returns}
+bimap alphabet\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classAlphabet_ae9b301e2b793e74fad230f5ab66134da}{\index{Alphabet@{Alphabet}!get\-Key@{get\-Key}}
+\index{get\-Key@{get\-Key}!Alphabet@{Alphabet}}
+\subsubsection[{get\-Key}]{\setlength{\rightskip}{0pt plus 5cm}key Alphabet\-::get\-Key (
+\begin{DoxyParamCaption}
+\item[{value}]{v}
+\end{DoxyParamCaption}
+) const}}\label{classAlphabet_ae9b301e2b793e74fad230f5ab66134da}
+get key from a given value 
+\begin{DoxyParams}{Parameters}
+{\em v} & value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+key 
+\end{DoxyReturn}
+\hypertarget{classAlphabet_a549d8ebebef18a820f44c78d714fd57a}{\index{Alphabet@{Alphabet}!get\-Size@{get\-Size}}
+\index{get\-Size@{get\-Size}!Alphabet@{Alphabet}}
+\subsubsection[{get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Alphabet\-::get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classAlphabet_a549d8ebebef18a820f44c78d714fd57a}
+Get \hyperlink{classAlphabet}{Alphabet} size \begin{DoxyReturn}{Returns}
+int size\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classAlphabet_aaf6ac568ec863073cb5a053553b7a683}{\index{Alphabet@{Alphabet}!get\-Value@{get\-Value}}
+\index{get\-Value@{get\-Value}!Alphabet@{Alphabet}}
+\subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}value Alphabet\-::get\-Value (
+\begin{DoxyParamCaption}
+\item[{key}]{k}
+\end{DoxyParamCaption}
+) const}}\label{classAlphabet_aaf6ac568ec863073cb5a053553b7a683}
+get value from a given key 
+\begin{DoxyParams}{Parameters}
+{\em k} & key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value 
+\end{DoxyReturn}
+\hypertarget{classAlphabet_aedbea218764ce0b3a7a6c6c78c8bb512}{\index{Alphabet@{Alphabet}!insert@{insert}}
+\index{insert@{insert}!Alphabet@{Alphabet}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}void Alphabet\-::insert (
+\begin{DoxyParamCaption}
+\item[{key}]{k, }
+\item[{value}]{i}
+\end{DoxyParamCaption}
+)}}\label{classAlphabet_aedbea218764ce0b3a7a6c6c78c8bb512}
+Insert new $<$k,value$>$ to the alphabet 
+\begin{DoxyParams}{Parameters}
+{\em k} & key \\
+\hline
+{\em i} & value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value added or if already exist old value. 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classAlphabet_a4c763414b43f53cffd0537ba93827db8}{\index{Alphabet@{Alphabet}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Alphabet@{Alphabet}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{cout, }
+\item[{const {\bf Alphabet} \&}]{alph}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classAlphabet_a4c763414b43f53cffd0537ba93827db8}
+Overload $<$$<$ operator to cout the \hyperlink{classAlphabet}{Alphabet} 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Alphabet.\-h\item 
+Alphabet.\-cpp\end{DoxyCompactItemize}

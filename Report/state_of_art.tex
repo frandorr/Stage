@@ -1,0 +1,64 @@
+\chapter{State of art}
+
+	Work in grammar-based compression has been made with different approaches.
+	The most common way was using straight line grammars (SLG). 
+
+	As stated in \cite{Benz}, a \emph{SLG} is a grammar that generates exactly one sequence, 
+	so it doesn't	contain loops nor ambiguities.
+
+	The general idea is to look for a grammar that represents a sequence without losing 
+	information. \\
+
+	The way to do that is searching for subsequences in such sequence that
+	could be replaced by a Non Terminal symbol. By doing so, we could reduce the size
+	of the sequence, because if we have a repeated subsequences, we can just assign
+	a symbol to it and write the symbol instead of it. \\
+
+	Each time we make a replacement we start over looking for new subsequences in the new sequence to 
+	replace. The iteration process continue until we cannot compress it anymore.\\
+
+	For example, an SLG from the follow sequence \cite{Benz}:
+
+	\begin{center}
+		\emph{ttatatttctttctttcttttttttcctcagcctcagagt}
+	\end{center}
+
+	could be: \\
+
+
+	\begin{center}
+	$S \rightarrow N_3ataN_3N_2N_2N_2N_3N_3N_3N_1N_1agt$\\
+	$N_1 \rightarrow cctcag$ \\
+	$N_2 \rightarrow tcN_3$ \\
+	$N_3 \rightarrow tt$
+	\end{center}
+
+
+% \cite{GThesis}. \\
+
+	When using this kind of grammars, the search of constituents to be replaced by non Terminals
+	is commonly based on different types of repeats. Those could be Repeats, Maximal Repeats, Longest Maximal 
+	Repeats, etc.
+	Explanation about different repeats and its taxonomy can be founded here: \cite[p.42-46]{GThesis}.\\
+
+	In the example given above those constituents obtainded from repeats in the sequence are $cctcag$, $tcN_3$, $tt$. \\
+
+	But this approach has a limitation: what happend if there are words $w_1$..$w_n$ similar (with just some characters changed) to a repeat $R_i$ choosen as constituent? We would ignore them but they could be useful. 
+	If we only use repeats, we could skip constituents of interest. \\
+
+	For example, if we have the next sequence S:\\
+
+	$S \rightarrow R_i\ --- R_i\ ---\ w_1\ w_2\ --- w_3\ ---\ ...\ ---\ R_i\ ---\ w_n\ $ \\
+
+	Using the classical approach we would replace only the $R_i$: \\
+
+	$S \rightarrow N\ ---\ N\ ---\ w_1\ w_2\ ---\ w_3\ ---\ ...\ ---\ N\ ---\ w_n\ $ \\
+
+	But if we add some new rule N with ambiguity we could also replace the similar words $w_1, .. ,w_n$: \\
+
+	$S \rightarrow N\ ---\ N\ ---\ N\ N\ ---\ N\ ---\ ...\ ---\ N\ --- N\ $ \\
+
+
+	Based on this question, we started our work.
+	In the next section we propose a way to be more flexible and to find interesting
+	structural information.

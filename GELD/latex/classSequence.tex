@@ -1,0 +1,332 @@
+\hypertarget{classSequence}{\section{Sequence Class Reference}
+\label{classSequence}\index{Sequence@{Sequence}}
+}
+Inheritance diagram for Sequence\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSequence}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ int $>$ $\ast$ \hyperlink{classSequence_a56c3dbd041ff758d1a2a0038c5ff4f43}{get\-Sub\-Seq\-Occ\-Pos} (const \hyperlink{classSubSequence}{Sub\-Sequence} $\ast$word, int s\-Array\-Start\-Index, int s\-Array\-End\-Index) const 
+\item 
+\hyperlink{classSequence_a532b7e8df6ff6b2f990c14ae97859ca2}{Sequence} ()
+\item 
+\hyperlink{classSequence_aee09a7d70c3ab523fed85da94ea1366f}{$\sim$\-Sequence} ()
+\item 
+int $\ast$ \hyperlink{classSequence_ac927b7e0d44e24a36014049a1d815971}{to\-Int} () const 
+\item 
+void \hyperlink{classSequence_a68148169be761cee0ab894e8a8926c43}{read\-From\-File} (const char $\ast$filename)
+\item 
+void \hyperlink{classSequence_a6902e3c6c47765dc91459f7df6234f33}{create\-From\-Int} (int $\ast$int\-Seq, int size)
+\item 
+std\-::shared\-\_\-ptr$<$ \hyperlink{classSequence}{Sequence} $>$ \hyperlink{classSequence_a116435038379ccab4e9f07d771e73235}{get\-Shared} ()
+\item 
+unordered\-\_\-set$<$ shared\-\_\-ptr\\*
+$<$ \hyperlink{classWord}{Word} $>$ $>$ $\ast$ \hyperlink{classSequence_aee9c79f037c7638c637b1f851e6ec4a5}{maximal\-Repeats} ()
+\item 
+void \hyperlink{classSequence_aabde519f0689f9efa795f6a5c3d9416c}{create\-Words\-From\-Limits} (int seq\-Index, int length, unordered\-\_\-set$<$ shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ $>$ $\ast$result)
+\item 
+void \hyperlink{classSequence_aedb4310b1b31e7b5866f40ce375dfe47}{get\-Separator\-Pos} (list$<$ int $>$ \&separator, int seq\-Index, int length)
+\item 
+list$<$ pair$<$ int, int $>$ $>$ $\ast$ \hyperlink{classSequence_af23046c26b6a8655bd98680f6f411f4a}{word\-Pos\-Pair\-List} (shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ u, shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ v) const 
+\item 
+\hyperlink{classWordList}{Word\-List} $\ast$ \hyperlink{classSequence_aa2e4d06d869c20f6b867c95d5e799c6b}{obtain\-Words\-Inside} (list$<$ std\-::pair$<$ int, int $>$ $>$ $\ast$pos\-Pairs, int u\-Size)
+\item 
+shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ \hyperlink{classSequence_a4a48347d3684b23c75f92511256022e6}{create\-Sub\-Word} (shared\-\_\-ptr$<$ \hyperlink{classWord}{Word} $>$ w, int start, int end)
+\item 
+int \hyperlink{classSequence_af6bfa15998fba32a84eab8e0d969e7a1}{group\-Number} (int pos) const 
+\item 
+int \hyperlink{classSequence_a3ac0084617a2aee42b1514ae643cae55}{get\-Size} () const 
+\item 
+char $\ast$ \hyperlink{classSequence_abeffc3c8063c2053f558c91bd6c6ab03}{get\-Sequence} () const 
+\item 
+int $\ast$ \hyperlink{classSequence_a8494195fe7abb033a9aab325940117ad}{get\-Int\-Sequence} () const 
+\item 
+\hyperlink{classAlphabet}{Alphabet} $\ast$ \hyperlink{classSequence_a376651dcee5501a5f9f3a76020ffc463}{get\-Alphabet} () const 
+\item 
+\hyperlink{classSuffixArray}{Suffix\-Array} $\ast$ \hyperlink{classSequence_a4e964c20776c22b32d9e6ff88e6a4454}{get\-S\-Array} () const 
+\item 
+\hypertarget{classSequence_a72e78f8764e7f8774c45d137839eafc9}{int \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (int idx)}\label{classSequence_a72e78f8764e7f8774c45d137839eafc9}
+
+\item 
+\hypertarget{classSequence_a307cc3236cd04a8669124763dd536c06}{const int \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (int idx) const }\label{classSequence_a307cc3236cd04a8669124763dd536c06}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{classSequence_a722cf4445d8ab47d57bb361498cee55d}{operator$<$$<$} (ostream \&cout, const \hyperlink{classSequence}{Sequence} \&seq)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSequence_a532b7e8df6ff6b2f990c14ae97859ca2}{\index{Sequence@{Sequence}!Sequence@{Sequence}}
+\index{Sequence@{Sequence}!Sequence@{Sequence}}
+\subsubsection[{Sequence}]{\setlength{\rightskip}{0pt plus 5cm}Sequence\-::\-Sequence (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSequence_a532b7e8df6ff6b2f990c14ae97859ca2}
+All ptrs to N\-U\-L\-L and size to 0 \hypertarget{classSequence_aee09a7d70c3ab523fed85da94ea1366f}{\index{Sequence@{Sequence}!$\sim$\-Sequence@{$\sim$\-Sequence}}
+\index{$\sim$\-Sequence@{$\sim$\-Sequence}!Sequence@{Sequence}}
+\subsubsection[{$\sim$\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}Sequence\-::$\sim$\-Sequence (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSequence_aee09a7d70c3ab523fed85da94ea1366f}
+Delete s\-Array\-\_\-, Sequences\-\_\- and alph\-\_\- 
+
+\subsection{Member Function Documentation}
+\hypertarget{classSequence_a6902e3c6c47765dc91459f7df6234f33}{\index{Sequence@{Sequence}!create\-From\-Int@{create\-From\-Int}}
+\index{create\-From\-Int@{create\-From\-Int}!Sequence@{Sequence}}
+\subsubsection[{create\-From\-Int}]{\setlength{\rightskip}{0pt plus 5cm}void Sequence\-::create\-From\-Int (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{int\-Seq, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{classSequence_a6902e3c6c47765dc91459f7df6234f33}
+Read a file containing a string and complete the attributes of the \hyperlink{classSequence}{Sequence} object 
+\begin{DoxyParams}{Parameters}
+{\em filename} & with string create a \hyperlink{classSequence}{Sequence} object from an int array \\
+\hline
+{\em int\-Seq} & array \\
+\hline
+{\em size} & size of the array \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSequence_a4a48347d3684b23c75f92511256022e6}{\index{Sequence@{Sequence}!create\-Sub\-Word@{create\-Sub\-Word}}
+\index{create\-Sub\-Word@{create\-Sub\-Word}!Sequence@{Sequence}}
+\subsubsection[{create\-Sub\-Word}]{\setlength{\rightskip}{0pt plus 5cm}shared\-\_\-ptr$<$ {\bf Word} $>$ Sequence\-::create\-Sub\-Word (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Word} $>$}]{w, }
+\item[{int}]{start, }
+\item[{int}]{end}
+\end{DoxyParamCaption}
+)}}\label{classSequence_a4a48347d3684b23c75f92511256022e6}
+Given a word create a subword of it given a start and an end index 
+\begin{DoxyParams}{Parameters}
+{\em w} & word \\
+\hline
+{\em start} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+subword 
+\end{DoxyReturn}
+\hypertarget{classSequence_aabde519f0689f9efa795f6a5c3d9416c}{\index{Sequence@{Sequence}!create\-Words\-From\-Limits@{create\-Words\-From\-Limits}}
+\index{create\-Words\-From\-Limits@{create\-Words\-From\-Limits}!Sequence@{Sequence}}
+\subsubsection[{create\-Words\-From\-Limits}]{\setlength{\rightskip}{0pt plus 5cm}void Sequence\-::create\-Words\-From\-Limits (
+\begin{DoxyParamCaption}
+\item[{int}]{seq\-Index, }
+\item[{int}]{length, }
+\item[{unordered\-\_\-set$<$ shared\-\_\-ptr$<$ {\bf Word} $>$ $>$ $\ast$}]{result}
+\end{DoxyParamCaption}
+)}}\label{classSequence_aabde519f0689f9efa795f6a5c3d9416c}
+Create words based on delimiters in the sequence. Given and index and a length, check if it has a delimiter in the middle and creates words separated by those delimiters. 
+\begin{DoxyParams}{Parameters}
+{\em seq\-Index} & index in the sequence \\
+\hline
+{\em length} & length \\
+\hline
+{\em result} & set of words \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSequence_a376651dcee5501a5f9f3a76020ffc463}{\index{Sequence@{Sequence}!get\-Alphabet@{get\-Alphabet}}
+\index{get\-Alphabet@{get\-Alphabet}!Sequence@{Sequence}}
+\subsubsection[{get\-Alphabet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Alphabet} $\ast$ Sequence\-::get\-Alphabet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSequence_a376651dcee5501a5f9f3a76020ffc463}
+get the \hyperlink{classAlphabet}{Alphabet} \begin{DoxyReturn}{Returns}
+alph\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classSequence_a8494195fe7abb033a9aab325940117ad}{\index{Sequence@{Sequence}!get\-Int\-Sequence@{get\-Int\-Sequence}}
+\index{get\-Int\-Sequence@{get\-Int\-Sequence}!Sequence@{Sequence}}
+\subsubsection[{get\-Int\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Sequence\-::get\-Int\-Sequence (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSequence_a8494195fe7abb033a9aab325940117ad}
+get \hyperlink{classSequence}{Sequence} in int \begin{DoxyReturn}{Returns}
+int$\ast$ int\-Sequence\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classSequence_a4e964c20776c22b32d9e6ff88e6a4454}{\index{Sequence@{Sequence}!get\-S\-Array@{get\-S\-Array}}
+\index{get\-S\-Array@{get\-S\-Array}!Sequence@{Sequence}}
+\subsubsection[{get\-S\-Array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Suffix\-Array} $\ast$ Sequence\-::get\-S\-Array (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSequence_a4e964c20776c22b32d9e6ff88e6a4454}
+get the s\-Array \begin{DoxyReturn}{Returns}
+\hyperlink{classSuffixArray}{Suffix\-Array} 
+\end{DoxyReturn}
+\hypertarget{classSequence_aedb4310b1b31e7b5866f40ce375dfe47}{\index{Sequence@{Sequence}!get\-Separator\-Pos@{get\-Separator\-Pos}}
+\index{get\-Separator\-Pos@{get\-Separator\-Pos}!Sequence@{Sequence}}
+\subsubsection[{get\-Separator\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}void Sequence\-::get\-Separator\-Pos (
+\begin{DoxyParamCaption}
+\item[{list$<$ int $>$ \&}]{separator, }
+\item[{int}]{seq\-Index, }
+\item[{int}]{length}
+\end{DoxyParamCaption}
+)}}\label{classSequence_aedb4310b1b31e7b5866f40ce375dfe47}
+Get the positions of the separatos starting from the index and finishin in index+length, it could be pipes or \$ 
+\begin{DoxyParams}{Parameters}
+{\em separator} & list of separatos \\
+\hline
+{\em seq\-Index} & index in the seq \\
+\hline
+{\em length} & length \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSequence_abeffc3c8063c2053f558c91bd6c6ab03}{\index{Sequence@{Sequence}!get\-Sequence@{get\-Sequence}}
+\index{get\-Sequence@{get\-Sequence}!Sequence@{Sequence}}
+\subsubsection[{get\-Sequence}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ Sequence\-::get\-Sequence (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSequence_abeffc3c8063c2053f558c91bd6c6ab03}
+get \hyperlink{classSequence}{Sequence} in char$\ast$ \begin{DoxyReturn}{Returns}
+char$\ast$ sequence\-\_\- 
+\end{DoxyReturn}
+\hypertarget{classSequence_a116435038379ccab4e9f07d771e73235}{\index{Sequence@{Sequence}!get\-Shared@{get\-Shared}}
+\index{get\-Shared@{get\-Shared}!Sequence@{Sequence}}
+\subsubsection[{get\-Shared}]{\setlength{\rightskip}{0pt plus 5cm}std\-::shared\-\_\-ptr$<$ {\bf Sequence} $>$ Sequence\-::get\-Shared (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSequence_a116435038379ccab4e9f07d771e73235}
+get shared ptr from this \hypertarget{classSequence_a3ac0084617a2aee42b1514ae643cae55}{\index{Sequence@{Sequence}!get\-Size@{get\-Size}}
+\index{get\-Size@{get\-Size}!Sequence@{Sequence}}
+\subsubsection[{get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int Sequence\-::get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSequence_a3ac0084617a2aee42b1514ae643cae55}
+Get \hyperlink{classSequence}{Sequence} size \begin{DoxyReturn}{Returns}
+int size 
+\end{DoxyReturn}
+\hypertarget{classSequence_a56c3dbd041ff758d1a2a0038c5ff4f43}{\index{Sequence@{Sequence}!get\-Sub\-Seq\-Occ\-Pos@{get\-Sub\-Seq\-Occ\-Pos}}
+\index{get\-Sub\-Seq\-Occ\-Pos@{get\-Sub\-Seq\-Occ\-Pos}!Sequence@{Sequence}}
+\subsubsection[{get\-Sub\-Seq\-Occ\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}list$<$ int $>$ $\ast$ Sequence\-::get\-Sub\-Seq\-Occ\-Pos (
+\begin{DoxyParamCaption}
+\item[{const {\bf Sub\-Sequence} $\ast$}]{word, }
+\item[{int}]{s\-Array\-Start\-Index, }
+\item[{int}]{s\-Array\-End\-Index}
+\end{DoxyParamCaption}
+) const}}\label{classSequence_a56c3dbd041ff758d1a2a0038c5ff4f43}
+get all occs in order of a given sub\-Seq 
+\begin{DoxyParams}{Parameters}
+{\em sub\-Seq} & a subsequence from the \hyperlink{classSequence}{Sequence}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list of occs positions. 
+\end{DoxyReturn}
+\hypertarget{classSequence_af6bfa15998fba32a84eab8e0d969e7a1}{\index{Sequence@{Sequence}!group\-Number@{group\-Number}}
+\index{group\-Number@{group\-Number}!Sequence@{Sequence}}
+\subsubsection[{group\-Number}]{\setlength{\rightskip}{0pt plus 5cm}int Sequence\-::group\-Number (
+\begin{DoxyParamCaption}
+\item[{int}]{pos}
+\end{DoxyParamCaption}
+) const}}\label{classSequence_af6bfa15998fba32a84eab8e0d969e7a1}
+each group is separated by a delimiter (pipe or \$), return the group number of a given pos in the sequence 
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+group number 
+\end{DoxyReturn}
+\hypertarget{classSequence_aee9c79f037c7638c637b1f851e6ec4a5}{\index{Sequence@{Sequence}!maximal\-Repeats@{maximal\-Repeats}}
+\index{maximal\-Repeats@{maximal\-Repeats}!Sequence@{Sequence}}
+\subsubsection[{maximal\-Repeats}]{\setlength{\rightskip}{0pt plus 5cm}unordered\-\_\-set$<$ shared\-\_\-ptr$<$ {\bf Word} $>$ $>$ $\ast$ Sequence\-::maximal\-Repeats (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSequence_aee9c79f037c7638c637b1f851e6ec4a5}
+Get all maximal repeats from the \hyperlink{classSequence}{Sequence} \begin{DoxyReturn}{Returns}
+a ptr to \hyperlink{classWordList}{Word\-List} that are maximal repeats words 
+\end{DoxyReturn}
+\hypertarget{classSequence_aa2e4d06d869c20f6b867c95d5e799c6b}{\index{Sequence@{Sequence}!obtain\-Words\-Inside@{obtain\-Words\-Inside}}
+\index{obtain\-Words\-Inside@{obtain\-Words\-Inside}!Sequence@{Sequence}}
+\subsubsection[{obtain\-Words\-Inside}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Word\-List} $\ast$ Sequence\-::obtain\-Words\-Inside (
+\begin{DoxyParamCaption}
+\item[{list$<$ std\-::pair$<$ int, int $>$ $>$ $\ast$}]{pos\-Pairs, }
+\item[{int}]{u\-Size}
+\end{DoxyParamCaption}
+)}}\label{classSequence_aa2e4d06d869c20f6b867c95d5e799c6b}
+obtain a \hyperlink{classWordList}{Word\-List} from all the Words within the pos\-Pairs list given 
+\begin{DoxyParams}{Parameters}
+{\em pos\-Pairs} & positions from contexts u and v \\
+\hline
+{\em u\-Size} & size of u context \\
+\hline
+{\em v\-Size} & size of v context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classWordList}{Word\-List} of all insides words 
+\end{DoxyReturn}
+\hypertarget{classSequence_a68148169be761cee0ab894e8a8926c43}{\index{Sequence@{Sequence}!read\-From\-File@{read\-From\-File}}
+\index{read\-From\-File@{read\-From\-File}!Sequence@{Sequence}}
+\subsubsection[{read\-From\-File}]{\setlength{\rightskip}{0pt plus 5cm}void Sequence\-::read\-From\-File (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}}\label{classSequence_a68148169be761cee0ab894e8a8926c43}
+read a sequence from a given filename, takes token separate by spaces. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSequence_ac927b7e0d44e24a36014049a1d815971}{\index{Sequence@{Sequence}!to\-Int@{to\-Int}}
+\index{to\-Int@{to\-Int}!Sequence@{Sequence}}
+\subsubsection[{to\-Int}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Sequence\-::to\-Int (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classSequence_ac927b7e0d44e24a36014049a1d815971}
+Obtain an int sequence from the \hyperlink{classSequence}{Sequence} object. Uses this-\/$>$alph\-\_\- to translate the chars to int \begin{DoxyReturn}{Returns}
+int\-Seq 
+\end{DoxyReturn}
+\hypertarget{classSequence_af23046c26b6a8655bd98680f6f411f4a}{\index{Sequence@{Sequence}!word\-Pos\-Pair\-List@{word\-Pos\-Pair\-List}}
+\index{word\-Pos\-Pair\-List@{word\-Pos\-Pair\-List}!Sequence@{Sequence}}
+\subsubsection[{word\-Pos\-Pair\-List}]{\setlength{\rightskip}{0pt plus 5cm}list$<$ pair$<$ int, int $>$ $>$ $\ast$ Sequence\-::word\-Pos\-Pair\-List (
+\begin{DoxyParamCaption}
+\item[{shared\-\_\-ptr$<$ {\bf Word} $>$}]{u, }
+\item[{shared\-\_\-ptr$<$ {\bf Word} $>$}]{v}
+\end{DoxyParamCaption}
+) const}}\label{classSequence_af23046c26b6a8655bd98680f6f411f4a}
+given two Words, return one list with no overlapped pairs of these words pos in the follow way\-: took the first element y from v\-Pos. Look for the max x in u\-Pos, with x+u\-Size$<$y. (x,y) is a pair in the res list. 
+\begin{DoxyParams}{Parameters}
+{\em u} & \\
+\hline
+{\em v} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list$<$pair\-Pos$>$ pairs representing a context, it can be N\-U\-L\-L 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classSequence_a722cf4445d8ab47d57bb361498cee55d}{\index{Sequence@{Sequence}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Sequence@{Sequence}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{cout, }
+\item[{const {\bf Sequence} \&}]{seq}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classSequence_a722cf4445d8ab47d57bb361498cee55d}
+Overload $<$$<$ operator to cout the \hyperlink{classSequence}{Sequence} 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Sequence.\-h\item 
+Sequence.\-cpp\end{DoxyCompactItemize}

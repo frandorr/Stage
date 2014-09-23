@@ -1,0 +1,42 @@
+\chapter{Introduction}
+
+The main idea of this work is to try to compress DNA sequences by means of
+grammar inference. The grammars used here is a subset of the context free grammars,
+called \emph{k,l-local context substitutable} \cite{Gaelle}. \\
+
+An example of these grammars:\\
+Lets say we have the follow sequence: \\
+\begin{center}
+agtggaccagtggaaccagtggaaccagtgacgt
+\end{center}
+
+Lets take two contexts u and v with lengths $k=2$ and $l=3$: \\
+\begin{center}
+$u = gg$\\
+$v = cca$
+\end{center}
+
+In our sequence:\\
+agt\textbf{gg}a\textbf{cca}gt\textbf{gg}aa\textbf{cca}gt\textbf{gg}aa\textbf{cca}gtgacgt \\
+
+After we identify the u and v in the sequence we should group them in pairs and
+see what substrings are within them.
+\begin{itemize}
+	\item \textbf{gg}a\textbf{cca} inside: a
+	\item \textbf{gg}aa\textbf{cca} inside: aa
+	\item \textbf{gg}aa\textbf{cca} inside: aa
+\end{itemize}
+
+We can replace these yields with a non terminal N and the insides with a non terminal I 
+in the follow way:\\
+
+Original sequence:\\
+agt\textbf{ggacca}gt\textbf{ggcca}gt\textbf{ggcca}gtgacgt \\
+
+Yields replaced by non terminal: \\
+S $\rightarrow$ agt\textbf{N}gt\textbf{N}gt\textbf{N}gtgacgt \\
+N $\rightarrow$ gg I cca\\
+I $\rightarrow$ a $|$ aa\\
+
+Hence, we have found a k,l-local context substitutable grammar for representing
+our sequence in a compressed way.

@@ -1,0 +1,43 @@
+\chapter{Restricting set of context candidates}
+
+	There are many ways to choose different contexts in our sequence. To test all of them in each iteration is kind of expensive. Because of that,
+	we should find an heuristic, that gives us good results by searching in a smaller
+	subset of all possible contexts.
+
+	\section{Crossing Maximal Repeats}
+
+	When replacing simple exact words, a good way is choosing them within the
+	sequence Maximal Repeats (MR) as stated in \cite{GThesis}, because it is fast
+	using a suffix tree data structure.
+
+	We start thinking in a similar approach, by crossing all MR
+	and obtaining contexts u-v from them ($u = MR_i$, $v = MR_j$).
+
+	This approach could only be used in small datasets, because it's highly demandant
+	in the resources it uses, because we should cross them all, with a complexity
+	of $\O(|MR|^2)$ that gets easily really big.
+
+
+	\section{Contexts as subsequence of MR}
+
+	The idea is to obtain the contexts u-v from the very same maximal repeat. As replacing
+	words from MR gave great results in \cite{GThesis}, if we get the u-v from
+	them the intution says that we should get similar results. The computation time and
+	resources used improve, because we are just crossing prefix and suffix of each
+	MR and this is less costly than crossing all MR.
+	The counterpart is that we are cutting some possibilities.
+
+	\section{Contexts from best MR}
+
+	Here we first select the best MR as the SLG problem in \cite{GThesis} and we obtain
+	from it the possible contexts.
+	It's a really fast approach because we are using only one MR, but we don't know
+	if the best MR word will guide us to best contexts replacements.
+
+	\section{Limitations on U, V sizes}
+
+	If we are using Maximal Repeats, it is usually common in the experimental results, that the sizes of u and v based on them	don't go over a certain small limit $s$, so we can fix the search to maximal repeats
+	of size $s$ increasing the performance and obtaining similar results. \\
+
+	We think, this happens because the possibility of pairing two small contexts is greater
+	than pairing big contexts.

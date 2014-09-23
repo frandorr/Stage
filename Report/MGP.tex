@@ -1,0 +1,33 @@
+\section{Minimal Grammar Parsing}
+\subsection{Introduction to the problem}
+\subsubsection{17/4}
+
+The ideas and definitions that I will use here are from \cite[p. 70]{GThesis}.
+Matthias Gallé used the MGP with straight line grammars and we are trying to use it with l,k local-context-substatibility grammars.
+
+We want to allow some yields to be kept, instead of being replaced by non-terminals if replacing other occurrences of words overlapping them results in a smaller grammar.
+
+
+% As an example taken from \cite{GThesis} with slight modifications we have:
+
+% \begin{center}
+% 	$s = ababbababbabaabbabaa$
+% \end{center}
+
+% and suppose the constituents are $\{s, abaI_1bb,aI_2a\}$, this defines the set of non-terminals:
+% $\{N_0,N_1,N_2\}$. 
+
+% Then a minimal grammar parsing is:
+% \begin{center}
+% \begin{itemize}
+% 	\item $N_0 \rightarrow N_1N_1N_2$ 
+% 	\item $N_1 \rightarrow N_2I_1bb$ 
+% 	\item $N_2 \rightarrow aI_2a$	
+% 	\item $I_1 \rightarrow bbN_2|a$
+% 	\item $I_2 \rightarrow ba|b$
+
+% \end{itemize}
+% \end{center}
+
+There are some difficults because in $l,k$ grammars we add more than one non-terminal per replace, and it also has a disyunction in the non-terminals. We've got to look for a way to avoid this problems. Maybe counting $I$ as a terminal. Or in the graph where we search the min path every time that an $I$ appears we can approximate the gain with probabilities (for example: $0.8\%$ of the times $I = ab$ and $0.2\%$ is $I = ab$). 
+Maybe using some probabilistic model such as Markov.
